@@ -59,7 +59,7 @@ const Hero = () => {
               </div>
               <div className="h-px w-12 bg-[#e1e1e1]" />
               <span className="text-foreground/50 font-mono text-xs md:text-sm">
-                Full-Stack Developer
+                Fullstack Engineer & AI Builder
               </span>
             </motion.div>
 
@@ -73,7 +73,7 @@ const Hero = () => {
               <span className="text-foreground">Hey, I&apos;m </span>
               <span className="relative text-[#8cc2ff] italic">
                 <Typewriter
-                  text={["Siddharth", "Stark"]}
+                  text={["Gerardo", "Gelik"]}
                   speed={85}
                   waitTime={1500}
                   deleteSpeed={40}
@@ -89,8 +89,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-foreground/60 max-w-2xl text-sm font-light md:text-base"
             >
-              Fullstack developer with a passion for building web applications.
-              I specialize in React, Next.js, Node.js, and TypeScript.
+              Fullstack Engineer con 4+ años construyendo desde la base de datos hasta el pixel. Especializado en Angular, Svelte, TypeScript, Node.js y automatización con IA (N8N, MCP) — entrego productos completos, escalables y con impacto medible: –85% en tiempos de carga, +90% en satisfacción de usuarios.
             </motion.p>
 
             <motion.div
@@ -127,21 +126,19 @@ const Hero = () => {
 
       {/*  Stats Grid */}
       <div className="relative">
-        <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-4">
+        <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-5">
           {[
-            {
-              label: "Portfolio views",
-              value: unamiStats?.data?.pageviews ?? 0,
-            },
-            { label: "Years of Experience", value: 2 },
-            { label: "Projects Shipped", value: 8 },
-            { label: "Happy Clients", value: 5 },
-          ].map((stat, i) => (
+            { label: "Portfolio views", value: unamiStats?.data?.pageviews ?? 0 },
+            { label: "Years of Experience", value: 4 },
+            { label: "Projects Shipped", value: 6 },
+            { label: "Happy Clients", value: 3 },
+            { label: "AI Automations", value: 5 },
+          ].map((stat, i, arr) => (
             <div
               key={i}
               className={cn(
                 "group hover:bg-foreground/5 relative p-8 text-center transition-colors",
-                i !== 3 && "border-r",
+                i !== arr.length - 1 && "border-r",
                 i < 2 && "border-b lg:border-b-0",
               )}
             >

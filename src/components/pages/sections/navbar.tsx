@@ -14,7 +14,6 @@ const NAV_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
-  { id: "stats", label: "Stats" },
   { id: "contact", label: "Contact" },
 ] as const;
 
@@ -283,7 +282,7 @@ const Navbar = () => {
 
               <div className="grid grid-cols-3 gap-2 px-2 py-1">
                 <a
-                  href="https://github.com/"
+                  href={siteConfig.github}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="hover:bg-foreground/5 group flex flex-col items-center gap-1.5 rounded-lg py-2 transition-colors"

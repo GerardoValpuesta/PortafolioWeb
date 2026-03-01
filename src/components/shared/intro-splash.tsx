@@ -14,19 +14,19 @@ export const IntroSplash = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-   
+
       <BackgroundAnimation
-        color={resolvedTheme === "light" ? "blue" : "ember"}
+        color={resolvedTheme === "light" ? "dusk" : "midnight"}
       />
 
-    
+
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
         initial={{ opacity: 0, y: 24, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
       >
-        <Logo className="w-28 sm:w-32 md:w-40 @max-md:w-16" />
+        <Logo className="w-44 sm:w-52 md:w-64 @max-md:w-32" />
       </motion.div>
 
 

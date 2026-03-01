@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Providers from "@/components/providers";
-import { geistMono, geistSans, incognito, pixelifySans } from "@/assets/fonts";
+import { geistMono, geistSans, incognito, pixelifySans, dancingScript } from "@/assets/fonts";
 import { cn } from "@/lib/utils";
 import MotionConfigWrapper from "@/components/motion-config";
 import { siteConfig } from "@/config/site";
@@ -16,18 +16,25 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   keywords: [
-    "portfolio",
-    "developer portfolio",
-    "creative",
-    "fullstack",
-    "nextjs",
+    "Gerardo Valpuesta",
+    "Gerardo Núñez Valpuesta",
+    "Gelik",
+    "Fullstack Engineer",
+    "AI Builder",
+    "Angular developer",
+    "Svelte",
+    "TypeScript",
+    "N8N",
+    "MCP",
+    "developer Mexico",
+    "portafolio desarrollador",
   ],
 
   openGraph: {
     images: [
       {
         url: "/og-image.png",
-        alt: "Stark's Portfolio",
+        alt: "Portafolio de Gerardo Valpuesta — Fullstack Engineer & AI Builder",
       },
     ],
   },
@@ -42,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body
         className={cn(
           "mx-auto font-sans antialiased",
@@ -50,6 +57,7 @@ export default function RootLayout({
           geistMono.variable,
           incognito.variable,
           pixelifySans.variable,
+          dancingScript.variable,
         )}
       >
         <Providers>

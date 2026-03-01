@@ -45,6 +45,7 @@
   --font-mono: var(--font-geist-mono);
   --font-incognito: var(--incognito);
   --font-pixelify: var(--font-pixelify);
+  --font-dancing-script: var(--font-dancing-script);
 
   --animate-background-gradient: 10s cubic-bezier(0.445, 0.05, 0.55, 0.95)
     infinite background-gradient;

@@ -2,9 +2,9 @@
 
 import { siteConfig } from "@/config/site";
 import useScreenSize from "@/hooks/use-screen-size";
-import type {  Song } from "@/types";
+import type { Song } from "@/types";
 import { useIsClient } from "@uidotdev/usehooks";
-import { Mail, Twitter, Linkedin } from "lucide-react";
+import { Mail, Linkedin } from "lucide-react";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
@@ -118,7 +118,6 @@ const slideInBottom: Variants = {
 
 const socialLinks = [
   { icon: Mail, label: "Email", link: `mailto:${siteConfig.email}` },
-  { icon: Twitter, label: "Twitter", link: siteConfig.twitter },
   { icon: Linkedin, label: "LinkedIn", link: siteConfig.linkedin },
 ];
 
@@ -173,7 +172,7 @@ const MainScreen: React.FC<{
           <>
             Hi! , I am{" "}
             <Typewriter
-              text={["a developer", "Siddharth", "Stark"]}
+              text={["a developer", "Gerardo", "Gelik"]}
               speed={70}
               waitTime={1500}
               deleteSpeed={40}
@@ -264,25 +263,25 @@ const HomePage = () => {
     () =>
       resolvedTheme === "dark"
         ? [
-            "#BEBB53",
-            "#1C2938",
-            "#172795",
-            "#DE5D4E",
-            "#C13567",
-            "#10BC89",
-            "#3AD47B",
-            "#463199",
-          ]
+          "#BEBB53",
+          "#1C2938",
+          "#172795",
+          "#DE5D4E",
+          "#C13567",
+          "#10BC89",
+          "#3AD47B",
+          "#463199",
+        ]
         : [
-            "#d0c87a",
-            "#88a6c9",
-            "#8aa1ff",
-            "#ff8a78",
-            "#d56b96",
-            "#2acfa4",
-            "#60e09a",
-            "#7e6bf2",
-          ],
+          "#d0c87a",
+          "#88a6c9",
+          "#8aa1ff",
+          "#ff8a78",
+          "#d56b96",
+          "#2acfa4",
+          "#60e09a",
+          "#7e6bf2",
+        ],
     [resolvedTheme],
   );
 
@@ -557,7 +556,7 @@ const HomePage = () => {
             </span>
           </div>
           <div className="bg-foreground/20 h-4 w-px" />
-          <span className="text-xs">Full Stack Developer</span>
+          <span className="text-xs">Fullstack Engineer & AI Builder</span>
         </div>
       </motion.div>
 

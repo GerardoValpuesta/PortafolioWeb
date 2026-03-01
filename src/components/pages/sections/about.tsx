@@ -31,7 +31,7 @@ const About = () => {
           <div className="text-foreground/70 bg-muted/20 relative z-10 mx-auto mt-6 max-w-3xl rounded-lg border-2 border-dotted text-sm leading-relaxed backdrop-blur-3xl md:text-base">
             <div className="p-6">
               <p className="">
-                I build fast, friendly products that make users smile
+                Construyo productos digitales completos — del backend al último pixel del frontend
                 <span className="mx-1 inline-block align-middle">
                   <span className="ring-offset-background relative inline-block w-12 rotate-6 overflow-hidden rounded-md ring ring-offset-2">
                     <img
@@ -41,12 +41,11 @@ const About = () => {
                     />
                   </span>
                 </span>
-                —and sometimes their dogs too.
+                — no sólo que se vean bonitas.
               </p>
 
               <p className="">
-                Stack: Next.js, React, TypeScript, Tailwind. Clean APIs, tiny
-                micro‑interactions, big delight
+                Stack principal: Angular, Svelte, TypeScript, Node.js, Tailwind CSS y automatización con IA. Entrego sistemas end-to-end:
                 <span className="mx-1 inline-block align-middle">
                   <span className="ring-offset-background relative inline-block w-12 -rotate-3 overflow-hidden rounded-md ring ring-offset-2">
                     <img
@@ -60,13 +59,13 @@ const About = () => {
               </p>
 
               <p className="">
-                Off‑duty: coffee, sketching animations, and One Piece marathons
+                De idea a producción usando N8N y MCP — automatizo procesos que antes costaban semanas de desarrollo manual
                 <span className="mx-1 inline-block align-middle">
                   <span className="ring-offset-background relative inline-block w-12 rotate-3 overflow-hidden rounded-md ring ring-offset-2">
                     <img
                       src={"/gifs/happy%20one%20piece%20GIF.gif"}
                       className="h-auto w-full object-cover object-center"
-                      alt="happy One Piece vibe"
+                      alt="happy vibe coding"
                     />
                   </span>
                 </span>
@@ -74,8 +73,7 @@ const About = () => {
               </p>
 
               <p className="">
-                Best in small teams: quick loops, clear comms, high‑fives after
-                deploy
+                Me muevo mejor en equipos ágiles donde el código y la comunicación son igual de limpios
                 <span className="mx-1 inline-block align-middle">
                   <span className="ring-offset-background relative inline-block w-12 -rotate-2 overflow-hidden rounded-md ring ring-offset-2">
                     <img
@@ -83,7 +81,7 @@ const About = () => {
                         "/gifs/One%20Piece%20GIF%20by%20TOEI%20Animation%20UK.gif"
                       }
                       className="h-auto w-full object-cover object-center"
-                      alt="One Piece crew teamwork"
+                      alt="team work"
                     />
                   </span>
                 </span>
@@ -91,17 +89,17 @@ const About = () => {
               </p>
 
               <p>
-                Got a messy brief or a half‑baked idea?
+                ¿Buscas un dev que entienda el negocio, hable con el equipo y entregue sin excusas?
                 <span className="mx-1 inline-block align-middle">
                   <span className="ring-offset-background relative inline-block w-12 rotate-2 overflow-hidden rounded-md ring ring-offset-2">
                     <img
                       src={"/gifs/kirby%20confused.gif"}
                       className="h-auto w-full object-cover object-center"
-                      alt="kirby confused but ready"
+                      alt="kirby ready"
                     />
                   </span>
                 </span>
-                Let’s turn it into something real.
+                Hablemos y lo convirtamos en algo real.
               </p>
             </div>
 
@@ -143,16 +141,16 @@ const About = () => {
                 <div className="text-center">
                   <div className="border-foreground/20 bg-muted/20 mb-4 overflow-hidden rounded-lg border-2 border-dashed p-4">
                     <img
-                      src="/ascii-art-profile.png"
-                      alt="ASCII"
-                      className="-mb-5 h-auto w-full object-cover object-center dark:invert"
+                      src="/profile-real.jpg"
+                      alt="Gerardo Valpuesta"
+                      className="h-auto w-full rounded-lg object-cover object-center"
                     />
                   </div>
                   <h3 className="font-incognito text-2xl font-semibold">
-                    Siddharth
+                    Gerardo
                   </h3>
                   <p className="text-foreground/60 mt-1 font-mono text-sm">
-                    @stark
+                    @gelik
                   </p>
 
                   {/* Status badges */}
@@ -176,8 +174,8 @@ const About = () => {
                         ? "Not Available"
                         : "Available"}
                     </Badge>
-                    <Badge variant="outline">2+ Years</Badge>
-                    <Badge variant="outline">Full-Stack</Badge>
+                    <Badge variant="outline">3+ Years</Badge>
+                    <Badge variant="outline">Fullstack + IA</Badge>
                   </div>
                 </div>
               </div>

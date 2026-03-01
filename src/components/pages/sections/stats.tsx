@@ -61,25 +61,26 @@ const TAB_CONTENT = [
 
 const TECH_STACK = {
   Frontend: [
-    { name: "React", icon: "/icons/react.svg" },
-    { name: "Next.js", icon: "/icons/nextjs.svg" },
+    { name: "Angular", icon: "/icons/angular.svg" },
+    { name: "Svelte", icon: "/icons/svelte.svg" },
     { name: "TypeScript", icon: "/icons/typescript.svg" },
-    { name: "HTML", icon: "/icons/html.svg" },
-    { name: "CSS", icon: "/icons/css.svg" },
+    { name: "Next.js", icon: "/icons/nextjs.svg" },
     { name: "Tailwind", icon: "/icons/tailwind.svg" },
+    { name: "HTML", icon: "/icons/html.svg" },
   ],
   Backend: [
     { name: "Node.js", icon: "/icons/nodejs.svg" },
-    { name: "Bun", icon: "/icons/bunjs.svg" },
+    { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
+    { name: "Prisma", icon: "/icons/prisma.svg" },
     { name: "Python", icon: "/icons/python.svg" },
     { name: "MongoDB", icon: "/icons/mongodb.svg" },
-    { name: "Prisma", icon: "/icons/prisma.svg" },
   ],
   Tools: [
+    { name: "N8N", icon: "/icons/n8n.svg" },
+    { name: "Docker", icon: "/icons/docker.svg" },
     { name: "Git", icon: "/icons/git.svg" },
     { name: "VS Code", icon: "/icons/vscode.svg" },
     { name: "Figma", icon: "/icons/figma.svg" },
-    { name: "Notion", icon: "/icons/notion.svg" },
   ],
 };
 
@@ -578,10 +579,10 @@ const InsightsContent = ({ data }: { data?: GitHubStatsResponse }) => {
 
   const prClosedPercentage = data?.pullRequests.total
     ? Math.round(
-        ((data.pullRequests.closed + data.pullRequests.merged) /
-          data.pullRequests.total) *
-          100,
-      )
+      ((data.pullRequests.closed + data.pullRequests.merged) /
+        data.pullRequests.total) *
+      100,
+    )
     : 0;
 
   const issuesClosedPercentage = data?.issues.total
@@ -645,7 +646,7 @@ const InsightsContent = ({ data }: { data?: GitHubStatsResponse }) => {
 
       {/* Metrics Grid */}
       <div className="grid gap-4 md:grid-cols-2">
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

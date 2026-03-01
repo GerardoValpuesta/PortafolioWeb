@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Geist, Geist_Mono, Pixelify_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Pixelify_Sans, Dancing_Script } from "next/font/google";
 
 export const incognito = localFont({
   src: [
@@ -43,4 +43,10 @@ export const geistMono = Geist_Mono({
 export const pixelifySans = Pixelify_Sans({
   variable: "--font-pixelify",
   subsets: ["latin"],
+});
+
+export const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });

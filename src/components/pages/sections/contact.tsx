@@ -11,7 +11,7 @@ import { Send, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import SectionHeading from "@/components/section-heading";
 
- // TODO Store in DB
+// TODO Store in DB
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -25,7 +25,7 @@ export default function Contact() {
   const canSend = email.trim().length > 3 && message.trim().length > 4;
 
   const onSubmit = async (e: React.FormEvent) => {
-   
+
     e.preventDefault();
     if (!canSend) return;
     try {
@@ -115,7 +115,7 @@ export default function Contact() {
                       <span className="text-sky-400">↪</span>
                       <input
                         type="text"
-                        placeholder="Siddharth"
+                        placeholder="Tu nombre"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         onKeyDown={handleEnter}

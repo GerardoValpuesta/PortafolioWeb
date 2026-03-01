@@ -4,7 +4,6 @@ import SectionHeading from "@/components/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HeadingLine from "@/components/ui/heading-line";
-import env from "@/config/env";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Github, ArrowUpRight, ExternalLink } from "lucide-react";
@@ -13,48 +12,62 @@ import { motion } from "motion/react";
 const Projects = () => {
   const projects = [
     {
-      title: "Developer Portfolio",
+      title: "E-Gastos / TersaNet",
       description:
-        "A personal portfolio website showcasing projects, skills, and contact information.",
-      tags: ["Portfolio", "Fullstack", "Personal"],
-      github: "https://github.com/NotStark/portfolio",
-      image: "/projects/portfolio-screenshot.png",
-      live: env.NEXT_PUBLIC_APP_URL,
-      date: "Sep, 2025",
-      status: "completed",
-    },
-    {
-      title: "Telegram Bot",
-      description: "A telegram group management bot built with Pyrogram.",
-      tags: ["Bot", "Management", "Telegram"],
-      github: "https://github.com/Notstark/TelegramBot",
-      image: "/projects/telegrambot-screenshot.png",
-      live: "https://t.me/HyugaGuardianBot",
-      date: "Oct, 2024",
-      status: "completed",
-    },
-    {
-      title: "Anime Edge",
-      description:
-        "A feature-rich anime streaming platform built with Next.js, offering fast search, curated collections, and a smooth viewing experience.",
-      tags: ["Anime", "Streaming", "Fullstack"],
+        "Sistema de reembolsos y viáticos integrado en Ximplify/XAMAI. Optimización de performance que redujo tiempos de carga un 85%, con módulos de aprobación, reportes financieros y gestión de gastos corporativos.",
+      tags: ["Angular", "TypeScript", "REST API"],
       github: null,
-      image: "/projects/animeedge-screenshot.png",
+      image: "/projects/egastos-screenshot.png",
       live: null,
-      date: "Dec, 2024",
+      date: "2022–2024",
+      status: "completed",
+    },
+    {
+      title: "MPX 2.0 — Mi Portal XAMAI",
+      description:
+        "Rediseño integral del portal cliente de XAMAI. Migración a Svelte con Tailwind CSS, nuevo sistema de componentes y mejora del 90% en la satisfacción del usuario según encuestas post-lanzamiento.",
+      tags: ["Svelte", "Angular", "Tailwind CSS"],
+      github: null,
+      image: "/projects/mpx-screenshot.png",
+      live: null,
+      date: "2023–2024",
+      status: "completed",
+    },
+    {
+      title: "C5 Bid App",
+      description:
+        "Aplicación ganadora de licitación para gestión y monitoreo de cámaras de seguridad pública C4/C5 del gobierno de CDMX. Mapa interactivo de cámaras en tiempo real, gestión de incidentes y alertas.",
+      tags: ["React Native", "Node.js", "Maps"],
+      github: null,
+      image: "/projects/c5bid-screenshot.png",
+      live: null,
+      date: "2021–2022",
+      status: "completed",
+    },
+    {
+      title: "N8N & MCP — Automatización IA",
+      description:
+        "Flujos de automatización empresarial con N8N y Model Context Protocol (MCP): procesamiento de facturas SAT con GPT-4, pipelines de datos, notificaciones y bots. Redujo 80% del trabajo manual del equipo de operaciones.",
+      tags: ["N8N", "AI / LLM", "Node.js"],
+      github: null,
+      image: "/projects/n8n-screenshot.png",
+      live: null,
+      date: "2024–hoy",
       status: "completed",
     },
   ];
 
   const tagColors = {
-    Portfolio: "bg-blue-500/10 text-blue-600 border-blue-500/30",
-    Fullstack: "bg-orange-500/10 text-orange-600 border-orange-500/30",
-    Personal: "bg-purple-500/10 text-purple-600 border-purple-500/30",
-    Telegram: "bg-cyan-500/10 text-cyan-600 border-cyan-500/30",
-    Management: "bg-emerald-500/10 text-emerald-600 border-emerald-500/30",
-    Bot: "bg-teal-500/10 text-teal-600 border-teal-500/30",
-    Anime: "bg-pink-500/10 text-pink-600 border-pink-500/30",
-    Streaming: "bg-indigo-500/10 text-indigo-600 border-indigo-500/30",
+    Angular: "bg-red-500/10 text-red-600 border-red-500/30",
+    TypeScript: "bg-blue-500/10 text-blue-600 border-blue-500/30",
+    "REST API": "bg-orange-500/10 text-orange-600 border-orange-500/30",
+    Svelte: "bg-orange-600/10 text-orange-700 border-orange-600/30",
+    "Tailwind CSS": "bg-cyan-500/10 text-cyan-600 border-cyan-500/30",
+    "React Native": "bg-emerald-500/10 text-emerald-600 border-emerald-500/30",
+    "Node.js": "bg-green-500/10 text-green-600 border-green-500/30",
+    Maps: "bg-indigo-500/10 text-indigo-600 border-indigo-500/30",
+    N8N: "bg-orange-500/10 text-orange-600 border-orange-500/30",
+    "AI / LLM": "bg-purple-500/10 text-purple-600 border-purple-500/30",
   };
 
   return (
