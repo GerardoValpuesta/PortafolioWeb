@@ -12,6 +12,54 @@ import { useState } from "react";
 const Projects = () => {
   const projects = [
     {
+      title: "Sharit — Red Social de Actividades",
+      description:
+        "App móvil para conectar personas que no se conocen a través de actividades presenciales o virtuales: deportes, jam sessions, talleres, salidas y más. Los usuarios crean o se unen a planes en tiempo real, interactúan y construyen comunidad.",
+      tags: ["React Native", "Expo", "Node.js", "MongoDB", "TypeScript"],
+      github: null,
+      images: [
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (1).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (2).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (3).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (4).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (5).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13.jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (1).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (2).jpeg",
+      ],
+      image: "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
+      live: null,
+      date: "2024–hoy",
+      status: "in-progress",
+      storeLinks: {
+        playStore: "https://play.google.com/store/apps/details?id=com.gosharit",
+        appStore: "https://apps.apple.com/app/sharit/id0000000000",
+      },
+      containImage: true,
+    },
+    {
+      title: "Agent SAT — Automatización Fiscal IA",
+      description:
+        "App de escritorio que usa IA para descifrar automáticamente los CAPTCHAs del portal del SAT y descargar masivamente CFDI, acuses y documentos fiscales. Reduce horas de trabajo manual a minutos.",
+      tags: ["Tauri", "Svelte", "SQLite", "Chromium", "AI / CAPTCHA"],
+      github: null,
+      images: [
+        "/projects/Agent/Agent- Login SAT.png",
+        "/projects/Agent/Agent - Login config.png",
+        "/projects/Agent/Agent - Login config 2.png",
+        "/projects/Agent/Agent - Mon Configuraciones.png",
+        "/projects/Agent/Agente - Monitor Upload.png",
+        "/projects/Agent/Agent Historial de cargas .png",
+        "/projects/Agent/Agent Historial de cargas 2.png",
+      ],
+      image: "/projects/Agent/Agent - Login config.png",
+      live: null,
+      date: "2024–hoy",
+      status: "completed",
+      hideButtons: true,
+    },
+    {
       title: "TersaNet",
       description:
         "Sistema web de cotización en tiempo real para distribuidora de llantas Tersa. Permite a clientes y vendedores generar cotizaciones avanzadas y exprés (mayoreo y menudeo), gestionar inventario multi-sucursal y exportar cotizaciones a PDF o enviarlas por correo electrónico.",
@@ -30,15 +78,36 @@ const Projects = () => {
       hideButtons: true,
     },
     {
+      title: "N8N & MCP — Automatización IA",
+      description:
+        "Flujos de automatización empresarial con N8N y Model Context Protocol (MCP): procesamiento de facturas SAT con GPT-4, pipelines de datos, notificaciones y bots. Redujo 80% del trabajo manual del equipo de operaciones.",
+      tags: ["N8N", "AI / LLM", "Node.js"],
+      github: null,
+      image: "/projects/n8n-screenshot.png",
+      live: null,
+      date: "2024–hoy",
+      status: "completed",
+      hideButtons: true,
+    },
+    {
       title: "MPX 2.0 — Mi Portal XAMAI",
       description:
         "Rediseño integral del portal cliente de XAMAI. Migración a Svelte con Tailwind CSS, nuevo sistema de componentes y mejora del 90% en la satisfacción del usuario según encuestas post-lanzamiento.",
       tags: ["Svelte", "Angular", "Tailwind CSS"],
       github: null,
-      image: "/projects/mpx-screenshot.png",
+      images: [
+        "/projects/mpx 2.0/mpx-login.png",
+        "/projects/mpx 2.0/mpx-2.png",
+        "/projects/mpx 2.0/mpx-3.png",
+        "/projects/mpx 2.0/mpx-4.png",
+        "/projects/mpx 2.0/mpx-5.png",
+        "/projects/mpx 2.0/mpx-6.png",
+      ],
+      image: "/projects/mpx 2.0/mpx-login.png",
       live: null,
       date: "2023–2024",
       status: "completed",
+      hideButtons: true,
     },
     {
       title: "C5 Bid App",
@@ -49,38 +118,6 @@ const Projects = () => {
       image: "/projects/c5bid-screenshot.png",
       live: null,
       date: "2021–2022",
-      status: "completed",
-      hideButtons: true,
-    },
-    {
-      title: "N8N & MCP — Automatización IA",
-      description:
-        "Flujos de automatización empresarial con N8N y Model Context Protocol (MCP): procesamiento de facturas SAT con GPT-4, pipelines de datos, notificaciones y bots. Redujo 80% del trabajo manual del equipo de operaciones.",
-      tags: ["N8N", "AI / LLM", "Node.js"],
-      github: null,
-      image: "/projects/n8n-screenshot.png",
-      live: null,
-      date: "2024–hoy",
-      status: "completed",
-    },
-    {
-      title: "Agent SAT — Automatización Fiscal IA",
-      description:
-        "App de escritorio que usa IA para descifrar automáticamente los CAPTCHAs del portal del SAT y descargar masivamente CFDI, acuses y documentos fiscales. Reduce horas de trabajo manual a minutos.",
-      tags: ["Tauri", "Svelte", "SQLite", "Chromium", "AI / CAPTCHA"],
-      github: null,
-      images: [
-        "/projects/Agent/Agent - Login config.png",
-        "/projects/Agent/Agent - Login config 2.png",
-        "/projects/Agent/Agent- Login SAT.png",
-        "/projects/Agent/Agent - Mon Configuraciones.png",
-        "/projects/Agent/Agente - Monitor Upload.png",
-        "/projects/Agent/Agent Historial de cargas .png",
-        "/projects/Agent/Agent Historial de cargas 2.png",
-      ],
-      image: "/projects/Agent/Agent - Login config.png",
-      live: null,
-      date: "2024–hoy",
       status: "completed",
       hideButtons: true,
     },
@@ -106,6 +143,8 @@ const Projects = () => {
     Firebase: "bg-yellow-500/10 text-yellow-700 border-yellow-500/30",
     Android: "bg-green-600/10 text-green-700 border-green-600/30",
     "PDF Reports": "bg-red-400/10 text-red-500 border-red-400/30",
+    MongoDB: "bg-green-500/10 text-green-600 border-green-500/30",
+    Expo: "bg-slate-500/10 text-slate-400 border-slate-500/30",
   };
 
   // Per-project carousel index state
@@ -149,7 +188,10 @@ const Projects = () => {
                       const idx = getIdx(project.title);
                       const isCarousel = imgs.length > 1;
                       return (
-                        <div className="bg-background relative overflow-hidden border-2">
+                        <div className={cn(
+                          "bg-background relative overflow-hidden border-2",
+                          (project as any).containImage && "bg-neutral-950"
+                        )}>
                           <div className="relative aspect-video overflow-hidden">
                             <motion.img
                               key={imgs[idx]}
@@ -158,7 +200,12 @@ const Projects = () => {
                               transition={{ duration: 0.35 }}
                               src={imgs[idx]}
                               alt={`${project.title} screenshot ${idx + 1}`}
-                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                              className={cn(
+                                "h-full w-full transition-transform duration-700 group-hover:scale-105",
+                                (project as any).containImage
+                                  ? "object-contain p-3"
+                                  : "object-cover"
+                              )}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
@@ -255,41 +302,80 @@ const Projects = () => {
                 {/*  Buttons */}
                 {!(project as any).hideButtons && (
                   <div className="flex flex-wrap gap-3">
-                    <Button
-                      asChild
-                      variant="default"
-                      size="lg"
-                      className="group/btn relative border-2 font-medium"
-                      disabled={!project.github}
-                    >
+                    {/* Store links — Play Store */}
+                    {(project as any).storeLinks?.playStore && (
                       <a
-                        href={project.github || undefined}
+                        href={(project as any).storeLinks.playStore}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="group/btn inline-flex items-center gap-2 rounded-md border-2 border-[#01875F]/40 bg-[#01875F]/10 px-4 py-2 text-sm font-medium text-[#01875F] transition-colors hover:bg-[#01875F]/20 dark:text-[#34d399]"
                       >
-                        <Github className="mr-2 h-4 w-4" />
-                        View Code
-                        <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        {/* Play Store icon */}
+                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                          <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.847a1 1 0 010 1.715l-2.22 1.283L13.17 12l2.308-2.308 2.22 1.268zm-12.46-7.26L15.8 9.934l-2.302 2.302-8.36-8.636z" />
+                        </svg>
+                        Google Play
+                        <ArrowUpRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                       </a>
-                    </Button>
+                    )}
 
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="lg"
-                      className="group/btn border-2 font-medium"
-                      disabled={!project.live}
-                    >
+                    {/* App Store */}
+                    {(project as any).storeLinks?.appStore && (
                       <a
-                        href={project.live || undefined}
+                        href={(project as any).storeLinks.appStore}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="group/btn inline-flex items-center gap-2 rounded-md border-2 border-blue-500/40 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500 transition-colors hover:bg-blue-500/20 dark:text-blue-400"
                       >
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Live Demo
-                        <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        {/* App Store icon */}
+                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                          <path d="M8.809 0h6.381L24 15h-4.045L12 2.912 4.045 15H0L8.809 0zM0 17h24l-4 7H4L0 17z" />
+                        </svg>
+                        App Store
+                        <ArrowUpRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                       </a>
-                    </Button>
+                    )}
+
+                    {/* GitHub button — only when no storeLinks */}
+                    {!(project as any).storeLinks && (
+                      <>
+                        <Button
+                          asChild
+                          variant="default"
+                          size="lg"
+                          className="group/btn relative border-2 font-medium"
+                          disabled={!project.github}
+                        >
+                          <a
+                            href={project.github || undefined}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github className="mr-2 h-4 w-4" />
+                            View Code
+                            <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                          </a>
+                        </Button>
+
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="lg"
+                          className="group/btn border-2 font-medium"
+                          disabled={!project.live}
+                        >
+                          <a
+                            href={project.live || undefined}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Live Demo
+                            <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                          </a>
+                        </Button>
+                      </>
+                    )}
                   </div>
                 )}
 
