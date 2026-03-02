@@ -92,6 +92,28 @@ const Hero = () => {
               Fullstack Engineer con 4+ años construyendo desde la base de datos hasta el pixel. Especializado en Angular, Svelte, TypeScript, Node.js y automatización con IA (N8N, MCP) — entrego productos completos, escalables y con impacto medible: –85% en tiempos de carga, +90% en satisfacción de usuarios.
             </motion.p>
 
+            {/* Availability & Language Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="mt-4 flex flex-wrap gap-2 max-md:justify-center"
+            >
+              <span className="flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
+                Disponible para trabajar
+              </span>
+              <span className="flex items-center gap-1.5 rounded-full border bg-foreground/5 px-3 py-1 text-xs text-muted-foreground">
+                📍 México — Remoto / Híbrido
+              </span>
+              <span className="flex items-center gap-1.5 rounded-full border bg-foreground/5 px-3 py-1 text-xs text-muted-foreground">
+                🇲🇽 Español nativo
+              </span>
+              <span className="flex items-center gap-1.5 rounded-full border bg-foreground/5 px-3 py-1 text-xs text-muted-foreground">
+                🇺🇸 English B1
+              </span>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

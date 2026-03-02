@@ -7,6 +7,9 @@ import Projects from "./sections/projects";
 import About from "./sections/about";
 import Footer from "./sections/footer";
 import Contact from "./sections/contact";
+import Services from "./sections/services";
+import Experience from "./sections/experience";
+import Certifications from "./sections/certifications";
 
 import { Testimonials } from "./sections/testimonials";
 import { Guestbook } from "../feature/guestbook";
@@ -30,9 +33,11 @@ const PortfolioPage = () => {
           <div className="min-h-[calc(100vh-4rem)] md:px-8">
             <div className="min-h-[calc(100vh-4rem)] md:border-r md:border-l">
               <Hero />
+              <Services />
               <Projects />
+              <Experience />
               <About />
-
+              <Certifications />
               <Testimonials />
               <Contact />
               <Footer />
