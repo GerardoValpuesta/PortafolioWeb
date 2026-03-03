@@ -238,3 +238,22 @@
       60% 50%;
   }
 }
+
+/* ── Tech marquee ── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@utility animate-marquee {
+  animation: marquee-left 30s linear infinite;
+}
+
+@utility animate-marquee-reverse {
+  animation: marquee-right 30s linear infinite;
+}

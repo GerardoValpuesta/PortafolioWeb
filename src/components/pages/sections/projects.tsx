@@ -90,10 +90,10 @@ const Projects = () => {
       hideButtons: true,
     },
     {
-      title: "MPX 2.0 — Mi Portal XAMAI",
+      title: "Mi Portal XAMAI",
       description:
         "Rediseño integral del portal cliente de XAMAI. Migración a Svelte con Tailwind CSS, nuevo sistema de componentes y mejora del 90% en la satisfacción del usuario según encuestas post-lanzamiento.",
-      tags: ["Svelte", "Angular", "Tailwind CSS"],
+      tags: ["Angular", "TypeScript", "Tailwind CSS", "REST API"],
       github: null,
       images: [
         "/projects/mpx 2.0/mpx-login.png",
@@ -110,7 +110,7 @@ const Projects = () => {
       hideButtons: true,
     },
     {
-      title: "C5 Bid App",
+      title: "Stan Semper App",
       description:
         "App Android desarrollada para Stan Semper Crasol que permite generar reportes PDF completos de campo: captura de imágenes, geolocalización en tiempo real y extracción de números de serie de equipos. El informe se sincroniza automáticamente con la plataforma web mediante Firebase.",
       tags: ["Kotlin", "Firebase", "Android", "PDF Reports"],
