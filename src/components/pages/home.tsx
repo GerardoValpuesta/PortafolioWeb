@@ -8,7 +8,7 @@ import { Mail, Linkedin } from "lucide-react";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
-import React, { useState, useMemo, useRef, useCallback } from "react";
+import React, { useState, useMemo, useRef, useCallback, useEffect } from "react";
 import { BackgroundNoise } from "../shared/backgrounds";
 import { Logo } from "../ui/logo";
 import { ThemeToggleButton2 } from "../theme-toggle";
@@ -29,6 +29,7 @@ import { Typewriter } from "../ui/typewriter";
 import { IntroSplash } from "../shared/intro-splash";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { useMotionValue, useSpring } from "motion/react";
 
 // dynamic imports
 const Particles = dynamic(() => import("@/components/ui/particles"), {
@@ -238,6 +239,24 @@ const HomePage = () => {
   const [selectedItem, setSelectedItem] = useState<MenuItem>("portfolio");
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [song, setSong] = useState<Song | null>(null);
+
+  // Mouse parallax tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      mouseX.set(((e.clientX - cx) / cx) * 18);
+      mouseY.set(((e.clientY - cy) / cy) * 12);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [songIndex, setSongIndex] = useState<number>(0);
 
   const snakeRef = useRef<SnakeGameHandle | null>(null);
@@ -514,23 +533,28 @@ const HomePage = () => {
 
       {/* Decorations */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 z-10">
-          <Particles
-            particleColors={particleColors}
-            particleCount={
-              screenSize.lessThanOrEqual("md")
-                ? 150
-                : screenSize.lessThanOrEqual("lg")
-                  ? 200
-                  : 300
-            }
-            particleSpread={10}
-            speed={0.1}
-            particleBaseSize={100}
-            moveParticlesOnHover={false}
-            alphaParticles={true}
-            disableRotation={true}
-          />
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <motion.div
+            style={{ x: smoothX, y: smoothY }}
+            className="absolute inset-0 will-change-transform"
+          >
+            <Particles
+              particleColors={particleColors}
+              particleCount={
+                screenSize.lessThanOrEqual("md")
+                  ? 150
+                  : screenSize.lessThanOrEqual("lg")
+                    ? 200
+                    : 300
+              }
+              particleSpread={10}
+              speed={0.1}
+              particleBaseSize={100}
+              moveParticlesOnHover={false}
+              alphaParticles={true}
+              disableRotation={true}
+            />
+          </motion.div>
         </div>
 
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.6))] opacity-20 mix-blend-multiply dark:bg-[radial-gradient(ellipse_at_center,transparent_65%,rgba(0,0,0,0.8))] dark:mix-blend-normal" />
@@ -560,16 +584,34 @@ const HomePage = () => {
         variants={containerVariants}
         className="relative z-50"
       >
-        <PlaydateConsole
-          onDpadButtonClick={handleDpadButtonClick}
-          onActionButtionClick={handleActionButtonClick}
-          isPlaying={isMusicPlaying}
+        {/* Breathing animation wrapper */}
+        <motion.div
+          animate={{ scale: [1, 1.006, 1] }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         >
-          <div className="relative size-full overflow-hidden" ref={consoleRef}>
-            <BackgroundNoise className="relative z-30" />
-            {renderConsoleScreen()}
-          </div>
-        </PlaydateConsole>
+          <PlaydateConsole
+            onDpadButtonClick={handleDpadButtonClick}
+            onActionButtionClick={handleActionButtonClick}
+            isPlaying={isMusicPlaying}
+          >
+            <div className="relative size-full overflow-hidden" ref={consoleRef}>
+              <BackgroundNoise className="relative z-30" />
+              {renderConsoleScreen()}
+              {/* CRT Scanlines */}
+              <div
+                className="pointer-events-none absolute inset-0 z-40"
+                style={{
+                  background:
+                    "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px)",
+                }}
+              />
+            </div>
+          </PlaydateConsole>
+        </motion.div>
       </motion.div>
 
       {/* Status bar */}
@@ -594,7 +636,9 @@ const HomePage = () => {
             </span>
           </div>
           <div className="bg-foreground/20 h-4 w-px" />
-          <span className="text-xs">Fullstack Engineer & AI Builder</span>
+          <span className="text-xs">Fullstack Engineer &amp; AI Builder</span>
+          <div className="bg-foreground/20 h-4 w-px" />
+          <span className="text-[10px] text-foreground/40 font-mono">v2.0 ✦ stable</span>
         </div>
       </motion.div>
 
@@ -635,9 +679,9 @@ const HomePage = () => {
         </div>
       </motion.div>
 
-      {/* Portfolio Link */}
+      {/* Contact button */}
       <MotionLink
-        href={"/portfolio"}
+        href={`mailto:${siteConfig.email}`}
         initial="hidden"
         animate="visible"
         variants={slideInRight}
@@ -647,7 +691,7 @@ const HomePage = () => {
         whileTap={{ scale: 0.98 }}
       >
         <InteractiveHoverButton
-          text="Portfolio"
+          text="Contact me"
           className="bg-background/60 border-border/15 hover:border-border/30 rounded-l-full border-r-0 p-1.5 px-3 shadow-[0_0_5px_5px_rgba(255,255,255,0.06)_inset] backdrop-blur-sm transition-all md:p-2 md:px-4"
         />
       </MotionLink>
