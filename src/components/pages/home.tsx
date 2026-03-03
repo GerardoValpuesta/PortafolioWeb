@@ -238,6 +238,7 @@ const HomePage = () => {
   const [selectedItem, setSelectedItem] = useState<MenuItem>("portfolio");
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [song, setSong] = useState<Song | null>(null);
+  const [songIndex, setSongIndex] = useState<number>(0);
 
   const snakeRef = useRef<SnakeGameHandle | null>(null);
   const consoleRef = useRef<HTMLDivElement | null>(null);
@@ -252,12 +253,34 @@ const HomePage = () => {
     queryFn: async () => {
       const res = await axios.get<Song[]>("/data/playlist.json");
       const data = res.data;
-      setSong(getRandomElement(data));
+      const idx = Math.floor(Math.random() * data.length);
+      setSongIndex(idx);
+      setSong(data[idx]);
       return data;
     },
     gcTime: Infinity,
     staleTime: Infinity,
   });
+
+  const navigateSong = useCallback(
+    (direction: "prev" | "next" | "shuffle") => {
+      if (!musicPlaylist || musicPlaylist.length === 0) return;
+      let newIndex: number;
+      if (direction === "shuffle") {
+        do {
+          newIndex = Math.floor(Math.random() * musicPlaylist.length);
+        } while (newIndex === songIndex && musicPlaylist.length > 1);
+      } else if (direction === "next") {
+        newIndex = (songIndex + 1) % musicPlaylist.length;
+      } else {
+        newIndex = (songIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
+      }
+      setSongIndex(newIndex);
+      setSong(musicPlaylist[newIndex]);
+      setIsMusicPlaying(true);
+    },
+    [musicPlaylist, songIndex],
+  );
 
   const particleColors = useMemo(
     () =>
@@ -334,6 +357,15 @@ const HomePage = () => {
         return;
       }
 
+      // Music mode: d-pad controls tracks
+      if (currentConsoleNavigation === "music") {
+        if (action === "left") { navigateSong("prev"); return; }
+        if (action === "right") { navigateSong("next"); return; }
+        if (action === "up") { navigateSong("shuffle"); return; }
+        if (action === "down") { setIsMusicPlaying((p) => !p); return; }
+        return;
+      }
+
       if (currentConsoleNavigation !== "main") return;
 
       const nextItem = getNextMenuItem(selectedItem, action);
@@ -341,7 +373,7 @@ const HomePage = () => {
         setSelectedItem(nextItem);
       }
     },
-    [currentConsoleNavigation, selectedItem, getNextMenuItem],
+    [currentConsoleNavigation, selectedItem, getNextMenuItem, navigateSong],
   );
 
   const handleActionButtonClick = useCallback(
@@ -397,6 +429,12 @@ const HomePage = () => {
           trackTitle={song.title}
           coverImage={song.cover}
           className="absolute inset-0"
+          onTogglePlay={() => setIsMusicPlaying((p) => !p)}
+          onNext={() => navigateSong("next")}
+          onPrev={() => navigateSong("prev")}
+          onShuffle={() => navigateSong("shuffle")}
+          songIndex={songIndex}
+          totalSongs={musicPlaylist?.length ?? 0}
         />
       ),
       play: <SnakeGame ref={snakeRef} className="absolute inset-0" />,

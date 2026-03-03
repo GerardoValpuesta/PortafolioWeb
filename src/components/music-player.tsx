@@ -1,9 +1,9 @@
+"use client";
+
 import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { Play, Pause } from "lucide-react";
 import ReactPlayer from "react-player";
-// import "@/styles/music-player.css";
 
 type MusicPlayerProps = {
   src: string;
@@ -12,6 +12,12 @@ type MusicPlayerProps = {
   artist?: string;
   className?: string;
   isPlaying: boolean;
+  onTogglePlay?: () => void;
+  onNext?: () => void;
+  onPrev?: () => void;
+  onShuffle?: () => void;
+  songIndex?: number;
+  totalSongs?: number;
 };
 
 type AudioOnlyPlayerProps = {
@@ -44,6 +50,12 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
   artist = "Artist Name",
   className,
   isPlaying,
+  onTogglePlay,
+  onNext,
+  onPrev,
+  onShuffle,
+  songIndex = 0,
+  totalSongs = 0,
 }) => {
   return (
     <div
@@ -127,7 +139,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           }
         `}
       </style>
-     
+
       <div className="absolute inset-0 size-full before:absolute before:inset-0 before:z-10 before:size-full before:bg-black/20 before:backdrop-blur-sm">
         {coverImage && (
           <img
@@ -193,39 +205,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
               <p className="truncate text-xs text-white/70">{artist}</p>
             </div>
 
-            {/* Play/Pause button */}
-            <button
-              className="flex-center absolute top-1/2 left-1/2 z-50 size-12 rounded-full bg-black/60 text-white backdrop-blur-sm transition-all max-sm:size-10"
-              style={{
-                willChange: "transform",
-                transform: "translate3d(-50%, -50%, 0)",
-              }}
-              aria-label={isPlaying ? "Pause" : "Play"}
-            >
-              <AnimatePresence mode="wait">
-                {isPlaying ? (
-                  <motion.div
-                    key="pause"
-                    initial={{ scale: 0, rotate: 180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    exit={{ scale: 0, rotate: -180 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Pause size={24} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="play"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    exit={{ scale: 0, rotate: 180 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Play size={24} className="ml-0.5" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
+            {/* Play/Pause button — now handled in controls bar below */}
           </motion.div>
 
           {/* Vinyl Record  */}
@@ -314,7 +294,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
               }}
             />
 
-       
+
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 via-transparent to-black/20" />
           </motion.div>
         </motion.div>
@@ -341,6 +321,32 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ── D-pad hint overlay ── */}
+      <div className="absolute bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-black/75 to-transparent px-4 pb-3 pt-8">
+        {/* Track info */}
+        <div className="mb-2 text-center">
+          <p className="truncate text-xs font-semibold text-white">{trackTitle}</p>
+          <p className="truncate text-[10px] text-white/55">{artist}</p>
+        </div>
+
+        {/* D-pad hint + counter */}
+        <div className="flex items-center justify-between">
+          <p className="text-[9px] text-white/30">
+            {totalSongs > 0 ? `${songIndex + 1} / ${totalSongs}` : ""}
+          </p>
+          <div className="flex items-center gap-2 text-[8px] text-white/30">
+            <span>← prev</span>
+            <span>·</span>
+            <span>↓ play</span>
+            <span>·</span>
+            <span>→ next</span>
+            <span>·</span>
+            <span>↑ shuffle</span>
+          </div>
+        </div>
+      </div>
+
 
       <AudioOnlyPlayer isPlaying={isPlaying} url={src} />
     </div>
