@@ -12,68 +12,53 @@ const CLICK_SFX = "/sfx/click.mp3";
 
 const theme = {
   // Background
-  "--gb-bg": "#0D0F12",
+  "--gb-bg": "#060608",
 
-  // Shell
-  "--gb-shell-top": "#E7EAEE",
-  "--gb-shell-bottom": "#9FA5AB",
-  "--gb-shell-edge-shadow": "rgba(0,0,0,0.35)",
+  // Shell — Midnight Carbon (matte black)
+  "--gb-shell-top": "#1C1E22",
+  "--gb-shell-bottom": "#0E1013",
+  "--gb-shell-edge-shadow": "rgba(0,0,0,0.65)",
 
-  // Bezel
-  "--gb-bezel": "#0A0B0C",
-  "--gb-bezel-light": "#1A1B1D",
+  // Bezel — near-black
+  "--gb-bezel": "#070809",
+  "--gb-bezel-light": "#111315",
 
-  // UI plastic (D-Pad, A/B)
-  "--gb-ui-light": "#ECEFF1",
-  "--gb-ui-mid": "#C9CDD2",
-  "--gb-ui-dark": "#9BA1A8",
-  "--gb-ui-text": "#B5BDC6",
+  // UI plastic (D-Pad, A/B) — dark charcoal with silver sheen
+  "--gb-ui-light": "#3A3D42",
+  "--gb-ui-mid": "#2A2D31",
+  "--gb-ui-dark": "#18191C",
+  "--gb-ui-text": "#7A8390",
 
   // Shadow tints
-  "--gb-ui-shadow-1": "rgba(0,0,0,0.45)",
-  "--gb-ui-shadow-2": "rgba(0,0,0,0.55)",
-  "--gb-ui-shadow-3": "rgba(0,0,0,0.35)",
-  "--gb-ui-inset": "#CFD3D8",
+  "--gb-ui-shadow-1": "rgba(0,0,0,0.7)",
+  "--gb-ui-shadow-2": "rgba(0,0,0,0.8)",
+  "--gb-ui-shadow-3": "rgba(0,0,0,0.6)",
+  "--gb-ui-inset": "#3E4248",
 
-  // Screws
-  "--gb-metal-border": "#C9CDD2",
-  "--gb-metal-1": "#6B7076",
-  "--gb-metal-2": "#7A8086",
-  "--gb-metal-3": "#AEB5BC",
-  "--gb-metal-4": "#8D9399",
-  "--gb-screw-dark": "#0B0B0F",
-  "--gb-screw-light-1": "#e3e7ea",
-  "--gb-screw-light-2": "#32363b",
-  "--gb-screw-light-3": "#bfc3c8",
+  // Screws — brushed steel silver
+  "--gb-metal-border": "#4A4F56",
+  "--gb-metal-1": "#3A3E44",
+  "--gb-metal-2": "#52585F",
+  "--gb-metal-3": "#7A8188",
+  "--gb-metal-4": "#5A6068",
+  "--gb-screw-dark": "#050507",
+  "--gb-screw-light-1": "#8A9099",
+  "--gb-screw-light-2": "#1E2228",
+  "--gb-screw-light-3": "#5A6068",
 
-  // Speaker
-  "--gb-speaker-light": "#9B9C9F",
-  "--gb-speaker-dark": "#838686",
-  "--gb-speaker-hole": "#181919",
+  // Speaker — dark steel
+  "--gb-speaker-light": "#3A3D42",
+  "--gb-speaker-dark": "#1C1E22",
+  "--gb-speaker-hole": "#060608",
 
   // Screen
   "--gb-screen-card": "#F7F9FA",
   "--gb-screen-accent": "#67D0E6",
   "--gb-screen-text": "#161718",
 
-  // Crank
-  "--gb-crank-gradient-1": "#bfc3c7",
-  "--gb-crank-gradient-2": "#eceff1",
-  "--gb-crank-gradient-3": "#7a8086",
-  "--gb-crank-gradient-4": "#5e636a",
-  "--gb-crank-shadow": "#5a5e63",
-  "--gb-crank-body-top": "#d0d5db",
-  "--gb-crank-body-mid": "#ffffff",
-  "--gb-crank-body-bottom": "#6d737b",
-  "--gb-crank-edge": "#aeb4ba",
-  "--gb-crank-side-top": "#f6f8fa",
-  "--gb-crank-side-mid": "#ccd1d7",
-  "--gb-crank-side-bottom": "#a9afb6",
-  "--gb-crank-border": "#666",
-
-  // Top slot
-  "--gb-slot-color": "#646978",
-  "--gb-slot-inset": "#898d91",
+  // Top slot — dark
+  "--gb-slot-color": "#1A1C20",
+  "--gb-slot-inset": "#2E3136",
 };
 
 export type ActionButtonLabel = "A" | "B";
@@ -271,43 +256,7 @@ const PlaydateConsole = ({
     />
   );
 
-  const Crank = (
-    <div>
-      <div
-        className="absolute top-[230px] left-[492px] z-50 h-[44px] w-[7px] shadow-[inset_1px_0_2px_0_rgba(0,0,0,0.4)] max-md:hidden"
-        style={{
-          background: `linear-gradient(to bottom, var(--gb-crank-gradient-1) 0%, var(--gb-crank-gradient-2) 10%, var(--gb-crank-gradient-1) 16%, var(--gb-crank-gradient-3) 45%, var(--gb-crank-gradient-4) 60%)`,
-          boxShadow: `inset 1px 0 2px 0 rgba(0,0,0,0.4), 10px -7px 0 3px var(--gb-crank-shadow)`,
-        }}
-      >
-        <div
-          className="absolute top-[-140px] right-[-32px] h-[180px] w-[32px] rounded-[8px_8px_32px_32px] shadow-[inset_0_1px_2px_0_rgba(255,255,255,0.9)]"
-          style={{
-            background: `linear-gradient(to bottom, var(--gb-crank-body-top) 5%, var(--gb-crank-body-mid) 8%, var(--gb-crank-gradient-1) 18%, var(--gb-crank-gradient-3) 50%, var(--gb-crank-body-bottom) 90%)`,
-            boxShadow: `inset 0 1px 2px 0 rgba(255,255,255,0.9), inset 1px 0 2px 0 var(--gb-crank-edge)`,
-          }}
-        />
-        <div
-          className="absolute right-[-22px] bottom-[14px] h-[12px] w-[12px] rounded-full border bg-[var(--gb-ui-mid)] shadow-[0_-1px_1px_0_#fff]"
-          style={{ borderColor: "var(--gb-crank-border)" }}
-        />
-      </div>
-      <div
-        className="absolute top-[84px] left-[534px] h-[56px] w-[74px] rounded-[6px] shadow-[inset_0_1px_2px_0_#f4f6f8,inset_0_-1px_2px_0_#9aa0a7,0_10px_30px_10px_rgba(0,0,0,0.25)] max-md:hidden"
-        style={{
-          background: `linear-gradient(to bottom, var(--gb-crank-body-top) 0%, var(--gb-ui-mid) 100%)`,
-        }}
-      >
-        <div
-          className="absolute top-[10px] left-[-4px] h-[36px] w-[4px] shadow-[3px_0_0_-1px_rgba(255,255,255,0.7)]"
-          style={{
-            background: `linear-gradient(to bottom, var(--gb-crank-side-top) 0%, var(--gb-crank-side-mid) 60%, var(--gb-crank-side-bottom) 100%)`,
-            boxShadow: `3px 0 0 -1px rgba(255,255,255,0.7), 2px 0 5px 1px var(--gb-crank-edge)`,
-          }}
-        />
-      </div>
-    </div>
-  );
+  // Crank removed — no functionality
 
   const flicker = {
     off: { opacity: 0 },
@@ -416,7 +365,7 @@ const PlaydateConsole = ({
         <ScrewPost className="!right-0 !bottom-0 rounded-br-[50%]" />
         <ScrewPost className="top-0 right-0 rounded-tr-[50%] max-sm:hidden" />
 
-        {Crank}
+        {/* Crank removed */}
 
         <div className="relative z-50 size-full rounded-[inherit] p-2.5">
           <DPad
