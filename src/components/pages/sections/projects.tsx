@@ -14,7 +14,7 @@ const Projects = () => {
     {
       title: "Sharit — Red Social de Actividades",
       description:
-        "App móvil para conectar personas que no se conocen a través de actividades presenciales o virtuales: deportes, jam sessions, talleres, salidas y más. Los usuarios crean o se unen a planes en tiempo real, interactúan y construyen comunidad.",
+        "Aplicación full-stack mobile-first tipo red social deportiva. Backend REST en Node.js/Express con autenticación JWT y base de datos MongoDB Atlas. Frontend en React Native con Expo, navegación multi-pantalla, geolocalización con Google Maps, sistema de notificaciones push, feed social paginado con infinite scroll, y sistema de logros/gamificación. Arquitectura con detección automática de red para desarrollo multi-dispositivo.",
       tags: ["React Native", "Expo", "Node.js", "MongoDB", "TypeScript"],
       github: null,
       images: [
