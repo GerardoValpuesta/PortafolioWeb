@@ -15,11 +15,11 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 
 const Footer = () => {
   const socialLinks = [
-    {
-      icon: Github,
-      href: siteConfig.github,
-      label: "GitHub",
-    },
+    // {
+    //   icon: Github,
+    //   href: siteConfig.github,
+    //   label: "GitHub",
+    // },
     {
       icon: Linkedin,
       href: siteConfig.linkedin,

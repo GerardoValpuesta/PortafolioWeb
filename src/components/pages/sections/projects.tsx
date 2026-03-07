@@ -38,6 +38,7 @@ const Projects = () => {
         appStore: "https://apps.apple.com/app/sharit/id0000000000",
       },
       containImage: false,
+      verticalImages: true,
     },
     {
       tags: ["Tauri", "Svelte", "SQLite", "Chromium", "AI / CAPTCHA"],
@@ -196,6 +197,8 @@ const Projects = () => {
                                 "h-full w-full transition-transform duration-700 group-hover:scale-105",
                                 (project as any).containImage
                                   ? "object-contain p-3"
+                                  : (project as any).verticalImages
+                                  ? "object-contain bg-neutral-900"
                                   : "object-cover"
                               )}
                             />

@@ -145,7 +145,7 @@ export default function Services() {
                                             <span className={`mt-0.5 text-sm font-bold shrink-0 ${service.accent.bullet}`}>
                                                 ›
                                             </span>
-                                            <span>{item}</span>
+                                            <span className="mt-[2px]">{item}</span>
                                         </li>
                                     )
                                 )}

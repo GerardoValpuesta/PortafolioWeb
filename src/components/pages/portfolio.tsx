@@ -11,8 +11,8 @@ import Services from "./sections/services";
 import Experience from "./sections/experience";
 import Certifications from "./sections/certifications";
 
-import { Testimonials } from "./sections/testimonials";
 import { Guestbook } from "../feature/guestbook";
+
 
 const PortfolioPage = () => {
   return (
@@ -38,7 +38,7 @@ const PortfolioPage = () => {
               <Experience />
               <About />
               <Certifications />
-              <Testimonials />
+              {/* <Testimonials /> */}
               <Contact />
               <Footer />
             </div>
