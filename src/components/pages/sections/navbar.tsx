@@ -7,14 +7,14 @@ import { ThemeToggleButton2 } from "../../theme-toggle";
 import { Logo } from "../../ui/logo";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-import { siteConfig } from "@/config/site";
 import { useIsSoundEnabled } from "@/store/use-sound-enabled";
+import { useLanguage } from "@/store/use-language";
 
 const NAV_LINKS = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
+  { id: "home", labelEn: "Home", labelEs: "Inicio" },
+  { id: "about", labelEn: "About", labelEs: "Sobre mí" },
+  { id: "projects", labelEn: "Projects", labelEs: "Proyectos" },
+  { id: "contact", labelEn: "Contact", labelEs: "Contacto" },
 ] as const;
 
 type NavId = (typeof NAV_LINKS)[number]["id"];
@@ -23,6 +23,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<NavId>("home");
   const { isSoundEnabled, toggleSoundEnabled } = useIsSoundEnabled();
+  const { language, toggleLanguage } = useLanguage();
   const { resolvedTheme, setTheme } = useTheme();
 
   const overlayRef = useRef<HTMLDivElement | null>(null);
@@ -108,7 +109,7 @@ const Navbar = () => {
                   key={x.id}
                   className="text-foreground flex items-center rounded-full px-4 py-1.5 text-sm font-medium opacity-0"
                 >
-                  {x.label}
+                  {language === "en" ? x.labelEn : x.labelEs}
                 </div>
               ))}
             </div>
@@ -129,7 +130,7 @@ const Navbar = () => {
                     isActive ? "" : "opacity-70 hover:opacity-100",
                   )}
                 >
-                  {x.label}
+                  {language === "en" ? x.labelEn : x.labelEs}
                 </a>
               );
             })}
@@ -139,21 +140,15 @@ const Navbar = () => {
         {/* Right Actions */}
         <div className="inline-flex items-center gap-3">
           <div className="bg-background/50 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 backdrop-blur-sm">
-            {/* GitHub */}
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-foreground/60 hover:text-foreground text-sm transition-colors duration-200 hover:scale-110"
-              aria-label="GitHub"
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="text-foreground/60 hover:text-foreground flex items-center gap-1 font-mono text-xs font-medium transition-all duration-200 hover:scale-105"
+              aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a inglés"}
             >
-              <svg viewBox="0 0 24 24" className="size-5">
-                <path
-                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                  fill="currentColor"
-                />
-              </svg>
-            </a>
+              <span>{language === "en" ? "🇺🇸" : "🇲🇽"}</span>
+              <span>{language === "en" ? "EN" : "ES"}</span>
+            </button>
 
             <div className="bg-border h-4 w-px" />
 
@@ -266,7 +261,7 @@ const Navbar = () => {
                   <div className="from-foreground/0 via-foreground/5 to-foreground/0 absolute inset-0 translate-x-[-100%] bg-gradient-to-r transition-transform duration-700 ease-in-out group-hover:translate-x-[100%]" />
 
                   <div className="relative flex items-center justify-between">
-                    <span>{x.label}</span>
+                    <span>{language === "en" ? x.labelEn : x.labelEs}</span>
                     {x.id === active && (
                       <motion.div
                         initial={{ scale: 0 }}
@@ -281,25 +276,18 @@ const Navbar = () => {
               <div className="bg-border my-1 h-px" />
 
               <div className="grid grid-cols-3 gap-2 px-2 py-1">
-                <a
-                  href={siteConfig.github}
-                  target="_blank"
-                  rel="noreferrer noopener"
+                {/* Language Toggle (mobile) */}
+                <button
+                  onClick={toggleLanguage}
                   className="hover:bg-foreground/5 group flex flex-col items-center gap-1.5 rounded-lg py-2 transition-colors"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="text-foreground/60 group-hover:text-foreground size-5 transition-colors"
-                  >
-                    <path
-                      d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <span className="text-foreground/60 group-hover:text-foreground text-[10px] font-medium">
-                    GitHub
+                  <span className="text-foreground/60 group-hover:text-foreground text-xl transition-colors">
+                    {language === "en" ? "🇺🇸" : "🇲🇽"}
                   </span>
-                </a>
+                  <span className="text-foreground/60 group-hover:text-foreground text-[10px] font-medium font-mono">
+                    {language === "en" ? "EN" : "ES"}
+                  </span>
+                </button>
 
                 <button
                   onClick={() => toggleSoundEnabled()}

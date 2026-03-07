@@ -416,7 +416,7 @@ const HomePage = () => {
             // setCurrentConsoleNavigation("portfolio")
           },
           resume: () => {
-            const resumeUrl = "/resume.pdf";
+            const resumeUrl = "/cv_gerardo_spanishR.pdf";
             window.open(resumeUrl, "_blank");
           },
         };

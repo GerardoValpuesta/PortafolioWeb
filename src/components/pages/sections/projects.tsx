@@ -8,13 +8,14 @@ import { cn } from "@/lib/utils";
 import { Github, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import { useTranslation } from "@/hooks/use-translation";
 
 const Projects = () => {
-  const projects = [
+  const t = useTranslation();
+
+  // Non-translatable project metadata (tags, images, links)
+  const projectsMeta = [
     {
-      title: "Sharit — Red Social de Actividades",
-      description:
-        "Aplicación full-stack mobile-first tipo red social deportiva. Backend REST en Node.js/Express con autenticación JWT y base de datos MongoDB Atlas. Frontend en React Native con Expo, navegación multi-pantalla, geolocalización con Google Maps, sistema de notificaciones push, feed social paginado con infinite scroll, y sistema de logros/gamificación. Arquitectura con detección automática de red para desarrollo multi-dispositivo.",
       tags: ["React Native", "Expo", "Node.js", "MongoDB", "TypeScript"],
       github: null,
       images: [
@@ -30,18 +31,15 @@ const Projects = () => {
       ],
       image: "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
       live: null,
-      date: "2024–hoy",
+      date: "2024–present",
       status: "in-progress",
       storeLinks: {
         playStore: "https://play.google.com/store/apps/details?id=com.gosharit",
         appStore: "https://apps.apple.com/app/sharit/id0000000000",
       },
-      containImage: true,
+      containImage: false,
     },
     {
-      title: "Agent SAT — Automatización Fiscal IA",
-      description:
-        "App de escritorio que usa IA para descifrar automáticamente los CAPTCHAs del portal del SAT y descargar masivamente CFDI, acuses y documentos fiscales. Reduce horas de trabajo manual a minutos.",
       tags: ["Tauri", "Svelte", "SQLite", "Chromium", "AI / CAPTCHA"],
       github: null,
       images: [
@@ -55,14 +53,11 @@ const Projects = () => {
       ],
       image: "/projects/Agent/Agent - Login config.png",
       live: null,
-      date: "2024–hoy",
+      date: "2024–present",
       status: "completed",
-      hideButtons: true,
+      containImage: true,
     },
     {
-      title: "TersaNet",
-      description:
-        "Sistema web de cotización en tiempo real para distribuidora de llantas Tersa. Permite a clientes y vendedores generar cotizaciones avanzadas y exprés (mayoreo y menudeo), gestionar inventario multi-sucursal y exportar cotizaciones a PDF o enviarlas por correo electrónico.",
       tags: ["Angular", "TypeScript", "SQL Server", "REST API"],
       github: null,
       images: [
@@ -73,26 +68,20 @@ const Projects = () => {
       ],
       image: "/projects/tersa/tersanet-login.png",
       live: null,
-      date: "2022–presente",
+      date: "2022–present",
       status: "completed",
       hideButtons: true,
     },
     {
-      title: "N8N & MCP — Automatización IA",
-      description:
-        "Flujos de automatización empresarial con N8N y Model Context Protocol (MCP): procesamiento de facturas SAT con GPT-4, pipelines de datos, notificaciones y bots. Redujo 80% del trabajo manual del equipo de operaciones.",
       tags: ["N8N", "AI / LLM", "Node.js"],
       github: null,
       image: "/projects/n8n-screenshot.png",
       live: null,
-      date: "2024–hoy",
+      date: "2024–present",
       status: "completed",
       hideButtons: true,
     },
     {
-      title: "Mi Portal XAMAI",
-      description:
-        "Rediseño integral del portal cliente de XAMAI. Migración a Svelte con Tailwind CSS, nuevo sistema de componentes y mejora del 90% en la satisfacción del usuario según encuestas post-lanzamiento.",
       tags: ["Angular", "TypeScript", "Tailwind CSS", "REST API"],
       github: null,
       images: [
@@ -110,9 +99,6 @@ const Projects = () => {
       hideButtons: true,
     },
     {
-      title: "Stan Semper App",
-      description:
-        "App Android desarrollada para Stan Semper Crasol que permite generar reportes PDF completos de campo: captura de imágenes, geolocalización en tiempo real y extracción de números de serie de equipos. El informe se sincroniza automáticamente con la plataforma web mediante Firebase.",
       tags: ["Kotlin", "Firebase", "Android", "PDF Reports"],
       github: null,
       image: "/projects/c5bid-screenshot.png",
@@ -122,6 +108,12 @@ const Projects = () => {
       hideButtons: true,
     },
   ];
+
+  // Merge translatable title+description with metadata
+  const projects = projectsMeta.map((meta, i) => ({
+    ...meta,
+    ...t.projects[i],
+  }));
 
   const tagColors: Record<string, string> = {
     Angular: "bg-red-500/10 text-red-600 border-red-500/30",

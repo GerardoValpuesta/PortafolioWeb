@@ -3,21 +3,14 @@
 import { motion } from "motion/react";
 import SectionHeading from "@/components/section-heading";
 import { Globe, Bot, Zap, Code2, ArrowUpRight, Cpu, Smartphone } from "lucide-react";
+import { useTranslation } from "@/hooks/use-translation";
 
-const SERVICES = [
+// Only non-translatable data (icons, accent styles)
+const SERVICES_META = [
     {
         icon: Code2,
         badgeIcon: Code2,
         badgeLabel: "Core",
-        title: "Desarrollo Web Fullstack",
-        description:
-            "Apps completas de alto rendimiento, desde la arquitectura hasta el deploy. Especializado en Angular, Svelte y Node.js con APIs RESTful robustas.",
-        deliverables: [
-            "SPAs y SSR con Angular / Next.js",
-            "APIs REST y GraphQL con Node.js",
-            "Bases de datos PostgreSQL / MongoDB",
-            "Deploy en Vercel, Railway o Docker",
-        ],
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(59,130,246,0.25)]",
             border: "border-blue-500/20 hover:border-blue-500/50",
@@ -30,16 +23,7 @@ const SERVICES = [
     {
         icon: Bot,
         badgeIcon: Cpu,
-        badgeLabel: "IA",
-        title: "Automatización con IA",
-        description:
-            "Flujos de trabajo inteligentes que eliminan tareas repetitivas y potencian tu negocio usando N8N, MCP y modelos de lenguaje.",
-        deliverables: [
-            "Pipelines N8N para CRM, ERP, notificaciones",
-            "Integración de LLMs (GPT, Claude, Gemini)",
-            "MCP servers para automatización avanzada",
-            "Bots de WhatsApp y Telegram",
-        ],
+        badgeLabel: "AI",
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(34,197,94,0.25)]",
             border: "border-green-500/20 hover:border-green-500/50",
@@ -53,15 +37,6 @@ const SERVICES = [
         icon: Globe,
         badgeIcon: Smartphone,
         badgeLabel: "Mobile",
-        title: "Apps Móviles",
-        description:
-            "Aplicaciones móviles multiplataforma que funcionan en iOS y Android con una sola base de código y experiencia nativa.",
-        deliverables: [
-            "Apps React Native / Expo cross-platform",
-            "Integración con APIs y backend propio",
-            "Push Notifications y autenticación",
-            "Publicación en App Store y Google Play",
-        ],
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(139,92,246,0.25)]",
             border: "border-violet-500/20 hover:border-violet-500/50",
@@ -75,15 +50,6 @@ const SERVICES = [
         icon: Zap,
         badgeIcon: Zap,
         badgeLabel: "Perf",
-        title: "Optimización & Performance",
-        description:
-            "Auditoría y mejora de tu aplicación existente: velocidad, SEO técnico y accesibilidad para obtener 90+ en Lighthouse.",
-        deliverables: [
-            "Auditoría de Core Web Vitals",
-            "Code splitting y lazy loading",
-            "Optimización de imágenes y assets",
-            "Mejora de SEO técnico y meta tags",
-        ],
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(245,158,11,0.25)]",
             border: "border-amber-500/20 hover:border-amber-500/50",
@@ -96,6 +62,13 @@ const SERVICES = [
 ];
 
 export default function Services() {
+    const t = useTranslation();
+
+    const SERVICES = SERVICES_META.map((meta, i) => ({
+        ...meta,
+        ...t.services.items[i],
+    }));
+
     return (
         <SectionHeading
             className="px-4 py-16 md:px-8"
@@ -110,11 +83,10 @@ export default function Services() {
                     className="mb-10 text-center"
                 >
                     <h2 className="font-incognito text-4xl font-semibold">
-                        ¿En qué puedo ayudarte?
+                        {t.services.sectionH2}
                     </h2>
                     <p className="text-muted-foreground mt-2 text-sm max-w-xl mx-auto">
-                        Desde el diseño de arquitectura hasta el deploy en producción — entrego
-                        productos completos, escalables y con impacto medible.
+                        {t.services.subtitle}
                     </p>
                 </motion.div>
 
@@ -154,23 +126,34 @@ export default function Services() {
                             </p>
 
                             {/* Deliverables */}
-                            <ul className="space-y-1.5">
-                                {service.deliverables.map((item) => (
-                                    <li
-                                        key={item}
-                                        className="text-muted-foreground flex items-start gap-2 text-xs"
-                                    >
-                                        <span className={`mt-0.5 text-sm font-bold ${service.accent.bullet}`}>
-                                            ›
-                                        </span>
-                                        {item}
-                                    </li>
-                                ))}
+                            <ul className="space-y-2">
+                                {service.deliverables.map((item, dIdx) =>
+                                    dIdx === 0 ? (
+                                        <li
+                                            key={item}
+                                            className={`text-xs italic font-medium ${service.accent.bullet}`}
+                                        >
+                                            <span className="border-l-2 border-current pl-2.5 py-0.5 block text-foreground/70">
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ) : (
+                                        <li
+                                            key={item}
+                                            className="flex items-start gap-2 text-xs text-muted-foreground"
+                                        >
+                                            <span className={`mt-0.5 text-sm font-bold shrink-0 ${service.accent.bullet}`}>
+                                                ›
+                                            </span>
+                                            <span>{item}</span>
+                                        </li>
+                                    )
+                                )}
                             </ul>
 
                             {/* Hover arrow */}
                             <div className="mt-5 flex items-center gap-1 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-60">
-                                <span>Hablemos</span>
+                                <span>{t.services.hoverCta}</span>
                                 <ArrowUpRight className="h-3 w-3" />
                             </div>
 

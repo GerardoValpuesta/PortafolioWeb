@@ -4,102 +4,61 @@ import SectionHeading from "@/components/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HeadingLine from "@/components/ui/heading-line";
-
 import { Robot } from "@/components/ui/robot";
 import env from "@/config/env";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import { useTranslation } from "@/hooks/use-translation";
 
 const About = () => {
+  const t = useTranslation();
   return (
     <SectionHeading text="About" id="about" className="overflow-hidden">
       <div className="flex items-center lg:h-[95vh]">
         <div className="relative flex-1 px-4 py-12 md:px-12">
           <h2 className="font-incognito text-2xl font-semibold md:text-5xl lg:text-4xl">
-            Meet the Developer,
+            {t.about.heading1}
             <br />
-            Not Just the Code
+            {t.about.heading2}
           </h2>
 
           <HeadingLine className="mt-6" lineWidth={40} />
 
           <Robot className="absolute top-6 -right-8 z-5 w-64 font-mono text-white max-md:scale-x-[-1] md:top-8 md:right-4">
-            <div className="max-md:scale-x-[-1]">Hey👋</div>
+            <div className="max-md:scale-x-[-1]">{t.about.robotGreeting}</div>
           </Robot>
 
           <div className="text-foreground/70 bg-muted/20 relative z-10 mx-auto mt-6 max-w-3xl rounded-lg border-2 border-dotted text-sm leading-relaxed backdrop-blur-3xl md:text-base">
             <div className="p-6">
               <p className="">
-                Construyo productos digitales completos — del backend al último pixel del frontend
+                {t.about.p1Start}
                 <span className="mx-1 inline-block align-middle">
                   <span className="ring-offset-background relative inline-block w-12 rotate-6 overflow-hidden rounded-md ring ring-offset-2">
-                    <img
-                      src={"/gifs/kawaii%20cat%20GIF.gif"}
-                      className="h-auto w-full object-cover object-center"
-                      alt="kawaii cat cheering"
-                    />
+                    <img src={"/gifs/kawaii%20cat%20GIF.gif"} className="h-auto w-full object-cover object-center" alt="kawaii cat cheering" />
                   </span>
                 </span>
-                — no sólo que se vean bonitas.
+                {t.about.p1End}
               </p>
 
               <p className="">
-                Stack principal: Angular, Svelte, TypeScript, Node.js, Tailwind CSS y automatización con IA. Entrego sistemas end-to-end:
+                {t.about.p2Start}
                 <span className="mx-1 inline-block align-middle">
                   <span className="ring-offset-background relative inline-block w-12 -rotate-3 overflow-hidden rounded-md ring ring-offset-2">
-                    <img
-                      src={"/gifs/cate%20coding.gif"}
-                      className="max-h-8 w-full object-cover object-center"
-                      alt="cat intensely coding"
-                    />
+                    <img src={"/gifs/cate%20coding.gif"} className="max-h-8 w-full object-cover object-center" alt="cat intensely coding" />
                   </span>
                 </span>
-                .
-              </p>
-
-              <p className="">
-                De idea a producción usando N8N y MCP — automatizo procesos que antes costaban semanas de desarrollo manual
-                <span className="mx-1 inline-block align-middle">
-                  <span className="ring-offset-background relative inline-block w-12 rotate-3 overflow-hidden rounded-md ring ring-offset-2">
-                    <img
-                      src={"/gifs/happy%20one%20piece%20GIF.gif"}
-                      className="h-auto w-full object-cover object-center"
-                      alt="happy vibe coding"
-                    />
-                  </span>
-                </span>
-                .
-              </p>
-
-              <p className="">
-                Me muevo mejor en equipos ágiles donde el código y la comunicación son igual de limpios
-                <span className="mx-1 inline-block align-middle">
-                  <span className="ring-offset-background relative inline-block w-12 -rotate-2 overflow-hidden rounded-md ring ring-offset-2">
-                    <img
-                      src={
-                        "/gifs/One%20Piece%20GIF%20by%20TOEI%20Animation%20UK.gif"
-                      }
-                      className="h-auto w-full object-cover object-center"
-                      alt="team work"
-                    />
-                  </span>
-                </span>
-                .
+                {t.about.p2End}
               </p>
 
               <p>
-                ¿Buscas un dev que entienda el negocio, hable con el equipo y entregue sin excusas?
+                {t.about.p3Start}
                 <span className="mx-1 inline-block align-middle">
-                  <span className="ring-offset-background relative inline-block w-12 rotate-2 overflow-hidden rounded-md ring ring-offset-2">
-                    <img
-                      src={"/gifs/kirby%20confused.gif"}
-                      className="h-auto w-full object-cover object-center"
-                      alt="kirby ready"
-                    />
+                  <span className="ring-offset-background relative inline-block w-12 rotate-3 overflow-hidden rounded-md ring ring-offset-2">
+                    <img src={"/gifs/happy%20one%20piece%20GIF.gif"} className="h-auto w-full object-cover object-center" alt="happy vibe coding" />
                   </span>
                 </span>
-                Hablemos y lo convirtamos en algo real.
+                {t.about.p3End}
               </p>
             </div>
 
@@ -111,7 +70,7 @@ const About = () => {
                 className="group border-2 font-medium"
               >
                 <a href="#contact">
-                  Contact Me
+                  {t.about.cta}
                   <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </Button>
@@ -171,11 +130,11 @@ const About = () => {
                         )}
                       />
                       {!env.NEXT_PUBLIC_AVAILABLE_STATUS
-                        ? "Not Available"
-                        : "Available"}
+                        ? t.about.profileBadgeNotAvailable
+                        : t.about.profileBadgeAvailable}
                     </Badge>
-                    <Badge variant="outline">3+ Years</Badge>
-                    <Badge variant="outline">Fullstack + IA</Badge>
+                    <Badge variant="outline">{t.about.profileYears}</Badge>
+                    <Badge variant="outline">{t.about.profileStack}</Badge>
                   </div>
                 </div>
               </div>

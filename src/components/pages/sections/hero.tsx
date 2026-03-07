@@ -10,12 +10,14 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowDownSquareIcon, ArrowUpRight, Download } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useTranslation } from "@/hooks/use-translation";
 
 const Hero = () => {
   const { data: unamiStats } = useQuery({
     queryKey: ["pageViews"],
     queryFn: clientApi.views.getStats,
   });
+  const t = useTranslation();
 
   return (
     <div className="relative flex flex-col justify-center overflow-hidden border-b pt-12">
@@ -54,12 +56,12 @@ const Hero = () => {
             >
               <div className="bg-background border px-3 py-1">
                 <span className="text-foreground/60 font-mono text-xs">
-                  {"<"} Hello World {"/>"}
+                  {"<"} {t.hero.badge} {"/>"}
                 </span>
               </div>
               <div className="h-px w-12 bg-[#e1e1e1]" />
               <span className="text-foreground/50 font-mono text-xs md:text-sm">
-                Fullstack Engineer & AI Builder
+                {t.hero.subtitle}
               </span>
             </motion.div>
 
@@ -89,7 +91,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-foreground/60 max-w-2xl text-sm font-light md:text-base"
             >
-              Fullstack Engineer con 4+ años construyendo desde la base de datos hasta el pixel. Especializado en Angular, Svelte, TypeScript, Node.js y automatización con IA (N8N, MCP) — entrego productos completos, escalables y con impacto medible: –85% en tiempos de carga, +90% en satisfacción de usuarios.
+              {t.hero.description}
             </motion.p>
 
             {/* Availability & Language Badges */}
@@ -101,16 +103,16 @@ const Hero = () => {
             >
               <span className="flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
-                Disponible para trabajar
+                {t.hero.availability}
               </span>
               <span className="flex items-center gap-1.5 rounded-full border bg-foreground/5 px-3 py-1 text-xs text-muted-foreground">
-                📍 México — Remoto / Híbrido
+                📍 {t.hero.location}
               </span>
               <span className="flex items-center gap-1.5 rounded-full border bg-foreground/5 px-3 py-1 text-xs text-muted-foreground">
-                🇲🇽 Español nativo
+                🇲🇽 {t.hero.langEs}
               </span>
               <span className="flex items-center gap-1.5 rounded-full border bg-foreground/5 px-3 py-1 text-xs text-muted-foreground">
-                🇺🇸 English B1
+                🇺🇸 {t.hero.langEn}
               </span>
             </motion.div>
 
@@ -126,7 +128,7 @@ const Hero = () => {
                 className="group/btn border-2 font-medium"
               >
                 <a href={"#contact"}>
-                  Lets Connect
+                  {t.hero.ctaPrimary}
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                 </a>
               </Button>
@@ -136,9 +138,9 @@ const Hero = () => {
                 size="lg"
                 className="group/btn border-2 font-medium"
               >
-                <Link href={"/resume.pdf"}>
+                <Link href={"/cv_gerardo_spanishR.pdf"}>
                   <Download className="size-4 transition-transform group-hover/btn:translate-y-0.5" />
-                  Download resume
+                  {t.hero.ctaSecondary}
                 </Link>
               </Button>
             </motion.div>
@@ -150,18 +152,18 @@ const Hero = () => {
       <div className="relative">
         <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-5">
           {[
-            { label: "Portfolio views", value: unamiStats?.data?.pageviews ?? 0 },
-            { label: "Years of Experience", value: 4 },
-            { label: "Projects Shipped", value: 6 },
-            { label: "Happy Clients", value: 3 },
-            { label: "AI Automations", value: 5 },
+            { label: t.hero.stats.views, value: unamiStats?.data?.pageviews ?? 0 },
+            { label: t.hero.stats.years, value: 4 },
+            { label: t.hero.stats.products, value: 10 },
+            { label: t.hero.stats.companies, value: 4 },
+            { label: t.hero.stats.automations, value: 5 },
           ].map((stat, i, arr) => (
             <div
               key={i}
               className={cn(
                 "group hover:bg-foreground/5 relative p-8 text-center transition-colors",
                 i !== arr.length - 1 && "border-r",
-                i < 2 && "border-b lg:border-b-0",
+                i < 3 && "border-b lg:border-b-0",
               )}
             >
               <div className="text-foreground mb-2 text-3xl font-bold">
@@ -175,7 +177,7 @@ const Hero = () => {
         </div>
 
         <div className="text-muted-foreground absolute right-4 bottom-2 hidden items-center justify-center gap-1 font-mono text-xs md:inline-flex">
-          SCROLL DOWN
+          {t.hero.scrollDown}
           <ArrowDownSquareIcon className="size-4 animate-pulse" />
         </div>
       </div>
