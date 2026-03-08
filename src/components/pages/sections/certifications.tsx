@@ -21,12 +21,26 @@ type Cert = {
 
 const CERTIFICATIONS: Cert[] = [
     {
+        title: "Claude Code in Action",
+        issuer: "Anthropic",
+        year: "2025",
+        url: "https://verify.skilljar.com/c/spd5ctfavaod",
+        category: "IA & Automatización",
+        featured: true,
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(212,162,127,0.15)] hover:shadow-[0_0_36px_rgba(212,162,127,0.3)]",
+            border: "border-amber-600/30 hover:border-amber-500/60",
+            icon: "text-amber-400 bg-amber-500/10",
+            chip: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+        },
+    },
+    {
         title: "n8n: Agentes de IA Avanzados — MCP, WhatsApp, Voz y más",
         issuer: "Udemy",
         year: "2024",
         url: "https://www.udemy.com/certificate/UC-d03882c7-17a3-49b8-bd91-421d9b5fcf8d/",
         category: "IA & Automatización",
-        featured: true,
+        featured: false,
         accent: {
             glow: "shadow-[0_0_24px_rgba(251,146,60,0.15)] hover:shadow-[0_0_36px_rgba(251,146,60,0.3)]",
             border: "border-orange-500/30 hover:border-orange-500/60",
