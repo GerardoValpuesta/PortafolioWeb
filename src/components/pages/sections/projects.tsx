@@ -57,6 +57,7 @@ const Projects = () => {
       date: "2024–present",
       status: "completed",
       containImage: true,
+      hideButtons: true,
     },
     {
       tags: ["Angular", "TypeScript", "SQL Server", "REST API"],
