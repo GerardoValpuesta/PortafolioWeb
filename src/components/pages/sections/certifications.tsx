@@ -297,7 +297,7 @@ function CertCard({ cert, featured, delay }: { cert: Cert; featured?: boolean; d
             viewport={{ once: true }}
             transition={{ delay }}
             whileHover={{ scale: 1.02, y: -2 }}
-            className={`group relative w-full text-left rounded-2xl border bg-gradient-to-br from-neutral-900 to-neutral-950 p-4 transition-all duration-300 ${featured ? "lg:col-span-3" : ""} ${cert.accent.border} ${cert.accent.glow}`}
+            className={`group relative w-full text-left rounded-2xl border bg-card p-4 transition-all duration-300 ${featured ? "lg:col-span-3" : ""} ${cert.accent.border} ${cert.accent.glow}`}
         >
             {/* Row: icon + title + chip */}
             <div className="flex items-center gap-3">
@@ -355,7 +355,7 @@ export default function Certifications() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-lg mx-auto">
                     {LANGUAGES.map((lang, i) => (
                         <motion.div key={lang.lang} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                            className={`rounded-2xl border bg-gradient-to-br from-neutral-900 to-neutral-950 p-5 transition-all duration-300 ${lang.border} ${lang.glow}`}>
+                            className={`rounded-2xl border bg-card p-5 transition-all duration-300 ${lang.border} ${lang.glow}`}>
                             <div className="mb-3 flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                     <span className="text-2xl">{lang.flag}</span>

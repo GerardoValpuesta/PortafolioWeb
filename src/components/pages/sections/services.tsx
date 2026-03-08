@@ -99,7 +99,7 @@ export default function Services() {
                             viewport={{ once: true, margin: "-30px" }}
                             transition={{ duration: 0.4, delay: idx * 0.1 }}
                             whileHover={{ y: -5 }}
-                            className={`group relative overflow-hidden rounded-xl border-2 bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 transition-all duration-300 ${service.accent.border} ${service.accent.glow}`}
+                            className={`group relative overflow-hidden rounded-xl border-2 bg-card p-6 transition-all duration-300 ${service.accent.border} ${service.accent.glow}`}
                         >
                             {/* Top row: glowing icon box LEFT + badge pill RIGHT */}
                             <div className="mb-5 flex items-center justify-between">
