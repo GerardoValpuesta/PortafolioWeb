@@ -17,7 +17,7 @@ import Certifications from "./sections/certifications";
 const PortfolioPage = () => {
   return (
     <>
-      <div className="no-scrollbar portfolio-container relative size-full snap-y snap-mandatory overflow-y-scroll">
+      <div className="no-scrollbar portfolio-container relative size-full snap-y snap-proximity overflow-y-scroll">
         <BackgroundNoise className="z-50" />
 
         <div className="h-screen snap-start">
