@@ -1,7 +1,7 @@
 "use client";
 
 import { Logo } from "@/components/ui/logo";
-import { Github, Heart, Linkedin, Mail } from "lucide-react";
+import { Globe, Heart, Linkedin, Mail } from "lucide-react";
 import dayjs from "dayjs";
 import { motion } from "motion/react";
 import { siteConfig } from "@/config/site";
@@ -74,6 +74,17 @@ const Footer = () => {
               </a>
             ))}
           </div>
+
+          {/* Studio Kin link */}
+          <a
+            href="https://studiokin.com.mx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground/60 hover:text-foreground inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-medium transition-colors hover:bg-muted/30"
+          >
+            <Globe className="h-3.5 w-3.5" />
+            Studio Kin
+          </a>
 
 
           <motion.a
