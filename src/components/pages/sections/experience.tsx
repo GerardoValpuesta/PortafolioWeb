@@ -73,7 +73,7 @@ const Experience = () => {
     const typeLabel = t.experience.typeLabels;
 
     return (
-        <SectionHeading text="Experience" id="experience" className="overflow-hidden">
+        <SectionHeading text="Experience" id="experience" className="px-4 py-16 md:px-8 overflow-hidden">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
