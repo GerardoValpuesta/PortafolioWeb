@@ -247,7 +247,7 @@ function MarqueeRow({ items, reverse = false }: { items: typeof ROW1; reverse?: 
                 {doubled.map((tech, i) => (
                     <div
                         key={`${tech.name}-${i}`}
-                        className="flex shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/10"
+                        className="flex shrink-0 items-center gap-2 rounded-full border border-border bg-muted/60 px-4 py-2 backdrop-blur-sm transition-colors hover:border-border/80 hover:bg-muted"
                         onMouseEnter={e => (e.currentTarget.parentElement!.style.animationPlayState = "paused")}
                         onMouseLeave={e => (e.currentTarget.parentElement!.style.animationPlayState = "running")}
                     >
@@ -256,10 +256,10 @@ function MarqueeRow({ items, reverse = false }: { items: typeof ROW1; reverse?: 
                             alt={tech.name}
                             width={18}
                             height={18}
-                            className="h-[18px] w-[18px] object-contain"
+                            className="h-[18px] w-[18px] object-contain dark:invert-0"
                             onError={e => { (e.target as HTMLImageElement).style.display = "none"; }}
                         />
-                        <span className="whitespace-nowrap text-sm font-medium text-white/80">
+                        <span className="whitespace-nowrap text-sm font-medium text-foreground/80">
                             {tech.name}
                         </span>
                     </div>
