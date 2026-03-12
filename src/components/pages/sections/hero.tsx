@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowDownSquareIcon, ArrowUpRight, Download } from "lucide-react";
 import { motion } from "motion/react";
-import Link from "next/link";
+
 import { useTranslation } from "@/hooks/use-translation";
 
 const Hero = () => {
@@ -138,10 +138,10 @@ const Hero = () => {
                 size="lg"
                 className="group/btn border-2 font-medium"
               >
-                <Link href={"/cv_gerardo_spanishR.pdf"}>
+                <a href="/cv_gerardo_spanishR.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="size-4 transition-transform group-hover/btn:translate-y-0.5" />
                   {t.hero.ctaSecondary}
-                </Link>
+                </a>
               </Button>
             </motion.div>
           </div>

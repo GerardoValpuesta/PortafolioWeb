@@ -34,6 +34,7 @@ export const ThemeToggleButton2 = ({
         </clipPath>
         <g clipPath="url(#skiper-btn-2)">
           <motion.circle
+            initial={{ r: isLight ? 10 : 8 }}
             animate={{ r: isLight ? 10 : 8 }}
             transition={{ ease: "easeInOut", duration: 0.35 }}
             cx="16"
