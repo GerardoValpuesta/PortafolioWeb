@@ -21,6 +21,20 @@ type Cert = {
 
 const CERTIFICATIONS: Cert[] = [
     {
+        title: "Desarrollo con IA: de 0 a Producción",
+        issuer: "The Big School",
+        year: "2026",
+        url: "https://certificados.thebigschool.com/wp-content/uploads/certs/MDEV2/Certificado-Gerardo-Nunez-Valpuesta-k4xtomq6.pdf",
+        category: "IA & Automatización",
+        featured: true,
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(34,211,238,0.15)] hover:shadow-[0_0_36px_rgba(34,211,238,0.3)]",
+            border: "border-cyan-500/30 hover:border-cyan-400/60",
+            icon: "text-cyan-400 bg-cyan-500/10",
+            chip: "bg-cyan-500/15 text-cyan-400 border-cyan-500/30",
+        },
+    },
+    {
         title: "Claude Code in Action",
         issuer: "Anthropic",
         year: "2025",
