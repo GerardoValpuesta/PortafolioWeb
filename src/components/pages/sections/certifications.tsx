@@ -21,6 +21,20 @@ type Cert = {
 
 const CERTIFICATIONS: Cert[] = [
     {
+        title: "Inmersión DEV AGENTES DE AI",
+        issuer: "Alura Latam",
+        year: "2026",
+        url: "https://credsverse.com/credentials/fd8f4ad1-24b0-4e8a-99eb-c797a6749d72",
+        category: "IA & Automatización",
+        featured: true,
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(16,185,129,0.15)] hover:shadow-[0_0_36px_rgba(16,185,129,0.3)]",
+            border: "border-emerald-500/30 hover:border-emerald-400/60",
+            icon: "text-emerald-400 bg-emerald-500/10",
+            chip: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+        },
+    },
+    {
         title: "Desarrollo con IA: de 0 a Producción",
         issuer: "The Big School",
         year: "2026",
