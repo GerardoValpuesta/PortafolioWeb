@@ -47,7 +47,7 @@ const EXPERIENCE_META = [
         role: "Creator & Developer",
         company: "Sharit App",
         location: "Independent",
-        period: "2024 — Present",
+        period: "2026 — Present",
         type: "side-project" as const,
         stack: ["React Native", "Expo", "Node.js", "PostgreSQL", "TypeScript"],
         inDevelopment: true,
