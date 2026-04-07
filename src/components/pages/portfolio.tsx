@@ -40,9 +40,9 @@ const PortfolioPage = () => {
           className="pointer-events-none fixed left-0 top-0 z-0 h-[150vh] w-full"
         >
           {/* Sombras/Orbs blurreados gigantes de colores, estilo Modern 2026 Glassmorphism */}
-          <div className="absolute top-[10%] left-[5%] h-[500px] w-[500px] rounded-full bg-blue-500/50 blur-[115px]" />
-          <div className="absolute bottom-[20%] right-[10%] h-[400px] w-[400px] rounded-full bg-violet-500/50 blur-[115px]" />
-          <div className="absolute top-[40%] left-[30%] h-[300px] w-[300px] rounded-full bg-fuchsia-500/40 blur-[115px]" />
+          <div className="absolute top-[10%] left-[5%] h-[500px] w-[500px] rounded-full bg-blue-500/50 blur-[200px]" />
+          <div className="absolute bottom-[20%] right-[10%] h-[400px] w-[400px] rounded-full bg-violet-500/50 blur-[200px]" />
+          <div className="absolute top-[40%] left-[30%] h-[300px] w-[300px] rounded-full bg-fuchsia-500/40 blur-[200px]" />
         </motion.div>
         {/* ============================================================== */}
 
