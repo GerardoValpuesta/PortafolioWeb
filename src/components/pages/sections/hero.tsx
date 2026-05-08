@@ -153,7 +153,7 @@ const Hero = () => {
         <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-5">
           {[
             { label: t.hero.stats.views, value: unamiStats?.data?.pageviews ?? 0 },
-            { label: t.hero.stats.years, value: 5 },
+            { label: t.hero.stats.years, value: 4 },
             { label: t.hero.stats.products, value: 16 },
             { label: t.hero.stats.companies, value: 8 },
             { label: t.hero.stats.automations, value: 10000 },
