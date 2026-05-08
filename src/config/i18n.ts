@@ -1,81 +1,81 @@
 export const translations = {
   en: {
     hero: {
-      badge: "Available for hire",
-      subtitle: "Fullstack Engineer · AI Automation · Mobile",
+      badge: "Strategic Consulting",
+      subtitle: "Software Architect · AI Automation · Mobile",
       description:
-        "I build complete digital products — from database to pixel — that ship on time and move real metrics. 4+ years delivering across Angular, Svelte, Node.js, React Native, and AI automation.",
-      ctaPrimary: "Let's Talk",
-      ctaSecondary: "Download CV",
-      availability: "Open to opportunities",
-      location: "Mexico · Remote / Hybrid",
-      langEs: "Spanish — Native",
-      langEn: "English — B1",
+        "I transform operational inefficiency into automated, scalable systems. Beyond writing code, I engineer technological engines that cut costs, eliminate manual workflows, and scale your business.",
+      ctaPrimary: "Book a Consultation",
+      ctaSecondary: "Case Studies",
+      availability: "Independent Consultant",
+      location: "Mexico · Global Reach",
+      langEs: "Spanish Native",
+      langEn: "English Working Proficient",
       stats: {
-        views: "Portfolio Views",
-        years: "Years of Experience",
-        products: "Products Shipped",
-        companies: "Companies Served",
-        automations: "AI Automations",
+        views: "Network Impact",
+        years: "Years Architecting",
+        products: "Systems in Production",
+        companies: "Companies Optimized",
+        automations: "Hours Automated (ROI)",
       },
-      scrollDown: "SCROLL DOWN",
+      scrollDown: "VIEW CASE STUDIES",
     },
 
     about: {
-      heading1: "I Build Products,",
-      heading2: "Not Just Features",
+      heading1: "I Solve Problems,",
+      heading2: "Not Just Write Code",
       robotGreeting: "Hey👋",
-      p1Start: "Looking for a developer who gets the business, communicates clearly, and ships without excuses?",
-      p1End: "That's what I do.",
-      p2Start: "I own the full stack — backend architecture, API design, and every pixel of the UI. No handoff gaps, no lost context.",
-      p2End: "My core stack is Angular, Svelte, TypeScript, and Node.js.",
-      p3Start: "I also build AI automation pipelines with N8N and MCP that turn weeks of manual work into minutes",
-      p3End: "— and I thrive in agile teams where clean code and clear communication are non-negotiable.",
-      cta: "Let's Talk",
-      profileBadgeAvailable: "Open to work",
-      profileBadgeNotAvailable: "Not Available",
+      p1Start: "Looking for a technical architect who understands your business model, communicates clearly, and ships without excuses?",
+      p1End: "That's my specialty.",
+      p2Start: "I take full ownership of the project — from database architecture down to the last pixel of the UI. No external dependencies, no miscommunications.",
+      p2End: "My core stack: Svelte, React Native, TypeScript, and Node.js.",
+      p3Start: "I also build AI automation pipelines (N8N, MCP, LLMs) that turn weeks of manual admin work into minutes",
+      p3End: "— perfect for companies that need to scale without multiplying their payroll.",
+      cta: "Book a Discovery Call",
+      profileBadgeAvailable: "Accepting Clients",
+      profileBadgeNotAvailable: "Fully Booked",
       profileYears: "4+ Years",
-      profileStack: "Fullstack + AI",
+      profileStack: "Architecture + AI",
     },
 
     projects: [
       {
-        title: "Sharit — Sports Social Network",
+        title: "Case Study: AgentForge (AI Automation Platform)",
         description:
-          "Full-stack social mobile app for discovering and joining sports activities near you. Built from scratch: REST API with JWT auth, geolocation, push notifications, infinite scroll feed, and a gamification system. Currently in active development with App Store launch upcoming.",
+          "Problem: Operations teams were losing weeks to repetitive manual data entry and workflow management. Solution: Architected an autonomous multi-agent orchestration platform using LLMs (GPT-4/Claude) and local models. Result: Eliminated 80% of manual ops work, scaling team capacity without adding headcount.",
       },
       {
-        title: "Agent SAT — AI Tax Automation",
+        title: "Case Study: SAT Tax Automation AI",
         description:
-          "Desktop app that uses AI to automatically solve SAT portal CAPTCHAs and bulk-download CFDI invoices and tax documents. Cuts hours of manual processing down to under 5 minutes per session.",
+          "Problem: Accounting firms wasted countless hours manually downloading tax invoices. Solution: Engineered a desktop AI agent that automatically resolves SAT portal CAPTCHAs and bulk-downloads documents using e.Firma. Result: Reduced processing time by 95%, from days of manual labor to 5 minutes per session.",
       },
       {
-        title: "TersaNet",
+        title: "Case Study: Bolddy (Enterprise Mobile Architecture)",
         description:
-          "Real-time quoting system for a tire distributor — supports wholesale and retail pricing, multi-branch inventory management, and one-click PDF/email quote delivery for sales teams.",
+          "Problem: Needed a scalable, real-time social ecosystem capable of handling complex geolocation and gamification. Solution: Built a cross-platform mobile architecture from scratch with React Native, WebSockets, and advanced state management. Result: Delivered a production-ready application primed for App Store launch.",
       },
       {
-        title: "AI Automation Workflows — N8N & MCP",
+        title: "Case Study: TersaNet (Real-Time Logistics)",
         description:
-          "Enterprise automation workflows built with N8N and MCP: SAT invoice processing with GPT-4, data pipelines, notification bots, and WhatsApp integrations. Cut 80% of manual operations work for the XAMAI ops team.",
+          "Problem: B2B sales teams suffered from slow, manual quoting systems causing lost deals. Solution: Developed a real-time quoting and inventory management system with instant PDF generation. Result: Accelerated the sales cycle and eliminated pricing errors across wholesale and retail branches.",
       },
       {
-        title: "XAMAI Client Portal 2.0",
+        title: "Case Study: XAMAI Client Portal",
         description:
-          "Full redesign of XAMAI's client portal: migrated to Svelte + Tailwind CSS, rebuilt the component system from scratch, and achieved a 90% jump in user satisfaction scores within the first month post-launch.",
+          "Problem: Legacy client portal had terrible UX and slow load times, driving up support tickets. Solution: Complete architectural rebuild using Svelte and an optimized component system. Result: 90% increase in user satisfaction scores and an 85% reduction in initial load times within the first month.",
       },
       {
-        title: "Stan Semper Field Report App",
+        title: "Case Study: Stan Semper Field Reports",
         description:
-          "Android app for on-site field reporting: capture photos, GPS coordinates, and equipment serial numbers in the field, then auto-sync a complete PDF report to the web platform via Firebase.",
+          "Problem: Field engineers lost hours compiling manual reports with photos and GPS data. Solution: Built an offline-first Android app that captures localized data and syncs automatically to Firebase. Result: Instant, automated PDF report generation, completely removing administrative overhead for field workers.",
       },
     ],
 
     projectsSection: {
       googlePlay: "Google Play",
       appStore: "App Store",
-      viewCode: "View Code",
-      liveDemo: "Live Demo",
+      viewCode: "View Architecture",
+      liveDemo: "View Impact",
     },
 
     experience: {
@@ -189,81 +189,81 @@ export const translations = {
 
   es: {
     hero: {
-      badge: "Disponible para trabajar",
-      subtitle: "Fullstack Engineer · Automatización IA · Mobile",
+      badge: "Consultoría Estratégica",
+      subtitle: "Arquitecto de Software · Automatización IA · Mobile",
       description:
-        "Construyo productos digitales completos — de la base de datos al último pixel — que se entregan a tiempo y mueven métricas reales. 4+ años en Angular, Svelte, Node.js, React Native y automatización con IA.",
-      ctaPrimary: "Hablemos",
-      ctaSecondary: "Descargar CV",
-      availability: "Disponible",
-      location: "México · Remoto / Híbrido",
-      langEs: "Español nativo",
-      langEn: "Inglés B1",
+        "Transformo la ineficiencia operativa de tu empresa en sistemas automatizados y escalables. Más que escribir código, diseño motores tecnológicos que reducen costos, eliminan procesos manuales y escalan tu negocio.",
+      ctaPrimary: "Agendar Consultoría",
+      ctaSecondary: "Casos de Éxito",
+      availability: "Consultor Independiente",
+      location: "México · Cobertura Global",
+      langEs: "Español Nativo",
+      langEn: "Inglés Técnico",
       stats: {
-        views: "Visitas al Portfolio",
-        years: "Años de Experiencia",
-        products: "Productos Lanzados",
-        companies: "Empresas Atendidas",
-        automations: "Automatizaciones IA",
+        views: "Impacto en Red",
+        years: "Años Diseñando Sistemas",
+        products: "Sistemas en Producción",
+        companies: "Empresas Escaladas",
+        automations: "Horas Automatizadas",
       },
-      scrollDown: "SCROLL DOWN",
+      scrollDown: "VER CASOS DE ÉXITO",
     },
 
     about: {
-      heading1: "Construyo Productos,",
-      heading2: "No Solo Funciones",
+      heading1: "Resuelvo Problemas,",
+      heading2: "No Solo Escribo Código",
       robotGreeting: "Hey👋",
-      p1Start: "¿Buscas un dev que entienda el negocio, se comunique claro y entregue sin excusas?",
-      p1End: "Eso es lo que hago.",
-      p2Start: "Soy dueño del stack completo — arquitectura backend, diseño de APIs y cada pixel del frontend. Sin gaps de handoff, sin contexto perdido.",
-      p2End: "Mi stack principal: Angular, Svelte, TypeScript y Node.js.",
-      p3Start: "También construyo pipelines de automatización con IA usando N8N y MCP que convierten semanas de trabajo manual en minutos",
-      p3End: "— y me muevo mejor en equipos ágiles donde el código limpio y la comunicación clara son innegociables.",
-      cta: "Hablemos",
-      profileBadgeAvailable: "Disponible",
-      profileBadgeNotAvailable: "No disponible",
+      p1Start: "¿Buscas un arquitecto técnico que entienda tu modelo de negocio, se comunique con claridad y ejecute sin excusas?",
+      p1End: "Esa es mi especialidad.",
+      p2Start: "Asumo el ownership total del proyecto — desde la arquitectura de base de datos hasta el último píxel de la interfaz. Sin dependencias externas, sin teléfonos descompuestos.",
+      p2End: "Mi stack core: Svelte, React Native, TypeScript y Node.js.",
+      p3Start: "Además, implemento automatizaciones con IA (N8N, MCP, LLMs) que logran que tareas administrativas de semanas se ejecuten en minutos",
+      p3End: "— ideal para empresas que necesitan escalar sin multiplicar su nómina.",
+      cta: "Agendar Diagnóstico",
+      profileBadgeAvailable: "Agenda Abierta",
+      profileBadgeNotAvailable: "Agenda Llena",
       profileYears: "4+ Años",
-      profileStack: "Fullstack + IA",
+      profileStack: "Arquitectura + IA",
     },
 
     projects: [
       {
-        title: "Sharit — Red Social de Actividades",
+        title: "Caso de Éxito: AgentForge (Plataforma IA Autónoma)",
         description:
-          "App móvil full-stack para descubrir y unirse a actividades deportivas cercanas. Construida desde cero: REST API con JWT, geolocalización, push notifications, feed con infinite scroll y sistema de gamificación. En desarrollo activo con lanzamiento próximo en App Store.",
+          "Problema: Los equipos operativos perdían semanas en tareas manuales repetitivas. Solución: Diseñé una plataforma de orquestación multi-agente usando LLMs locales y en la nube para automatizar flujos de trabajo. Resultado: Se eliminó el 80% del trabajo manual, permitiendo escalar operaciones sin aumentar la nómina.",
       },
       {
-        title: "Agent SAT — Automatización Fiscal IA",
+        title: "Caso de Éxito: Automatización Fiscal SAT",
         description:
-          "App de escritorio que usa IA para resolver automáticamente CAPTCHAs del portal SAT y descargar masivamente CFDI, acuses y documentos fiscales. Reduce horas de procesamiento manual a menos de 5 minutos por sesión.",
+          "Problema: Estudios contables desperdiciaban docenas de horas descargando facturas manualmente. Solución: Desarrollé un Agente IA de escritorio que resuelve CAPTCHAs automáticamente y descarga XMLs/PDFs en masa. Resultado: Reducción del 95% del tiempo operativo, bajando la tarea de días a solo 5 minutos por sesión.",
       },
       {
-        title: "TersaNet",
+        title: "Caso de Éxito: Bolddy (Arquitectura Móvil Escala Real)",
         description:
-          "Sistema de cotización en tiempo real para distribuidora de llantas — soporta precios de mayoreo y menudeo, gestión de inventario multi-sucursal y entrega de cotizaciones en PDF/correo con un clic.",
+          "Problema: Se requería un ecosistema social escalable en tiempo real con geolocalización y gamificación compleja. Solución: Construcción full-stack de una arquitectura móvil con React Native, WebSockets y manejo de estado avanzado. Resultado: Aplicación robusta lista para producción y lanzamiento en App Store.",
       },
       {
-        title: "Automatización IA — N8N & MCP",
+        title: "Caso de Éxito: TersaNet (Logística en Tiempo Real)",
         description:
-          "Flujos de automatización empresarial con N8N y MCP: procesamiento de facturas SAT con GPT-4, pipelines de datos, bots de notificaciones e integraciones de WhatsApp. Redujo el 80% del trabajo manual del equipo de operaciones de XAMAI.",
+          "Problema: Los vendedores B2B perdían ventas por cotizaciones lentas y manuales. Solución: Sistema de cotización e inventario multi-sucursal en tiempo real con generación instantánea de PDFs. Resultado: Aceleración dramática del ciclo de ventas y eliminación de errores de precio en todos los canales.",
       },
       {
-        title: "Portal Cliente XAMAI 2.0",
+        title: "Caso de Éxito: Portal Cliente XAMAI",
         description:
-          "Rediseño integral del portal cliente de XAMAI: migración a Svelte + Tailwind CSS, sistema de componentes reconstruido desde cero y mejora del 90% en satisfacción de usuarios en el primer mes post-lanzamiento.",
+          "Problema: El portal legacy tenía UX deficiente y carga lenta, generando tickets de soporte. Solución: Reconstrucción total de la arquitectura usando Svelte y optimización de componentes. Resultado: Aumento del 90% en satisfacción de usuario y reducción del 85% en tiempos de carga en el primer mes.",
       },
       {
-        title: "Stan Semper — App de Reportes de Campo",
+        title: "Caso de Éxito: Reportes de Campo Stan Semper",
         description:
-          "App Android para reportes de campo: captura fotos, coordenadas GPS y números de serie de equipos en sitio, luego sincroniza automáticamente un reporte PDF completo a la plataforma web vía Firebase.",
+          "Problema: Ingenieros en campo perdían horas armando reportes con fotos y datos GPS. Solución: App Android offline-first que captura y sincroniza datos a Firebase automáticamente. Resultado: Generación de PDFs instantánea, eliminando el 100% de la carga administrativa en campo.",
       },
     ],
 
     projectsSection: {
       googlePlay: "Google Play",
       appStore: "App Store",
-      viewCode: "Ver Código",
-      liveDemo: "Demo en Vivo",
+      viewCode: "Ver Arquitectura",
+      liveDemo: "Ver Impacto",
     },
 
     experience: {

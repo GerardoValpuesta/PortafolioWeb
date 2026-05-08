@@ -75,8 +75,7 @@ export default function Contact() {
                   <div className="text-foreground/90 flex items-start gap-2 font-mono">
                     <span className="text-emerald-400">$</span>
                     <TypingAnimation startOnView duration={26}>
-                      Could you share your email with
-                      me?
+                      Initiating discovery. Please enter your work email:
                     </TypingAnimation>
                   </div>
                   {/* A1 */}
@@ -86,7 +85,7 @@ export default function Contact() {
                       <input
                         type="email"
                         required
-                        placeholder="you@domain.com"
+                        placeholder="you@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         onKeyDown={handleEnter}
@@ -105,7 +104,7 @@ export default function Contact() {
                   <div className="text-foreground/90 flex items-start gap-2 font-mono">
                     <span className="text-sky-400">$</span>
                     <TypingAnimation duration={26}>
-                      Great! And may i know your name?
+                      Acknowledged. What is your name or company name?
                     </TypingAnimation>
                   </div>
 
@@ -115,7 +114,7 @@ export default function Contact() {
                       <span className="text-sky-400">↪</span>
                       <input
                         type="text"
-                        placeholder="Tu nombre"
+                        placeholder="Your name or company"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         onKeyDown={handleEnter}
@@ -133,7 +132,7 @@ export default function Contact() {
                   <div className="text-foreground/90 flex items-start gap-2 font-mono">
                     <span className="text-amber-400">$</span>
                     <TypingAnimation duration={26}>
-                      Awesome, now tell us how we can assist you today.
+                      What is the primary bottleneck or system you need to scale?
                     </TypingAnimation>
                   </div>
 
@@ -144,7 +143,7 @@ export default function Contact() {
                       <textarea
                         required
                         rows={4}
-                        placeholder="Tell me about your project, timeline, and goals…"
+                        placeholder="Describe the operational challenge or architectural need..."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         className="border-foreground/20 text-foreground placeholder:text-foreground/40 w-full resize-y rounded-md border bg-transparent px-3 py-2 outline-none focus:border-amber-400/60 focus:ring-2 focus:ring-amber-400/30"
@@ -175,8 +174,8 @@ export default function Contact() {
                           {status === "sending"
                             ? "Sending…"
                             : status === "sent"
-                              ? "Sent!"
-                              : "Send"}
+                              ? "Request Received"
+                              : "Request Consultation"}
                         </Button>
                       </div>
                     </div>

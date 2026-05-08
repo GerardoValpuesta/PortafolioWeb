@@ -125,7 +125,7 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="group/btn border-2 font-medium"
+                className="group/btn border-2 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 <a href={"#contact"}>
                   {t.hero.ctaPrimary}
@@ -138,8 +138,8 @@ const Hero = () => {
                 size="lg"
                 className="group/btn border-2 font-medium"
               >
-                <a href="/cv_gerardo_spanishR.pdf" target="_blank" rel="noopener noreferrer">
-                  <Download className="size-4 transition-transform group-hover/btn:translate-y-0.5" />
+                <a href="#projects">
+                  <ArrowDownSquareIcon className="size-4 transition-transform group-hover/btn:translate-y-0.5 mr-2" />
                   {t.hero.ctaSecondary}
                 </a>
               </Button>
@@ -153,10 +153,10 @@ const Hero = () => {
         <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-5">
           {[
             { label: t.hero.stats.views, value: unamiStats?.data?.pageviews ?? 0 },
-            { label: t.hero.stats.years, value: 4 },
-            { label: t.hero.stats.products, value: 10 },
-            { label: t.hero.stats.companies, value: 4 },
-            { label: t.hero.stats.automations, value: 5 },
+            { label: t.hero.stats.years, value: 5 },
+            { label: t.hero.stats.products, value: 16 },
+            { label: t.hero.stats.companies, value: 8 },
+            { label: t.hero.stats.automations, value: 10000 },
           ].map((stat, i, arr) => (
             <div
               key={i}

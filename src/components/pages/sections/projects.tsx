@@ -31,7 +31,7 @@ const Projects = () => {
       ],
       image: "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
       live: null,
-      date: "2024–present",
+      date: "2026–present",
       status: "in-progress",
       storeLinks: {
         playStore: "https://play.google.com/store/apps/details?id=com.gosharit",
@@ -54,7 +54,7 @@ const Projects = () => {
       ],
       image: "/projects/Agent/Agent - Login config.png",
       live: null,
-      date: "2024–present",
+      date: "2026–present",
       status: "completed",
       containImage: true,
       hideButtons: true,
@@ -199,8 +199,8 @@ const Projects = () => {
                                 (project as any).containImage
                                   ? "object-contain p-3"
                                   : (project as any).verticalImages
-                                  ? "object-contain bg-neutral-900"
-                                  : "object-cover"
+                                    ? "object-contain bg-neutral-900"
+                                    : "object-cover"
                               )}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
