@@ -40,9 +40,9 @@ export const translations = {
 
     projects: [
       {
-        title: "Case Study: AgentForge (AI Automation Platform)",
+        title: "Case Study: Sharit - Bolddy (Enterprise Mobile Architecture)",
         description:
-          "Problem: Operations teams were losing weeks to repetitive manual data entry and workflow management. Solution: Architected an autonomous multi-agent orchestration platform using LLMs (GPT-4/Claude) and local models. Result: Eliminated 80% of manual ops work, scaling team capacity without adding headcount.",
+          "Problem: Needed a scalable, real-time social ecosystem capable of handling complex geolocation and gamification. Solution: Built a cross-platform mobile architecture from scratch with React Native, WebSockets, and advanced state management. Result: Delivered a production-ready application primed for App Store launch.",
       },
       {
         title: "Case Study: SAT Tax Automation AI",
@@ -50,14 +50,14 @@ export const translations = {
           "Problem: Accounting firms wasted countless hours manually downloading tax invoices. Solution: Engineered a desktop AI agent that automatically resolves SAT portal CAPTCHAs and bulk-downloads documents using e.Firma. Result: Reduced processing time by 95%, from days of manual labor to 5 minutes per session.",
       },
       {
-        title: "Case Study: Bolddy (Enterprise Mobile Architecture)",
-        description:
-          "Problem: Needed a scalable, real-time social ecosystem capable of handling complex geolocation and gamification. Solution: Built a cross-platform mobile architecture from scratch with React Native, WebSockets, and advanced state management. Result: Delivered a production-ready application primed for App Store launch.",
-      },
-      {
         title: "Case Study: TersaNet (Real-Time Logistics)",
         description:
           "Problem: B2B sales teams suffered from slow, manual quoting systems causing lost deals. Solution: Developed a real-time quoting and inventory management system with instant PDF generation. Result: Accelerated the sales cycle and eliminated pricing errors across wholesale and retail branches.",
+      },
+      {
+        title: "Case Study: AI Automation Workflows (N8N & MCP)",
+        description:
+          "Problem: Operations teams were losing weeks to repetitive manual data entry and workflow management. Solution: Architected enterprise automation pipelines using N8N, MCP, and LLMs (GPT-4/Claude) for invoice processing, notifications, and CRM sync. Result: Eliminated 80% of manual ops work at XAMAI, scaling capacity without adding headcount.",
       },
       {
         title: "Case Study: XAMAI Client Portal",
@@ -228,9 +228,9 @@ export const translations = {
 
     projects: [
       {
-        title: "Caso de Éxito: AgentForge (Plataforma IA Autónoma)",
+        title: "Caso de Éxito: Bolddy (Arquitectura Móvil Escala Real)",
         description:
-          "Problema: Los equipos operativos perdían semanas en tareas manuales repetitivas. Solución: Diseñé una plataforma de orquestación multi-agente usando LLMs locales y en la nube para automatizar flujos de trabajo. Resultado: Se eliminó el 80% del trabajo manual, permitiendo escalar operaciones sin aumentar la nómina.",
+          "Problema: Se requería un ecosistema social escalable en tiempo real con geolocalización y gamificación compleja. Solución: Construcción full-stack de una arquitectura móvil con React Native, WebSockets y manejo de estado avanzado. Resultado: Aplicación robusta lista para producción y lanzamiento en App Store.",
       },
       {
         title: "Caso de Éxito: Automatización Fiscal SAT",
@@ -238,14 +238,14 @@ export const translations = {
           "Problema: Estudios contables desperdiciaban docenas de horas descargando facturas manualmente. Solución: Desarrollé un Agente IA de escritorio que resuelve CAPTCHAs automáticamente y descarga XMLs/PDFs en masa. Resultado: Reducción del 95% del tiempo operativo, bajando la tarea de días a solo 5 minutos por sesión.",
       },
       {
-        title: "Caso de Éxito: Bolddy (Arquitectura Móvil Escala Real)",
-        description:
-          "Problema: Se requería un ecosistema social escalable en tiempo real con geolocalización y gamificación compleja. Solución: Construcción full-stack de una arquitectura móvil con React Native, WebSockets y manejo de estado avanzado. Resultado: Aplicación robusta lista para producción y lanzamiento en App Store.",
-      },
-      {
         title: "Caso de Éxito: TersaNet (Logística en Tiempo Real)",
         description:
           "Problema: Los vendedores B2B perdían ventas por cotizaciones lentas y manuales. Solución: Sistema de cotización e inventario multi-sucursal en tiempo real con generación instantánea de PDFs. Resultado: Aceleración dramática del ciclo de ventas y eliminación de errores de precio en todos los canales.",
+      },
+      {
+        title: "Caso de Éxito: Automatización IA (N8N & MCP)",
+        description:
+          "Problema: Los equipos operativos perdían semanas en tareas manuales repetitivas. Solución: Diseñé pipelines de automatización empresarial con N8N, MCP y LLMs (GPT-4/Claude) para procesamiento de facturas, notificaciones y sincronización de CRM. Resultado: Se eliminó el 80% del trabajo manual en XAMAI, escalando operaciones sin aumentar nómina.",
       },
       {
         title: "Caso de Éxito: Portal Cliente XAMAI",
