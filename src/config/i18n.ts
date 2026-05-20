@@ -51,7 +51,7 @@ export const translations = {
         ],
       },
       {
-        title: "Case Study: Sharit - Bolddy (Enterprise Mobile Architecture)",
+        title: "Sharit - Bolddy (Enterprise Mobile Architecture)",
         description:
           "Problem: Needed a scalable, real-time social ecosystem capable of handling complex geolocation and gamification. Solution: Built a cross-platform mobile architecture from scratch with React Native, WebSockets, and advanced state management. Result: Delivered a production-ready application primed for App Store launch.",
       },
@@ -251,7 +251,7 @@ export const translations = {
         ],
       },
       {
-        title: "Caso de Éxito: Bolddy (Arquitectura Móvil Escala Real)",
+        title: "Sharit - Bolddy (Arquitectura Móvil Escala Real)",
         description:
           "Problema: Se requería un ecosistema social escalable en tiempo real con geolocalización y gamificación compleja. Solución: Construcción full-stack de una arquitectura móvil con React Native, WebSockets y manejo de estado avanzado. Resultado: Aplicación robusta lista para producción y lanzamiento en App Store.",
       },
