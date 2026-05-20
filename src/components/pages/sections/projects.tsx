@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HeadingLine from "@/components/ui/heading-line";
 import { cn } from "@/lib/utils";
-import { Github, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
+import { Github, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Globe } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -15,6 +15,28 @@ const Projects = () => {
 
   // Non-translatable project metadata (tags, images, links)
   const projectsMeta = [
+    {
+      tags: ["Next.js", "React", "TypeScript"],
+      github: null,
+      images: [
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.39 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.56 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.15 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.35 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.54 p.m..png",
+      ],
+      image: "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
+      live: null,
+      date: "2024–present",
+      status: "completed",
+      storeLinks: {
+        web: "https://studiokin.com.mx/",
+
+      },
+      containImage: false,
+      verticalImages: true,
+    },
     {
       tags: ["React Native", "Expo", "Node.js", "MongoDB", "TypeScript"],
       github: null,
@@ -34,8 +56,9 @@ const Projects = () => {
       date: "2026–present",
       status: "in-progress",
       storeLinks: {
-        playStore: "https://play.google.com/store/apps/details?id=com.gosharit",
-        appStore: "https://apps.apple.com/app/sharit/id0000000000",
+        web: "https://bolddy.app/",
+        // playStore: "https://play.google.com/store/apps/details?id=com.gosharit",
+        // appStore: "https://apps.apple.com/app/sharit/id0000000000",
       },
       containImage: false,
       verticalImages: true,
@@ -146,6 +169,9 @@ const Projects = () => {
   const getIdx = (title: string) => carouselIdx[title] ?? 0;
   const setIdx = (title: string, idx: number) =>
     setCarouselIdx((prev) => ({ ...prev, [title]: idx }));
+
+  // Per-project demos dropdown state
+  const [openDemos, setOpenDemos] = useState<Record<string, boolean>>({});
 
   return (
     <SectionHeading id="projects" text="Projects">
@@ -330,6 +356,80 @@ const Projects = () => {
                         App Store
                         <ArrowUpRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                       </a>
+                    )}
+
+                    {/* Web Link */}
+                    {(project as any).storeLinks?.web && (
+                      <Button
+                        asChild
+                        variant="default"
+                        size="lg"
+                        className="group/btn relative border-2 font-medium"
+                      >
+                        <a
+                          href={(project as any).storeLinks.web}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          {(project as any).liveLabel || "Visit Site"}
+                          <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </a>
+                      </Button>
+                    )}
+
+                    {/* Demos Dropdown */}
+                    {(project as any).demos && (project as any).demos.length > 0 && (
+                      <div className="relative">
+                        <Button
+                          onClick={() => setOpenDemos((prev) => ({ ...prev, [project.title]: !prev[project.title] }))}
+                          variant="outline"
+                          size="lg"
+                          className="group/btn border-2 font-medium"
+                        >
+                          <Globe className="mr-2 h-4 w-4" />
+                          {(t as any).projectsSection?.viewDemos || "View Demos"}
+                          <ChevronDown className={cn(
+                            "ml-1 h-4 w-4 transition-transform duration-200",
+                            openDemos[project.title] && "rotate-180"
+                          )} />
+                        </Button>
+
+                        <AnimatePresence>
+                          {openDemos[project.title] && (
+                            <>
+                              {/* Backdrop/Click-out overlay */}
+                              <div
+                                className="fixed inset-0 z-40"
+                                onClick={() => setOpenDemos((prev) => ({ ...prev, [project.title]: false }))}
+                              />
+
+                              {/* Dropdown Menu */}
+                              <motion.div
+                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                transition={{ duration: 0.15 }}
+                                className="bg-background/95 border-foreground/10 absolute left-0 mt-2 min-w-[200px] rounded-md border p-1 shadow-xl backdrop-blur-md z-50 flex flex-col gap-0.5"
+                              >
+                                {(project as any).demos.map((demo: any) => (
+                                  <a
+                                    key={demo.label}
+                                    href={demo.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:bg-muted/80 flex items-center justify-between rounded-sm px-3 py-2.5 text-sm transition-colors text-foreground font-mono"
+                                    onClick={() => setOpenDemos((prev) => ({ ...prev, [project.title]: false }))}
+                                  >
+                                    <span>{demo.label}</span>
+                                    <ArrowUpRight className="text-muted-foreground/60 h-3.5 w-3.5" />
+                                  </a>
+                                ))}
+                              </motion.div>
+                            </>
+                          )}
+                        </AnimatePresence>
+                      </div>
                     )}
 
                     {/* GitHub button — only when no storeLinks */}

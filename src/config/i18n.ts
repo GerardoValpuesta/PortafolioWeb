@@ -40,6 +40,17 @@ export const translations = {
 
     projects: [
       {
+        title: "Case Study: StudioKin (Next-Gen Digital Agency)",
+        description:
+          "Problem: StudioKin, a creative and development agency, needed a highly interactive portfolio platform that displays high-fidelity designs and hosts functional interactive client demos. Solution: Developed a state-of-the-art Next.js web application utilizing dynamic transitions and modular route assets to showcase live client demo sites seamlessly. Result: Provided a premium agency presentation that drives user engagement and demonstrates real-world software capabilities.",
+        liveLabel: "Visit Site",
+        demos: [
+          { label: "Mechanic Demo", url: "https://studiokin.com.mx/demo-mecanico.html" },
+          { label: "Psychologist Demo", url: "https://studiokin.com.mx/demo-psicologa.html" },
+          { label: "Ballet Studio Demo", url: "https://studiokin.com.mx/demo-ballet.html" },
+        ],
+      },
+      {
         title: "Case Study: Sharit - Bolddy (Enterprise Mobile Architecture)",
         description:
           "Problem: Needed a scalable, real-time social ecosystem capable of handling complex geolocation and gamification. Solution: Built a cross-platform mobile architecture from scratch with React Native, WebSockets, and advanced state management. Result: Delivered a production-ready application primed for App Store launch.",
@@ -76,6 +87,7 @@ export const translations = {
       appStore: "App Store",
       viewCode: "View Architecture",
       liveDemo: "View Impact",
+      viewDemos: "View Demos",
     },
 
     experience: {
@@ -228,6 +240,17 @@ export const translations = {
 
     projects: [
       {
+        title: "Caso de Éxito: StudioKin (Agencia Digital de Vanguardia)",
+        description:
+          "Problema: StudioKin, una agencia creativa y de desarrollo, necesitaba una plataforma portafolio altamente interactiva que exhibiera diseños de alta fidelidad y alojara demos web funcionales para sus clientes. Solución: Construcción de una aplicación web moderna en Next.js con transiciones dinámicas y assets modulares que integra demos en vivo sin fricción. Resultado: Una carta de presentación impecable para la agencia que impulsa la conversión y demuestra capacidades técnicas reales.",
+        liveLabel: "Visitar Sitio",
+        demos: [
+          { label: "Demo Taller Mecánico", url: "https://studiokin.com.mx/demo-mecanico.html" },
+          { label: "Demo Psicóloga", url: "https://studiokin.com.mx/demo-psicologa.html" },
+          { label: "Demo Academia de Ballet", url: "https://studiokin.com.mx/demo-ballet.html" },
+        ],
+      },
+      {
         title: "Caso de Éxito: Bolddy (Arquitectura Móvil Escala Real)",
         description:
           "Problema: Se requería un ecosistema social escalable en tiempo real con geolocalización y gamificación compleja. Solución: Construcción full-stack de una arquitectura móvil con React Native, WebSockets y manejo de estado avanzado. Resultado: Aplicación robusta lista para producción y lanzamiento en App Store.",
@@ -264,6 +287,7 @@ export const translations = {
       appStore: "App Store",
       viewCode: "Ver Arquitectura",
       liveDemo: "Ver Impacto",
+      viewDemos: "Ver Demos",
     },
 
     experience: {
