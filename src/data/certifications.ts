@@ -15,6 +15,20 @@ export type Cert = {
 
 export const CERTIFICATIONS: Cert[] = [
     {
+        title: "SEO 2026: Posicionamiento Orgánico con IA",
+        issuer: "The Big School",
+        year: "2026",
+        url: "https://certificados.thebigschool.com/wp-content/uploads/certs/MSEO-10/Certificado-Gerardo-Nunez-Valpuesta-l4c6z9om.pdf",
+        category: "Marketing Digital",
+        featured: true,
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(16,185,129,0.15)] hover:shadow-[0_0_36px_rgba(16,185,129,0.3)]",
+            border: "border-emerald-500/30 hover:border-emerald-400/60",
+            icon: "text-emerald-400 bg-emerald-500/10",
+            chip: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+        },
+    },
+    {
         title: "Inmersión DEV AGENTES DE AI",
         issuer: "Alura Latam",
         year: "2026",
