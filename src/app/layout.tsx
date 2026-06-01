@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import Providers from "@/components/providers";
 import { geistMono, geistSans, incognito, pixelifySans, dancingScript } from "@/assets/fonts";
@@ -10,6 +10,16 @@ import env from "@/config/env";
 import FloatingAvatar from "@/components/floating-avatar";
 // import FloatingAvatar from "@/components/floating-avatar";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0B0F" },
+  ],
+};
 
 export const metadata: Metadata = {
   title: siteConfig.title,

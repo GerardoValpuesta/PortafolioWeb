@@ -188,7 +188,7 @@ const BackgroundAnimation = ({
   return (
     <>
       <div
-        className="relative h-screen overflow-hidden duration-500 transition-colors"
+        className="relative h-dvh overflow-hidden duration-500 transition-colors"
         style={{ backgroundColor: selectedScheme.background }}
       >
         <div className="absolute inset-0 blur-[100px]">

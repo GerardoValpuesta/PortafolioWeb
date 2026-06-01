@@ -37,7 +37,7 @@ const PortfolioPage = () => {
         {/* === CAPA PARALLAX GLOBAL (Se renderiza atrás de todo, z-0) === */}
         <motion.div
           style={{ y: backgroundY, opacity: backgroundOpacity }}
-          className="pointer-events-none fixed left-0 top-0 z-0 h-[150vh] w-full"
+          className="pointer-events-none absolute left-0 top-0 z-0 h-[150vh] w-full"
         >
           {/* Sombras/Orbs blurreados gigantes de colores, estilo Modern 2026 Glassmorphism */}
           <div className="absolute top-[10%] left-[5%] h-[500px] w-[500px] rounded-full bg-blue-500/50 blur-[200px]" />
@@ -49,7 +49,7 @@ const PortfolioPage = () => {
         {/* El ruido de fondo viejo que tenías. Opcional bajarle opacidad si choca. */}
         <BackgroundNoise className="z-50 opacity-10 mix-blend-overlay" />
 
-        <div className="h-screen snap-start relative z-10">
+        <div className="h-dvh snap-start relative z-10">
           <IntroSplash />
         </div>
 

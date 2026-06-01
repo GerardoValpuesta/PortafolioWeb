@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsSoundEnabled } from "@/store/use-sound-enabled";
 import { useLanguage } from "@/store/use-language";
+import { useIsClient } from "@uidotdev/usehooks";
 
 const NAV_LINKS = [
   { id: "home", labelEn: "Home", labelEs: "Inicio" },
@@ -25,6 +26,7 @@ const Navbar = () => {
   const { isSoundEnabled, toggleSoundEnabled } = useIsSoundEnabled();
   const { language, toggleLanguage } = useLanguage();
   const { resolvedTheme, setTheme } = useTheme();
+  const isClient = useIsClient();
 
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const activeTabRef = useRef<HTMLAnchorElement | null>(null);
@@ -168,15 +170,17 @@ const Navbar = () => {
             <div className="bg-border h-4 w-px" />
 
             {/* Theme Toggle */}
-            <button
-              onClick={() =>
-                setTheme(resolvedTheme === "dark" ? "light" : "dark")
-              }
-              className="transition-transform duration-200 hover:scale-110"
-              aria-label="Toggle theme"
-            >
-              <ThemeToggleButton2 className="size-5" theme={resolvedTheme} />
-            </button>
+            {isClient && (
+              <button
+                onClick={() =>
+                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                }
+                className="transition-transform duration-200 hover:scale-110"
+                aria-label="Toggle theme"
+              >
+                <ThemeToggleButton2 className="size-5" theme={resolvedTheme} />
+              </button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -303,20 +307,22 @@ const Navbar = () => {
                   </span>
                 </button>
 
-                <button
-                  onClick={() =>
-                    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-                  }
-                  className="hover:bg-foreground/5 group flex flex-col items-center gap-1.5 rounded-lg py-2 transition-colors"
-                >
-                  <ThemeToggleButton2
-                    className="text-foreground/60 group-hover:text-foreground size-5"
-                    theme={resolvedTheme}
-                  />
-                  <span className="text-foreground/60 group-hover:text-foreground text-[10px] font-medium">
-                    Theme
-                  </span>
-                </button>
+                {isClient && (
+                  <button
+                    onClick={() =>
+                      setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                    }
+                    className="hover:bg-foreground/5 group flex flex-col items-center gap-1.5 rounded-lg py-2 transition-colors"
+                  >
+                    <ThemeToggleButton2
+                      className="text-foreground/60 group-hover:text-foreground size-5"
+                      theme={resolvedTheme}
+                    />
+                    <span className="text-foreground/60 group-hover:text-foreground text-[10px] font-medium">
+                      Theme
+                    </span>
+                  </button>
+                )}
               </div>
             </motion.div>
           </motion.div>

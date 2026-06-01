@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import { useId } from "react";
 
 export const ThemeToggleButton2 = ({
   className = "",
@@ -9,6 +10,7 @@ export const ThemeToggleButton2 = ({
   theme?: string;
 }) => {
   const isLight = theme === "light";
+  const clipId = useId();
 
   return (
     <div
@@ -25,7 +27,7 @@ export const ThemeToggleButton2 = ({
         strokeLinecap="round"
         viewBox="0 0 32 32"
       >
-        <clipPath id="skiper-btn-2">
+        <clipPath id={clipId}>
           <motion.path
             initial={false}
             animate={{ y: isLight ? 10 : 0, x: isLight ? -12 : 0 }}
@@ -33,7 +35,7 @@ export const ThemeToggleButton2 = ({
             d="M0-5h30a1 1 0 0 0 9 13v24H0Z"
           />
         </clipPath>
-        <g clipPath="url(#skiper-btn-2)">
+        <g clipPath={`url(#${clipId})`}>
           <motion.circle
             initial={false}
             animate={{ r: isLight ? 10 : 8 }}

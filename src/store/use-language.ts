@@ -18,6 +18,7 @@ export const useLanguage = create<LanguageState>()(
         }),
         {
             name: 'portfolio-language',
+            skipHydration: true,
         }
     )
 );

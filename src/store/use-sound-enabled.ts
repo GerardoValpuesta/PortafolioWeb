@@ -15,7 +15,8 @@ export const useIsSoundEnabled = create<SoundState>()(
             toggleSoundEnabled: () => set({ isSoundEnabled: !get().isSoundEnabled }),
         }),
         {
-            name: 'sound-enabled'
+            name: 'sound-enabled',
+            skipHydration: true,
         }
     )
 );

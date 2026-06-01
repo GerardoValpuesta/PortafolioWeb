@@ -38,8 +38,8 @@ const Noise: React.FC<NoiseProps> = ({
       canvas.width = canvasSize;
       canvas.height = canvasSize;
 
-      canvas.style.width = '100vw';
-      canvas.style.height = '100vh';
+      canvas.style.width = '100dvw';
+      canvas.style.height = '100dvh';
     };
 
     const drawGrain = () => {
@@ -77,7 +77,7 @@ const Noise: React.FC<NoiseProps> = ({
 
   return (
     <canvas
-      className={cn("pointer-events-none absolute top-0 left-0 h-screen w-screen" , className)}
+      className={cn("pointer-events-none absolute top-0 left-0 h-dvh w-dvw" , className)}
       ref={grainRef}
       style={{
         imageRendering: 'pixelated'

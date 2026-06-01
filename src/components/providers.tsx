@@ -7,7 +7,9 @@ import {
   QueryClient,
   DefaultOptions,
 } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/store/use-language";
+import { useIsSoundEnabled } from "@/store/use-sound-enabled";
 
 const defaultOptions: DefaultOptions = {
   queries: {
@@ -21,6 +23,13 @@ const defaultOptions: DefaultOptions = {
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   const [queryClient] = useState(() => new QueryClient({ defaultOptions }));
+
+  // Rehydrate zustand persist stores on client mount.
+  // Required because stores use skipHydration: true to avoid SSR mismatch.
+  useEffect(() => {
+    useLanguage.persist.rehydrate();
+    useIsSoundEnabled.persist.rehydrate();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
