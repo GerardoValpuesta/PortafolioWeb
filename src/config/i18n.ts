@@ -240,7 +240,7 @@ export const translations = {
 
     projects: [
       {
-        title: "Caso de Éxito: StudioKin (Agencia Digital de Vanguardia)",
+        title: "Caso de Éxito: StudioKin (Agencia Digital)",
         description:
           "Problema: StudioKin, una agencia creativa y de desarrollo, necesitaba una plataforma portafolio altamente interactiva que exhibiera diseños de alta fidelidad y alojara demos web funcionales para sus clientes. Solución: Construcción de una aplicación web moderna en Next.js con transiciones dinámicas y assets modulares que integra demos en vivo sin fricción. Resultado: Una carta de presentación impecable para la agencia que impulsa la conversión y demuestra capacidades técnicas reales.",
         liveLabel: "Visitar Sitio",

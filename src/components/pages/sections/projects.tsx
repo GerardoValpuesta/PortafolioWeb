@@ -183,7 +183,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="group relative"
+            className="group relative overflow-hidden"
           >
             <div className="grid lg:grid-cols-2">
               {/* Image Side  */}
@@ -209,7 +209,7 @@ const Projects = () => {
                       const isCarousel = imgs.length > 1;
                       return (
                         <div className={cn(
-                          "bg-background relative overflow-hidden border-2",
+                          "bg-background relative overflow-hidden border-2 transition-shadow duration-500 group-hover:shadow-[0_0_32px_rgba(103,208,230,0.18)]",
                           (project as any).containImage && "bg-neutral-950"
                         )}>
                           <div className="relative aspect-video overflow-hidden">
@@ -229,7 +229,8 @@ const Projects = () => {
                                     : "object-cover"
                               )}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="noise-screen pointer-events-none absolute inset-0 opacity-[0.025] mix-blend-soft-light" />
 
                             {/* Carousel controls */}
                             {isCarousel && (
@@ -269,7 +270,7 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* Content Side  */}
+                {/* Content Side  */}
               <div className="relative flex flex-col justify-center overflow-hidden p-8 md:p-12 lg:p-16">
                 {/* Date & Status */}
                 <div className="mb-6 flex flex-wrap items-center gap-3">

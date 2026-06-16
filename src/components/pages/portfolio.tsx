@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { BackgroundNoise } from "../shared/backgrounds";
-import { IntroSplash } from "../shared/intro-splash";
+import { PortfolioBootSplash } from "../shared/portfolio-boot-splash";
 import Navbar from "./sections/navbar";
 import Hero from "./sections/hero";
 import Projects from "./sections/projects";
@@ -39,10 +39,11 @@ const PortfolioPage = () => {
           style={{ y: backgroundY, opacity: backgroundOpacity }}
           className="pointer-events-none absolute left-0 top-0 z-0 h-[150vh] w-full"
         >
-          {/* Sombras/Orbs blurreados gigantes de colores, estilo Modern 2026 Glassmorphism */}
-          <div className="absolute top-[10%] left-[5%] h-[500px] w-[500px] rounded-full bg-blue-500/50 blur-[200px]" />
-          <div className="absolute bottom-[20%] right-[10%] h-[400px] w-[400px] rounded-full bg-violet-500/50 blur-[200px]" />
-          <div className="absolute top-[40%] left-[30%] h-[300px] w-[300px] rounded-full bg-fuchsia-500/40 blur-[200px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(103,208,230,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(103,208,230,0.05)_1px,transparent_1px)] bg-[size:56px_56px]" />
+          <div className="absolute top-0 left-1/2 h-full w-px bg-cyan-200/10" />
+          <div className="absolute top-[18%] left-[8%] h-px w-72 bg-gradient-to-r from-cyan-200/0 via-cyan-200/25 to-cyan-200/0" />
+          <div className="absolute top-[42%] right-[12%] h-px w-80 bg-gradient-to-r from-emerald-200/0 via-emerald-200/20 to-emerald-200/0" />
+          <div className="absolute bottom-[18%] left-[22%] h-px w-64 bg-gradient-to-r from-[#F6EAC5]/0 via-[#F6EAC5]/15 to-[#F6EAC5]/0" />
         </motion.div>
         {/* ============================================================== */}
 
@@ -50,7 +51,7 @@ const PortfolioPage = () => {
         <BackgroundNoise className="z-50 opacity-10 mix-blend-overlay" />
 
         <div className="h-dvh snap-start relative z-10">
-          <IntroSplash />
+          <PortfolioBootSplash />
         </div>
 
         {/* Main encapsulado en z-10 para quedar sobre el Parallax */}

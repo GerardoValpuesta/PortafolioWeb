@@ -258,6 +258,15 @@
   to   { transform: translateX(0); }
 }
 
+@keyframes mission-scan {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @utility animate-marquee {
   animation: marquee-left 30s linear infinite;
 }

@@ -26,10 +26,9 @@ import type { SnakeGameHandle } from "@/components/snake-game";
 import { Eyes } from "../ui/robot-eyes";
 import SpeechBubble from "../ui/speech-bubble";
 import { Typewriter } from "../ui/typewriter";
-import { IntroSplash } from "../shared/intro-splash";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { useMotionValue, useSpring } from "motion/react";
+import { useMotionValue, useSpring, useTransform } from "motion/react";
 
 // dynamic imports
 const Particles = dynamic(() => import("@/components/ui/particles"), {
@@ -48,7 +47,7 @@ const SnakeGame = dynamic(() => import("@/components/snake-game"), {
 const MotionLink = motion.create(Link);
 const menuItems = ["portfolio", "play", "resume", "music"] as const;
 type MenuItem = (typeof menuItems)[number];
-type ConsoleNavigation = "main" | "music" | "play" | "portfolio";
+type ConsoleNavigation = "main" | "music" | "play";
 
 // Animation variants
 const containerVariants: Variants = {
@@ -125,7 +124,8 @@ const socialLinks = [
 const MainScreen: React.FC<{
   selectedItem: MenuItem;
   onItemSelect: (item: MenuItem) => void;
-}> = ({ selectedItem, onItemSelect }) => (
+  portalOpening?: boolean;
+}> = ({ selectedItem, onItemSelect, portalOpening = false }) => (
   <motion.div
     key="main"
     initial={{ opacity: 0 }}
@@ -139,13 +139,21 @@ const MainScreen: React.FC<{
       alt="console-background"
       src="/console-background.png"
       className="absolute inset-0 size-full object-cover object-center"
-    />
+  />
 
-    {/* Robot */}
-    <div className="absolute -bottom-2.5 left-4 z-20 w-28 max-sm:w-24">
-      <img src="/robot-pixelated.png" alt="robot" className="w-full" />
-      <Eyes
-        className="absolute top-[28%] left-[35%]"
+  {/* Robot */}
+  <motion.div
+    className="absolute -bottom-2.5 left-4 z-20 w-28 max-sm:w-24"
+    animate={
+      portalOpening
+        ? { x: [0, 18, 34], y: [0, -5, -2], rotate: [0, -2, 3] }
+        : { x: 0, y: 0, rotate: 0 }
+    }
+    transition={{ duration: 0.8, ease: "easeInOut" }}
+  >
+    <img src="/robot-pixelated.png" alt="robot" className="w-full" />
+    <Eyes
+      className="absolute top-[28%] left-[35%]"
         classes={{
           eye: "h-[12px] w-2.5 origin-center   max-sm:h-[10px] max-sm:w-2",
         }}
@@ -160,10 +168,24 @@ const MainScreen: React.FC<{
           },
         }}
       />
-    </div>
+    <motion.div
+      className="pointer-events-none absolute left-[82%] top-[35%] h-8 w-8 rounded-full border border-cyan-100/50 bg-cyan-100/15 blur-[1px]"
+      initial={false}
+      animate={
+        portalOpening
+          ? { opacity: [0, 0.8, 0.25], scale: [0.4, 1.7, 2.4] }
+          : { opacity: 0, scale: 0.4 }
+      }
+      transition={{ duration: 0.85, ease: "easeOut" }}
+    />
+  </motion.div>
 
-    {/* Speech Bubbles  */}
-    <div className="absolute top-1 right-2 inline-flex flex-col items-start max-md:right-1 max-md:!items-end max-sm:right-0.5 max-sm:text-xs">
+  {/* Speech Bubbles  */}
+    <motion.div
+      className="absolute top-1 right-2 inline-flex flex-col items-start max-md:right-1 max-md:!items-end max-sm:right-0.5 max-sm:text-xs"
+      animate={portalOpening ? { opacity: 0, y: -8, scale: 0.96 } : { opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
       <SpeechBubble className="text-left max-md:self-start" bg="#F6EAC5">
         {selectedItem === "music" ? (
           "Hm..? Play a music?"
@@ -215,7 +237,7 @@ const MainScreen: React.FC<{
           ))}
         </div>
       </SpeechBubble>
-    </div>
+    </motion.div>
 
     {/* Control Hints */}
     <motion.div
@@ -230,7 +252,56 @@ const MainScreen: React.FC<{
         <div className="text-foreground/20 mt-1">v1.0.0</div>
       </div>
     </motion.div>
+    <AnimatePresence>
+      {portalOpening && (
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-50 bg-cyan-100/10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0.22, 0.05] }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            className="absolute inset-y-0 left-0 w-full bg-[linear-gradient(90deg,transparent,rgba(246,234,197,0.45),transparent)] mix-blend-screen"
+            initial={{ x: "-120%" }}
+            animate={{ x: "120%" }}
+            transition={{ duration: 0.75, ease: "easeInOut" }}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   </motion.div>
+);
+
+const ConsoleWorldBackdrop = () => (
+  <div className="pointer-events-none absolute inset-0 z-30 overflow-hidden">
+    <div className="absolute left-1/2 top-[55%] h-[360px] w-[920px] -translate-x-1/2 rotate-x-[68deg] rounded-[50%] border border-cyan-200/10 bg-[radial-gradient(ellipse_at_center,rgba(103,208,230,0.11),transparent_62%)] blur-[1px] max-md:hidden" />
+    <div className="absolute left-1/2 top-[58%] h-[180px] w-[760px] -translate-x-1/2 rotate-x-[72deg] bg-[linear-gradient(rgba(103,208,230,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(103,208,230,0.09)_1px,transparent_1px)] bg-[size:34px_34px] opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] max-md:hidden" />
+
+    <motion.div
+      className="absolute left-[13%] top-[25%] h-10 w-16 border border-cyan-100/20 bg-cyan-100/[0.04] shadow-[0_0_24px_rgba(103,208,230,0.12)]"
+      animate={{ y: [0, -12, 0], rotate: [0, -2, 0] }}
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <div className="absolute inset-x-2 top-2 h-px bg-cyan-100/25" />
+      <div className="absolute bottom-2 left-2 h-1 w-7 bg-cyan-100/20" />
+    </motion.div>
+
+    <motion.div
+      className="absolute right-[14%] top-[34%] h-12 w-12 rotate-45 border border-emerald-100/20 bg-emerald-100/[0.04] shadow-[0_0_24px_rgba(52,211,153,0.1)]"
+      animate={{ y: [0, 10, 0], rotate: [45, 50, 45] }}
+      transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+    />
+
+    <motion.div
+      className="absolute bottom-[22%] left-[24%] h-8 w-24 border border-[#F6EAC5]/15 bg-[#F6EAC5]/[0.035]"
+      animate={{ x: [0, 16, 0], opacity: [0.28, 0.5, 0.28] }}
+      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+    />
+
+    <div className="absolute left-0 top-[18%] h-px w-[28vw] bg-gradient-to-r from-transparent via-cyan-100/15 to-transparent" />
+    <div className="absolute right-0 top-[67%] h-px w-[34vw] bg-gradient-to-r from-transparent via-emerald-100/14 to-transparent" />
+  </div>
 );
 
 const HomePage = () => {
@@ -238,6 +309,7 @@ const HomePage = () => {
     useState<ConsoleNavigation>("main");
   const [selectedItem, setSelectedItem] = useState<MenuItem>("portfolio");
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [isPortalOpening, setIsPortalOpening] = useState(false);
   const [song, setSong] = useState<Song | null>(null);
 
   // Mouse parallax tracking
@@ -245,6 +317,8 @@ const HomePage = () => {
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const consoleRotateY = useTransform(smoothX, [-18, 18], [-4, 4]);
+  const consoleRotateX = useTransform(smoothY, [-12, 12], [6, 0]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -261,6 +335,7 @@ const HomePage = () => {
 
   const snakeRef = useRef<SnakeGameHandle | null>(null);
   const consoleRef = useRef<HTMLDivElement | null>(null);
+  const portalTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isClient = useIsClient();
   const { resolvedTheme, setTheme } = useTheme();
@@ -371,6 +446,8 @@ const HomePage = () => {
 
   const handleDpadButtonClick = useCallback(
     (action: DpadButtonLabel) => {
+      if (isPortalOpening) return;
+
       if (currentConsoleNavigation === "play") {
         snakeRef.current?.handleDpad(action);
         return;
@@ -392,7 +469,7 @@ const HomePage = () => {
         setSelectedItem(nextItem);
       }
     },
-    [currentConsoleNavigation, selectedItem, getNextMenuItem, navigateSong],
+    [currentConsoleNavigation, selectedItem, getNextMenuItem, navigateSong, isPortalOpening],
   );
 
   const handleActionButtonClick = useCallback(
@@ -412,8 +489,13 @@ const HomePage = () => {
           music: () => setCurrentConsoleNavigation("music"),
           play: () => setCurrentConsoleNavigation("play"),
           portfolio: () => {
-            router.push("/portfolio");
-            // setCurrentConsoleNavigation("portfolio")
+            setIsPortalOpening(true);
+            if (portalTimeoutRef.current) {
+              clearTimeout(portalTimeoutRef.current);
+            }
+            portalTimeoutRef.current = setTimeout(() => {
+              router.push("/portfolio");
+            }, 950);
           },
           resume: () => {
             const resumeUrl = "/cv_gerardo_spanishR.pdf";
@@ -426,6 +508,15 @@ const HomePage = () => {
       }
 
       if (action === "B") {
+        if (isPortalOpening) {
+          setIsPortalOpening(false);
+          setCurrentConsoleNavigation("main");
+          if (portalTimeoutRef.current) {
+            clearTimeout(portalTimeoutRef.current);
+          }
+          return;
+        }
+
         if (currentConsoleNavigation === "music" && musicPlaylist) {
           setIsMusicPlaying(false);
           setSong(getRandomElement(musicPlaylist));
@@ -434,8 +525,16 @@ const HomePage = () => {
         setCurrentConsoleNavigation("main");
       }
     },
-    [currentConsoleNavigation, selectedItem, musicPlaylist],
+    [currentConsoleNavigation, selectedItem, musicPlaylist, router, isPortalOpening],
   );
+
+  useEffect(() => {
+    return () => {
+      if (portalTimeoutRef.current) {
+        clearTimeout(portalTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const renderConsoleScreen = useCallback(() => {
     const screenConfig = {
@@ -457,12 +556,11 @@ const HomePage = () => {
         />
       ),
       play: <SnakeGame ref={snakeRef} className="absolute inset-0" />,
-      // TODO
-      portfolio: <IntroSplash />,
       main: (
         <MainScreen
           selectedItem={selectedItem}
           onItemSelect={setSelectedItem}
+          portalOpening={isPortalOpening}
         />
       ),
     };
@@ -477,16 +575,22 @@ const HomePage = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.3 }}
-          className={cn("size-full", {
-            "@container absolute top-0 left-0":
-              currentConsoleNavigation === "portfolio",
-          })}
+          className="size-full"
         >
           {content}
         </motion.div>
       </AnimatePresence>
     );
-  }, [currentConsoleNavigation, selectedItem, song, isMusicPlaying]);
+  }, [
+    currentConsoleNavigation,
+    selectedItem,
+    song,
+    isMusicPlaying,
+    navigateSong,
+    songIndex,
+    musicPlaylist?.length,
+    isPortalOpening,
+  ]);
 
   return (
     <main className="no-scrollbar font-pixelify grid-center border-border text-foreground bg-background relative size-full h-dvh overflow-hidden [--background:white] [--border:var(--color-foreground)] dark:[--background:#0B0B0F] dark:[--border:#F6EAC5] dark:[--foreground:#F6EAC5]">
@@ -578,11 +682,13 @@ const HomePage = () => {
         />
       </div>
 
+      <ConsoleWorldBackdrop />
+
       <motion.div
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="relative z-50"
+        className="relative z-50 [perspective:1200px]"
       >
         {/* Breathing animation wrapper */}
         <motion.div
@@ -592,7 +698,24 @@ const HomePage = () => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
+          style={{
+            rotateX: consoleRotateX,
+            rotateY: consoleRotateY,
+            transformStyle: "preserve-3d",
+          }}
+          className="relative"
         >
+          <motion.div
+            className="pointer-events-none absolute left-1/2 top-[88%] -z-10 h-24 w-[72%] -translate-x-1/2 rounded-full bg-black/55 blur-3xl"
+            style={{
+              x: smoothX,
+              y: smoothY,
+            }}
+            animate={{ opacity: [0.32, 0.48, 0.32], scaleX: [0.94, 1.02, 0.94] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_50%_18%,rgba(103,208,230,0.18),transparent_42%)] blur-2xl" />
+          <div className="pointer-events-none absolute inset-0 -z-10 translate-x-4 translate-y-6 rounded-3xl bg-[#050609] opacity-70 shadow-[18px_28px_60px_rgba(0,0,0,0.5)]" />
           <PlaydateConsole
             onDpadButtonClick={handleDpadButtonClick}
             onActionButtionClick={handleActionButtonClick}

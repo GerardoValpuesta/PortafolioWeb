@@ -3,61 +3,48 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Robot } from "@/components/ui/robot";
-import { Eyes } from "@/components/ui/robot-eyes";
 import SpeechBubble from "@/components/ui/speech-bubble";
 import { X } from "lucide-react";
-import { useLocalStorage } from "@uidotdev/usehooks";
 import dynamic from "next/dynamic";
+import { AnimatedRobot } from "@/components/ui/animated-robot";
 
 const FloatingAvatar = () => {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
-  const [isDismissed, setIsDismissed] = useLocalStorage(
-    "floating_avatar_dismissed",
-    false,
-  );
+  const [isDismissedThisView, setIsDismissedThisView] = useState(false);
 
   useEffect(() => {
     if (!pathname.startsWith("/portfolio")) {
       setIsVisible(false);
+      setIsDismissedThisView(false);
       return;
     }
+
     const el = document.querySelector(".portfolio-container");
     const handleScroll = () => {
       const scrolled = el?.scrollTop ?? 0;
-
-      if (!isVisible) {
-        setIsVisible(scrolled > window.innerHeight * 2 && !isDismissed);
-      }
+      setIsVisible(scrolled > window.innerHeight * 0.7 && !isDismissedThisView);
     };
 
     el?.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => el?.removeEventListener("scroll", handleScroll);
-  }, [isDismissed, pathname, isVisible]);
+  }, [isDismissedThisView, pathname]);
 
   const handleDismiss = () => {
-    setIsDismissed(true);
+    setIsDismissedThisView(true);
     setIsVisible(false);
   };
 
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div className="fixed bottom-36 -left-40 z-50 sm:-left-46 md:-left-58">
+        <motion.div className="pointer-events-none fixed bottom-32 -left-36 z-50 sm:-left-42 md:-left-48">
           <div className="relative flex items-end gap-4">
-            {/* Robot  */}
             <motion.div
               initial={{ x: -20, rotate: 0 }}
-              animate={{
-                x: 0,
-                rotate: 32,
-              }}
-              exit={{
-                x: -20,
-                rotate: 0,
-              }}
+              animate={{ x: 0, rotate: 32 }}
+              exit={{ x: -20, rotate: 0 }}
               transition={{
                 x: {
                   type: "spring",
@@ -68,26 +55,18 @@ const FloatingAvatar = () => {
               }}
               className="relative z-10 origin-bottom-left"
             >
-              <Robot className="w-64 sm:w-72 md:w-92">
-                <div className="flex h-full w-full items-center justify-center bg-[#1a1a1a]">
-                  <Eyes
-                    size="lg"
-                    eyeColor="#fff"
-                    lookAround={{
-                      enabled: true,
-                      duration: 6,
-                    }}
-                    glow={{
-                      level: 2,
-                      color: "#fff",
-                      animated: true,
-                    }}
-                  />
-                </div>
-              </Robot>
+              <AnimatedRobot
+                variant="smooth"
+                mood="idle"
+                eyeColor="#ffffff"
+                eyeSize="md"
+                eyeClassName="md:h-[16px] md:w-3.5"
+                eyeContainerClassName="md:gap-8"
+                showScreenText={false}
+                className="w-[15rem] sm:w-[17rem] md:w-[20rem]"
+              />
             </motion.div>
 
-            {/* Speech Bubble  */}
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -98,13 +77,13 @@ const FloatingAvatar = () => {
                 stiffness: 300,
                 damping: 20,
               }}
-              className="absolute top-20 left-58 z-20 sm:top-28 sm:left-64 md:top-36 md:left-80"
+              className="pointer-events-auto absolute top-[4.5rem] left-[13.5rem] z-20 sm:top-[6rem] sm:left-[15rem] md:top-[7.5rem] md:left-[18rem]"
             >
               <SpeechBubble
                 direction="left"
-                borderColor={"#000000"}
-                bg={"#fff"}
-                textColor={"#000000"}
+                borderColor="#000000"
+                bg="#fff"
+                textColor="#000000"
                 className="max-w-[280px] min-w-[240px]"
               >
                 <p className="mb-4 text-sm leading-relaxed font-bold">
