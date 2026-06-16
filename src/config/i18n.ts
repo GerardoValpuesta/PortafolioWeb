@@ -40,7 +40,7 @@ export const translations = {
 
     projects: [
       {
-        title: "Case Study: StudioKin (Next-Gen Digital Agency)",
+        title: "Case Study: StudioKin (Creative Digital Agency)",
         description:
           "Problem: StudioKin, a creative and development agency, needed a highly interactive portfolio platform that displays high-fidelity designs and hosts functional interactive client demos. Solution: Developed a state-of-the-art Next.js web application utilizing dynamic transitions and modular route assets to showcase live client demo sites seamlessly. Result: Provided a premium agency presentation that drives user engagement and demonstrates real-world software capabilities.",
         liveLabel: "Visit Site",
