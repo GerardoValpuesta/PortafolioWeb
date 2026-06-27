@@ -31,7 +31,23 @@ const Noise: React.FC<NoiseProps> = ({
     let frame = 0;
     let animationId: number;
 
-    const canvasSize = 1024;
+    const canvasSize = patternSize || 250;
+    const framesCount = 4;
+    const noiseFrames: ImageData[] = [];
+
+    // Pre-generate noise to avoid massive CPU load on every frame
+    for (let f = 0; f < framesCount; f++) {
+      const imageData = ctx.createImageData(canvasSize, canvasSize);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const value = Math.random() * 255;
+        data[i] = value;
+        data[i + 1] = value;
+        data[i + 2] = value;
+        data[i + 3] = patternAlpha;
+      }
+      noiseFrames.push(imageData);
+    }
 
     const resize = () => {
       if (!canvas) return;
@@ -42,24 +58,10 @@ const Noise: React.FC<NoiseProps> = ({
       canvas.style.height = '100dvh';
     };
 
-    const drawGrain = () => {
-      const imageData = ctx.createImageData(canvasSize, canvasSize);
-      const data = imageData.data;
-
-      for (let i = 0; i < data.length; i += 4) {
-        const value = Math.random() * 255;
-        data[i] = value;
-        data[i + 1] = value;
-        data[i + 2] = value;
-        data[i + 3] = patternAlpha;
-      }
-
-      ctx.putImageData(imageData, 0, 0);
-    };
-
     const loop = () => {
       if (frame % patternRefreshInterval === 0) {
-        drawGrain();
+        const currentFrame = Math.floor(frame / patternRefreshInterval) % framesCount;
+        ctx.putImageData(noiseFrames[currentFrame], 0, 0);
       }
       frame++;
       animationId = window.requestAnimationFrame(loop);
