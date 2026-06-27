@@ -6,17 +6,12 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 import { Typewriter } from "@/components/ui/typewriter";
 import { clientApi } from "@/lib/client-api";
 import { cn } from "@/lib/utils";
-import { useQuery } from "@tanstack/react-query";
 import { ArrowDownSquareIcon, ArrowUpRight, Download } from "lucide-react";
 import { motion } from "motion/react";
 
 import { useTranslation } from "@/hooks/use-translation";
 
 const Hero = () => {
-  const { data: unamiStats } = useQuery({
-    queryKey: ["pageViews"],
-    queryFn: clientApi.views.getStats,
-  });
   const t = useTranslation();
 
   return (
@@ -150,9 +145,9 @@ const Hero = () => {
 
       {/*  Stats Grid */}
       <div className="relative">
-        <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-5">
+        <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-4">
           {[
-            { label: t.hero.stats.views, value: unamiStats?.data?.pageviews ?? 0 },
+
             { label: t.hero.stats.years, value: 4 },
             { label: t.hero.stats.products, value: 16 },
             { label: t.hero.stats.companies, value: 8 },
