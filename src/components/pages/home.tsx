@@ -644,28 +644,30 @@ const HomePage = () => {
         <div className="absolute inset-0 z-10 pointer-events-none">
           <motion.div
             style={{ x: smoothX, y: smoothY }}
-            className="absolute inset-0 will-change-transform"
+            className="absolute inset-0 will-change-transform max-md:hidden"
           >
-            <Particles
-              particleColors={particleColors}
-              particleCount={
-                screenSize.lessThanOrEqual("md")
-                  ? 150
-                  : screenSize.lessThanOrEqual("lg")
-                    ? 200
-                    : 300
-              }
-              particleSpread={10}
-              speed={0.1}
-              particleBaseSize={100}
-              moveParticlesOnHover={false}
-              alphaParticles={true}
-              disableRotation={true}
-            />
+            {isClient && !screenSize.lessThanOrEqual("md") && (
+              <Particles
+                particleColors={particleColors}
+                particleCount={
+                  screenSize.lessThanOrEqual("md")
+                    ? 150
+                    : screenSize.lessThanOrEqual("lg")
+                      ? 200
+                      : 300
+                }
+                particleSpread={10}
+                speed={0.1}
+                particleBaseSize={100}
+                moveParticlesOnHover={false}
+                alphaParticles={true}
+                disableRotation={true}
+              />
+            )}
           </motion.div>
         </div>
 
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.6))] opacity-20 mix-blend-multiply dark:bg-[radial-gradient(ellipse_at_center,transparent_65%,rgba(0,0,0,0.8))] dark:mix-blend-normal" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.6))] opacity-20 md:mix-blend-multiply dark:bg-[radial-gradient(ellipse_at_center,transparent_65%,rgba(0,0,0,0.8))] dark:mix-blend-normal" />
 
         <div
           className="absolute inset-0 z-0 opacity-100 dark:opacity-5"
@@ -710,7 +712,7 @@ const HomePage = () => {
           className="relative"
         >
           <motion.div
-            className="pointer-events-none absolute left-1/2 top-[88%] -z-10 h-24 w-[72%] -translate-x-1/2 rounded-full bg-black/55 blur-3xl"
+            className="pointer-events-none absolute left-1/2 top-[88%] -z-10 h-24 w-[72%] -translate-x-1/2 rounded-full bg-black/55 blur-xl md:blur-3xl"
             style={{
               x: smoothX,
               y: smoothY,
