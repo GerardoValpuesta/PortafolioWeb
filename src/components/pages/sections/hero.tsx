@@ -151,7 +151,7 @@ const Hero = () => {
             { label: t.hero.stats.years, value: 4 },
             { label: t.hero.stats.products, value: 16 },
             { label: t.hero.stats.companies, value: 8 },
-            { label: t.hero.stats.automations, value: 10000 },
+            { label: t.hero.stats.projectsDelivered, value: 24 },
           ].map((stat, i, arr) => (
             <div
               key={i}
