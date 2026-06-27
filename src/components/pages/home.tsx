@@ -213,25 +213,29 @@ const MainScreen: React.FC<{
               className="inline-flex cursor-pointer items-center gap-0.5"
               onClick={() => onItemSelect(item)}
             >
-              {selectedItem === item && (
-                <motion.svg
-                  fill="#000000"
-                  className="-mb-0.5 size-4"
-                  viewBox="0 0 22 22"
-                  xmlns="http://www.w3.org/2000/svg"
-                  id="memory-chevron-right"
-                  initial={{ x: -10, opacity: 0, scale: 0.8 }}
-                  animate={{ x: 0, opacity: 1, scale: 1 }}
-                  exit={{ x: -10, opacity: 0, scale: 0.8 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 20,
-                  }}
-                >
-                  <path d="M10 6V5H9V4H7V6H8V7H9V8H10V9H11V10H12V12H11V13H10V14H9V15H8V16H7V18H9V17H10V16H11V15H12V14H13V13H14V12H15V10H14V9H13V8H12V7H11V6" />
-                </motion.svg>
-              )}
+              <div className="flex h-4 w-4 shrink-0 items-center justify-center">
+                <AnimatePresence mode="wait">
+                  {selectedItem === item && (
+                    <motion.svg
+                      fill="#000000"
+                      className="-mb-0.5 size-4"
+                      viewBox="0 0 22 22"
+                      xmlns="http://www.w3.org/2000/svg"
+                      id="memory-chevron-right"
+                      initial={{ x: -10, opacity: 0, scale: 0.8 }}
+                      animate={{ x: 0, opacity: 1, scale: 1 }}
+                      exit={{ x: -10, opacity: 0, scale: 0.8 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                    >
+                      <path d="M10 6V5H9V4H7V6H8V7H9V8H10V9H11V10H12V12H11V13H10V14H9V15H8V16H7V18H9V17H10V16H11V15H12V14H13V13H14V12H15V10H14V9H13V8H12V7H11V6" />
+                    </motion.svg>
+                  )}
+                </AnimatePresence>
+              </div>
               <span>{item}</span>
             </span>
           ))}

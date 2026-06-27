@@ -121,7 +121,13 @@ const Particles: React.FC<ParticlesProps> = ({
     const container = containerRef.current;
     if (!container) return;
 
-    const renderer = new Renderer({ depth: false, alpha: true });
+    let renderer;
+    try {
+      renderer = new Renderer({ depth: false, alpha: true });
+    } catch (e) {
+      console.error('WebGL no soportado o límite de contextos alcanzado', e);
+      return;
+    }
     const gl = renderer.gl;
     container.appendChild(gl.canvas);
     gl.clearColor(0, 0, 0, 0);
@@ -232,6 +238,8 @@ const Particles: React.FC<ParticlesProps> = ({
       if (container.contains(gl.canvas)) {
         container.removeChild(gl.canvas);
       }
+      const loseContext = gl.getExtension('WEBGL_lose_context');
+      if (loseContext) loseContext.loseContext();
     };
   }, [
     particleCount,
