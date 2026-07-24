@@ -502,7 +502,7 @@ const HomePage = () => {
             }, 950);
           },
           resume: () => {
-            const resumeUrl = "/cv_gerardo_spanishR.pdf";
+            const resumeUrl = "/Gerardo_Nunez_Valpuesta_CV.pdf";
             window.open(resumeUrl, "_blank");
           },
         };

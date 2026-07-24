@@ -2,15 +2,15 @@
 
 import { motion } from "motion/react";
 import SectionHeading from "@/components/section-heading";
-import { Globe, Bot, Zap, Code2, ArrowUpRight, Cpu, Smartphone } from "lucide-react";
+import { Bot, Zap, Code2, ArrowUpRight, Smartphone, Database, Server, Sparkles, Layout } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 
 // Only non-translatable data (icons, accent styles)
 const SERVICES_META = [
     {
         icon: Code2,
-        badgeIcon: Code2,
-        badgeLabel: "Core",
+        badgeIcon: Layout,
+        badgeLabel: "Frontend",
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(59,130,246,0.25)]",
             border: "border-blue-500/20 hover:border-blue-500/50",
@@ -21,9 +21,9 @@ const SERVICES_META = [
         },
     },
     {
-        icon: Bot,
-        badgeIcon: Cpu,
-        badgeLabel: "AI",
+        icon: Database,
+        badgeIcon: Server,
+        badgeLabel: "Backend",
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(34,197,94,0.25)]",
             border: "border-green-500/20 hover:border-green-500/50",
@@ -34,9 +34,9 @@ const SERVICES_META = [
         },
     },
     {
-        icon: Globe,
-        badgeIcon: Smartphone,
-        badgeLabel: "Mobile",
+        icon: Bot,
+        badgeIcon: Sparkles,
+        badgeLabel: "AI Agents",
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(139,92,246,0.25)]",
             border: "border-violet-500/20 hover:border-violet-500/50",
@@ -48,8 +48,8 @@ const SERVICES_META = [
     },
     {
         icon: Zap,
-        badgeIcon: Zap,
-        badgeLabel: "Perf",
+        badgeIcon: Smartphone,
+        badgeLabel: "Mobile / DevOps",
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(245,158,11,0.25)]",
             border: "border-amber-500/20 hover:border-amber-500/50",

@@ -1,22 +1,22 @@
 export const translations = {
   en: {
     hero: {
-      badge: "Strategic Consulting",
-      subtitle: "Software Architect · AI Automation · Mobile",
+      badge: "Full-Stack & AI Engineering",
+      subtitle: "Full-Stack Engineer · Angular, SaaS & AI Automation",
       description:
-        "I transform operational inefficiency into automated, scalable systems. Beyond writing code, I engineer technological engines that cut costs, eliminate manual workflows, and scale your business.",
-      ctaPrimary: "Book a Consultation",
-      ctaSecondary: "Case Studies",
-      availability: "Independent Consultant",
-      location: "Mexico · Global Reach",
+        "Full-Stack Engineer with 4+ years of experience building enterprise SaaS platforms, ERP modules, analytics dashboards, mobile applications, and AI automations. Specialized in Angular, TypeScript, Node.js, Svelte, PostgreSQL, and Docker; focused on high performance, maintainable architecture, and measurable business ROI.",
+      ctaPrimary: "Contact via WhatsApp",
+      ctaSecondary: "Download CV",
+      availability: "Available for Projects",
+      location: "Mexico (GMT-6) · Remote / Hybrid",
       langEs: "Spanish Native",
-      langEn: "English Working Proficient",
+      langEn: "English B1",
       stats: {
         views: "Network Impact",
-        years: "Years Architecting",
+        years: "Years of Experience",
         products: "Systems in Production",
-        companies: "Companies Optimized",
-        projectsDelivered: "Shipped Projects",
+        companies: "Companies Scaled",
+        projectsDelivered: "Projects Delivered",
       },
       scrollDown: "VIEW CASE STUDIES",
     },
@@ -25,24 +25,35 @@ export const translations = {
       heading1: "I Solve Problems,",
       heading2: "Not Just Write Code",
       robotGreeting: "Hey👋",
-      p1Start: "Looking for a technical architect who understands your business model, communicates clearly, and ships without excuses?",
-      p1End: "That's my specialty.",
-      p2Start: "I take full ownership of the project — from database architecture down to the last pixel of the UI. No external dependencies, no miscommunications.",
-      p2End: "My core stack: Svelte, React Native, TypeScript, and Node.js.",
-      p3Start: "I also build AI automation pipelines (N8N, MCP, LLMs) that turn weeks of manual admin work into minutes",
-      p3End: "— perfect for companies that need to scale without multiplying their payroll.",
-      cta: "Book a Discovery Call",
-      profileBadgeAvailable: "Accepting Clients",
+      p1Start: "Looking for a full-stack engineer who understands your business goals, communicates clearly, and delivers production-grade software on schedule?",
+      p1End: "That's my core focus.",
+      p2Start: "I take end-to-end ownership — from database architecture and backend APIs to polished, accessible user interfaces. No handoff friction, no excuses.",
+      p2End: "My core stack: Angular, TypeScript, Node.js, Svelte, PostgreSQL, and Docker.",
+      p3Start: "I also build autonomous AI agents and automation pipelines (n8n, MCP, LLMs) that eliminate manual operational overhead",
+      p3End: "— allowing companies to scale capacity without scaling payroll.",
+      cta: "Schedule a Call",
+      profileBadgeAvailable: "Open for Work",
       profileBadgeNotAvailable: "Fully Booked",
-      profileYears: "4+ Years",
-      profileStack: "Architecture + AI",
+      profileYears: "4+ Years Exp",
+      profileStack: "Full-Stack + AI",
     },
 
     projects: [
       {
-        title: "Case Study: StudioKin (Creative Digital Agency)",
+        title: "Autonomous SAT Tax AI Agent & Copilot",
         description:
-          "Problem: StudioKin, a creative and development agency, needed a highly interactive portfolio platform that displays high-fidelity designs and hosts functional interactive client demos. Solution: Developed a state-of-the-art Next.js web application utilizing dynamic transitions and modular route assets to showcase live client demo sites seamlessly. Result: Provided a premium agency presentation that drives user engagement and demonstrates real-world software capabilities.",
+          "Problem: Accounting teams wasted dozens of hours manually managing CIEC/e.Firma logins, resolving CAPTCHAs, and downloading tax invoices (CFDI). Solution: Engineered a multi-company, multi-RFC autonomous desktop AI agent built with Tauri/Svelte that solves CAPTCHAs via AI, bulk-downloads tax vouchers, and generates accounting packages. Integrated an AI Copilot to detect tax risks, assist in bank reconciliation, and generate executive monthly closing reports. Result: Reduced processing time by 95%, from days of manual labor to 5 minutes per session.",
+        liveLabel: "Case Study",
+      },
+      {
+        title: "AI WhatsApp CRM & Lead Automation",
+        description:
+          "Problem: Businesses struggled with delayed response times and manual lead tracking on WhatsApp. Solution: Architected and validated an AI-powered WhatsApp CRM designed to centralize conversations, automate initial qualification, and execute conversational follow-up flows with potential clients. Result: Streamlined sales pipeline responses and increased lead conversion rates.",
+      },
+      {
+        title: "Case Study: StudioKin (Digital Creative Agency)",
+        description:
+          "Problem: StudioKin needed a high-performance interactive portfolio platform to showcase high-fidelity design work and host functional client web demos. Solution: Built a Next.js web application with modular route assets and dynamic transitions for seamless live demo embeds. Result: Delivered an agency showcase driving user conversion and demonstrating software capabilities.",
         liveLabel: "Visit Site",
         demos: [
           { label: "Mechanic Demo", url: "https://studiokin.com.mx/demo-mecanico.html" },
@@ -51,34 +62,29 @@ export const translations = {
         ],
       },
       {
-        title: "Sharit - Bolddy (Enterprise Mobile Architecture)",
+        title: "Sharit - Bolddy (Sports Social Network App)",
         description:
-          "Problem: Needed a scalable, real-time social ecosystem capable of handling complex geolocation and gamification. Solution: Built a cross-platform mobile architecture from scratch with React Native, WebSockets, and advanced state management. Result: Delivered a production-ready application primed for App Store launch.",
-      },
-      {
-        title: "Case Study: SAT Tax Automation AI",
-        description:
-          "Problem: Accounting firms wasted countless hours manually downloading tax invoices. Solution: Engineered a desktop AI agent that automatically resolves SAT portal CAPTCHAs and bulk-downloads documents using e.Firma. Result: Reduced processing time by 95%, from days of manual labor to 5 minutes per session.",
+          "Problem: Sports enthusiasts lacked a dedicated platform to discover, organize, and join local athletic activities. Solution: Built a full-stack cross-platform mobile app using React Native, Expo, WebSockets, JWT authentication, push notifications, and gamification. Result: Delivered a production-ready mobile application prepared for App Store release.",
       },
       {
         title: "Case Study: TersaNet (Real-Time Logistics)",
         description:
-          "Problem: B2B sales teams suffered from slow, manual quoting systems causing lost deals. Solution: Developed a real-time quoting and inventory management system with instant PDF generation. Result: Accelerated the sales cycle and eliminated pricing errors across wholesale and retail branches.",
+          "Problem: B2B sales teams suffered from slow, manual quoting systems causing lost deals. Solution: Developed a real-time multi-branch quoting and inventory management system with instant PDF generation. Result: Accelerated the sales cycle and eliminated pricing errors across wholesale and retail branches.",
       },
       {
-        title: "Case Study: AI Automation Workflows (N8N & MCP)",
+        title: "Case Study: AI Automation Pipelines (n8n & MCP)",
         description:
-          "Problem: Operations teams were losing weeks to repetitive manual data entry and workflow management. Solution: Architected enterprise automation pipelines using N8N, MCP, and LLMs (GPT-4/Claude) for invoice processing, notifications, and CRM sync. Result: Eliminated 80% of manual ops work at XAMAI, scaling capacity without adding headcount.",
+          "Problem: Operations teams lost weeks to repetitive data entry and manual CRM updates. Solution: Architected enterprise automation pipelines using n8n, MCP, and LLMs (GPT-4, Claude, Gemini) for invoice processing, notifications, and CRM sync. Result: Eliminated up to 80% of manual operations work at XAMAI.",
       },
       {
-        title: "Case Study: XAMAI Client Portal",
+        title: "Case Study: XAMAI Client Portal 2.0",
         description:
-          "Problem: Legacy client portal had terrible UX and slow load times, driving up support tickets. Solution: Complete architectural rebuild using Svelte and an optimized component system. Result: 90% increase in user satisfaction scores and an 85% reduction in initial load times within the first month.",
+          "Problem: Legacy portal suffered from poor UX and slow load times, driving up support tickets. Solution: Rebuilt portal architecture using Svelte with optimized component caching and lazy loading. Result: Achieved a 90% boost in user satisfaction and an 85% reduction in initial load times.",
       },
       {
-        title: "Case Study: Stan Semper Field Reports",
+        title: "Case Study: Stan Semper Field Reports App",
         description:
-          "Problem: Field engineers lost hours compiling manual reports with photos and GPS data. Solution: Built an offline-first Android app that captures localized data and syncs automatically to Firebase. Result: Instant, automated PDF report generation, completely removing administrative overhead for field workers.",
+          "Problem: Field technicians lost hours compiling manual reports with photos and GPS data. Solution: Developed an offline-first Android app with Firebase sync, automated PDF generation, photo capture, and serial number tracking. Result: Won the C5 government tender in 2021 and eliminated administrative field overhead.",
       },
     ],
 
@@ -92,7 +98,7 @@ export const translations = {
 
     experience: {
       sectionH2: "Professional Track",
-      descriptor: "4+ years shipping production software that moves real business metrics",
+      descriptor: "4+ years shipping enterprise software and measurable business impact",
       activeBadge: "Active",
       inDevBadge: "🚧 In development",
       typeLabels: {
@@ -104,88 +110,85 @@ export const translations = {
       entries: [
         {
           description:
-            "Building and maintaining enterprise SaaS platforms, ERPs, and analytics dashboards for mid-market clients. Independently deliver AI automation projects (N8N, MCP) for external clients outside work commitments.",
+            "Design and development of enterprise SaaS platforms, ERP modules, and analytical dashboards for mid-market clients. Deliver AI automation solutions and AI agents (n8n, MCP, LLMs) for external projects.",
           achievements: [
-            "Architected reporting module handling 1M+ records with sub-3s load times",
-            "Cut initial load time by 85% via lazy loading and code splitting",
-            "Implemented granular role and permissions system across multiple platforms",
-            "Led Angular 12 → 17 migration with zero downtime and no user-facing regressions",
-            "Achieved 90% user satisfaction improvement on XAMAI Client Portal 2.0",
+            "Architected a high-throughput reporting module processing 1M+ records with sub-3s query response times",
+            "Reduced initial page load time by 85% via lazy loading, code splitting, and asset optimization",
+            "Spearheaded Angular 12 → Angular 17 framework migration with zero downtime or user regression",
+            "Implemented granular Role-Based Access Control (RBAC) across multi-tenant enterprise platforms",
+            "Contributed to a 90% increase in user satisfaction following the XAMAI Client Portal 2.0 overhaul",
+            "Eliminated up to 80% of repetitive operational tasks by designing n8n automation pipelines",
           ],
         },
         {
           description:
-            "Built admin interfaces, high-performance landing pages, and real-time dashboards for e-commerce and logistics clients.",
+            "Development of administrative interfaces, high-performance landing pages, Android field apps, and real-time logistics dashboards.",
           achievements: [
-            "Delivered 3 landing pages scoring 95+ on Lighthouse across all categories",
-            "Built real-time logistics dashboard using WebSockets",
-            "Integrated payment APIs: Stripe and OpenPay",
+            "Constructed 3 client landing pages scoring 95+ across all Lighthouse audit categories",
+            "Engineered an offline-first Android app for field inspection reports with photo & GPS tracking (Winning project for the C5 tender in 2021)",
+            "Integrated REST APIs, Stripe & OpenPay payment gateways, and real-time logistics dashboards via WebSockets",
           ],
         },
         {
           description:
-            "Independent full-stack mobile app built entirely outside work commitments — from architecture design to App Store submission. Full ownership of backend, mobile app, and infrastructure.",
+            "Independent full-stack mobile app built from scratch — from system architecture to mobile deployment. Complete ownership of backend, mobile frontend, and infrastructure.",
           achievements: [
-            "Built complete fullstack architecture from zero: backend + mobile app",
-            "Shipped auth system, social feed, profiles, and push notifications (iOS + Android)",
-            "Currently in active development — App Store launch upcoming",
+            "Engineered complete full-stack architecture: Node.js API + React Native mobile client",
+            "Implemented JWT authentication, social feed, user profiles, geolocation, and push notifications",
+            "In active deployment preparation for App Store and Google Play launch",
           ],
         },
       ],
     },
 
     services: {
-      sectionH2: "What can I build for you?",
+      sectionH2: "Core Competencies & Services",
       subtitle:
-        "From architecture design to production deploy — I deliver complete, scalable products with measurable impact.",
-      hoverCta: "Let's Talk",
+        "From technical architecture to production deployment — delivering scalable products with verified business ROI.",
+      hoverCta: "Get in Touch",
       items: [
         {
-          title: "Fullstack Web Development",
+          title: "Full-Stack & Frontend Development",
           description:
-            "High-performance web apps from architecture to deploy. Specialized in Angular, Svelte, and Node.js with robust RESTful APIs and seamless frontend integration.",
+            "High-performance web applications built on modern frameworks. Specialized in Angular, TypeScript, Svelte, and React with responsive UI architecture.",
           deliverables: [
-            "Reduced load time 85% on XAMAI's reporting platform.",
-            "SPAs and SSR with Angular / Next.js",
-            "REST and GraphQL APIs with Node.js",
-            "PostgreSQL / MongoDB databases",
-            "Deploy on Vercel, Railway, or Docker",
+            "Angular 12 → 17 migration & architecture",
+            "SPAs and SSR with Svelte / Next.js / Angular",
+            "Lazy loading, code splitting & Core Web Vitals",
+            "Tailwind CSS & RxJS state management",
           ],
         },
         {
-          title: "AI Automation",
+          title: "Backend & Data Architecture",
           description:
-            "Smart workflows that eliminate repetitive tasks and unlock your team's capacity — built with N8N, MCP, and LLMs including GPT-4, Claude, and Gemini.",
+            "Scalable server-side systems, RESTful APIs, and robust database models handling high data throughput with low latency.",
           deliverables: [
-            "Cut 80% of manual ops work at XAMAI with N8N pipelines.",
-            "N8N pipelines for CRM, ERP, notifications",
-            "LLM integration (GPT, Claude, Gemini)",
-            "MCP servers for advanced automation",
-            "WhatsApp and Telegram bots",
+            "Node.js & Express RESTful API services",
+            "PostgreSQL, SQL Server & MongoDB design",
+            "JWT Authentication & Granular RBAC permissions",
+            "SQLite, Firebase & WebSocket integrations",
           ],
         },
         {
-          title: "Mobile Apps",
+          title: "AI Agents & Automation (LLMOps)",
           description:
-            "Cross-platform iOS and Android apps with a single codebase and native-quality experience — from prototype to App Store submission.",
+            "Intelligent workflows and autonomous AI agents that eliminate manual overhead using n8n, MCP, and leading LLMs.",
           deliverables: [
-            "Currently building Sharit, a full-stack sports social network.",
-            "React Native / Expo cross-platform apps",
-            "API and backend integration",
-            "Push Notifications and authentication",
-            "App Store and Google Play submission",
+            "n8n pipelines for CRM, ERP & invoice processing",
+            "Model Context Protocol (MCP) servers & AI Agents",
+            "GPT-4, Claude & Gemini API integration",
+            "WhatsApp & Telegram AI conversational bots",
           ],
         },
         {
-          title: "Performance Optimization",
+          title: "DevOps, Mobile & Web Performance",
           description:
-            "Audit and improve your existing app: Core Web Vitals, technical SEO, and accessibility — targeting 90+ across all Lighthouse categories.",
+            "Deployment pipelines, cross-platform mobile apps, and deep performance auditing to achieve 90+ Lighthouse scores.",
           deliverables: [
-            "95+ Lighthouse scores delivered across 3 client landing pages.",
-            "Core Web Vitals audit",
-            "Code splitting and lazy loading",
-            "Image and asset optimization",
-            "Technical SEO and meta tag improvements",
+            "React Native / Expo cross-platform mobile apps",
+            "Docker, Vercel & Railway container deployments",
+            "Playwright testing & Tauri desktop applications",
+            "Web Performance Optimization & Technical SEO",
           ],
         },
       ],
@@ -201,19 +204,19 @@ export const translations = {
 
   es: {
     hero: {
-      badge: "Consultoría Estratégica",
-      subtitle: "Arquitecto de Software · Automatización IA · Mobile",
+      badge: "Ingeniería Full-Stack & Automatización IA",
+      subtitle: "Full-Stack Engineer · Angular, SaaS & AI Automation",
       description:
-        "Transformo la ineficiencia operativa de tu empresa en sistemas automatizados y escalables. Más que escribir código, diseño motores tecnológicos que reducen costos, eliminan procesos manuales y escalan tu negocio.",
-      ctaPrimary: "Agendar Consultoría",
-      ctaSecondary: "Casos de Éxito",
-      availability: "Consultor Independiente",
-      location: "México · Cobertura Global",
+        "Ingeniero Full-Stack con más de 4 años de experiencia desarrollando plataformas SaaS empresariales, módulos ERP, paneles analíticos, aplicaciones móviles y soluciones de automatización con IA. Especializado en Angular, TypeScript, Node.js, Svelte, PostgreSQL y Docker; enfocado en rendimiento, arquitectura mantenible y resultados de negocio medibles.",
+      ctaPrimary: "Contactar por WhatsApp",
+      ctaSecondary: "Descargar CV",
+      availability: "Disponible para Proyectos",
+      location: "México (GMT-6) · Remoto / Híbrido",
       langEs: "Español Nativo",
-      langEn: "Inglés Técnico",
+      langEn: "Inglés B1",
       stats: {
         views: "Impacto en Red",
-        years: "Años Diseñando Sistemas",
+        years: "Años de Experiencia",
         products: "Sistemas en Producción",
         companies: "Empresas Escaladas",
         projectsDelivered: "Proyectos Entregados",
@@ -225,24 +228,35 @@ export const translations = {
       heading1: "Resuelvo Problemas,",
       heading2: "No Solo Escribo Código",
       robotGreeting: "Hey👋",
-      p1Start: "¿Buscas un arquitecto técnico que entienda tu modelo de negocio, se comunique con claridad y ejecute sin excusas?",
+      p1Start: "¿Buscas un ingeniero full-stack que entienda tu modelo de negocio, se comunique con claridad y ejecute soluciones de producción sin excusas?",
       p1End: "Esa es mi especialidad.",
-      p2Start: "Asumo el ownership total del proyecto — desde la arquitectura de base de datos hasta el último píxel de la interfaz. Sin dependencias externas, sin teléfonos descompuestos.",
-      p2End: "Mi stack core: Svelte, React Native, TypeScript y Node.js.",
-      p3Start: "Además, implemento automatizaciones con IA (N8N, MCP, LLMs) que logran que tareas administrativas de semanas se ejecuten en minutos",
-      p3End: "— ideal para empresas que necesitan escalar sin multiplicar su nómina.",
-      cta: "Agendar Diagnóstico",
+      p2Start: "Asumo el ownership total del proyecto — desde la arquitectura de base de datos y APIs backend hasta el último píxel de la interfaz. Sin dependencias externas ni teléfonos descompuestos.",
+      p2End: "Mi stack core: Angular, TypeScript, Node.js, Svelte, PostgreSQL y Docker.",
+      p3Start: "Además, desarrollo agentes de IA autónomos y automatizaciones (n8n, MCP, LLMs) que eliminan la carga operativa manual",
+      p3End: "— ideal para empresas que necesitan escalar su capacidad sin multiplicar su nómina.",
+      cta: "Agendar Llamada",
       profileBadgeAvailable: "Agenda Abierta",
       profileBadgeNotAvailable: "Agenda Llena",
-      profileYears: "4+ Años",
-      profileStack: "Arquitectura + IA",
+      profileYears: "4+ Años Exp",
+      profileStack: "Full-Stack + IA",
     },
 
     projects: [
       {
+        title: "Agente SAT Autónomo & Copiloto Fiscal IA",
+        description:
+          "Problema: Los equipos contables desperdiciaban docenas de horas manejando accesos CIEC/e.firma, resolviendo CAPTCHAs y descargando facturas fiscales (CFDI). Solución: Desarrollé un Agente IA de escritorio autónomo (Tauri/Svelte) multicompañía y multi-RFC que resuelve CAPTCHAs con IA, descarga comprobantes en masa y genera paquetes contables. Incluí un Copiloto de IA para detectar riesgos fiscales, apoyar en la conciliación bancaria y generar reportes ejecutivos para el cierre mensual. Resultado: Reducción del 95% del tiempo operativo, bajando la tarea de días a solo 5 minutos por sesión.",
+        liveLabel: "Caso de Éxito",
+      },
+      {
+        title: "CRM de WhatsApp con IA & Automatización",
+        description:
+          "Problema: Las empresas perdían prospectos por respuestas lentas y seguimiento manual en WhatsApp. Solución: Diseñé y validé un CRM para WhatsApp integrado con IA para centralizar conversaciones, automatizar la atención inicial y ejecutar flujos conversacionales de seguimiento con prospectos. Resultado: Optimización del embudo de ventas y respuesta inmediata a prospectos.",
+      },
+      {
         title: "Caso de Éxito: StudioKin (Agencia Digital)",
         description:
-          "Problema: StudioKin, una agencia creativa y de desarrollo, necesitaba una plataforma portafolio altamente interactiva que exhibiera diseños de alta fidelidad y alojara demos web funcionales para sus clientes. Solución: Construcción de una aplicación web moderna en Next.js con transiciones dinámicas y assets modulares que integra demos en vivo sin fricción. Resultado: Una carta de presentación impecable para la agencia que impulsa la conversión y demuestra capacidades técnicas reales.",
+          "Problema: StudioKin necesitaba una plataforma portafolio altamente interactiva para exhibir trabajos de diseño de alta fidelidad y alojar demos web funcionales para sus clientes. Solución: Construcción de una aplicación web en Next.js con assets modulares y transiciones dinámicas que integra demos en vivo. Resultado: Una carta de presentación impecable para la agencia que impulsa la conversión y demuestra capacidades técnicas reales.",
         liveLabel: "Visitar Sitio",
         demos: [
           { label: "Demo Taller Mecánico", url: "https://studiokin.com.mx/demo-mecanico.html" },
@@ -251,14 +265,9 @@ export const translations = {
         ],
       },
       {
-        title: "Sharit - Bolddy (Arquitectura Móvil Escala Real)",
+        title: "Sharit - Bolddy (Red Social Deportiva Móvil)",
         description:
-          "Problema: Se requería un ecosistema social escalable en tiempo real con geolocalización y gamificación compleja. Solución: Construcción full-stack de una arquitectura móvil con React Native, WebSockets y manejo de estado avanzado. Resultado: Aplicación robusta lista para producción y lanzamiento en App Store.",
-      },
-      {
-        title: "Caso de Éxito: Automatización Fiscal SAT",
-        description:
-          "Problema: Estudios contables desperdiciaban docenas de horas descargando facturas manualmente. Solución: Desarrollé un Agente IA de escritorio que resuelve CAPTCHAs automáticamente y descarga XMLs/PDFs en masa. Resultado: Reducción del 95% del tiempo operativo, bajando la tarea de días a solo 5 minutos por sesión.",
+          "Problema: Los deportistas carecían de una plataforma dedicada para descubrir y unirse a actividades deportivas locales. Solución: Construcción full-stack de una app móvil multiplataforma con React Native, Expo, WebSockets, autenticación JWT, notificaciones push y gamificación. Resultado: Aplicación robusta lista para producción y lanzamiento en App Store y Google Play.",
       },
       {
         title: "Caso de Éxito: TersaNet (Logística en Tiempo Real)",
@@ -266,19 +275,19 @@ export const translations = {
           "Problema: Los vendedores B2B perdían ventas por cotizaciones lentas y manuales. Solución: Sistema de cotización e inventario multi-sucursal en tiempo real con generación instantánea de PDFs. Resultado: Aceleración dramática del ciclo de ventas y eliminación de errores de precio en todos los canales.",
       },
       {
-        title: "Caso de Éxito: Automatización IA (N8N & MCP)",
+        title: "Caso de Éxito: Automatización IA (n8n & MCP)",
         description:
-          "Problema: Los equipos operativos perdían semanas en tareas manuales repetitivas. Solución: Diseñé pipelines de automatización empresarial con N8N, MCP y LLMs (GPT-4/Claude) para procesamiento de facturas, notificaciones y sincronización de CRM. Resultado: Se eliminó el 80% del trabajo manual en XAMAI, escalando operaciones sin aumentar nómina.",
+          "Problema: Los equipos operativos perdían semanas en tareas manuales de entrada de datos y actualización de CRM. Solución: Diseñé pipelines de automatización empresarial con n8n, MCP y LLMs (GPT-4, Claude, Gemini) para procesamiento de facturas, notificaciones y sincronización de CRM. Resultado: Eliminación de hasta el 80% del trabajo manual en XAMAI.",
       },
       {
-        title: "Caso de Éxito: Portal Cliente XAMAI",
+        title: "Caso de Éxito: Portal Cliente XAMAI 2.0",
         description:
-          "Problema: El portal legacy tenía UX deficiente y carga lenta, generando tickets de soporte. Solución: Reconstrucción total de la arquitectura usando Svelte y optimización de componentes. Resultado: Aumento del 90% en satisfacción de usuario y reducción del 85% en tiempos de carga en el primer mes.",
+          "Problema: El portal legacy tenía UX deficiente y carga lenta, generando tickets de soporte. Solución: Reconstrucción total de la arquitectura usando Svelte y optimización de componentes. Resultado: Aumento del 90% en satisfacción de usuarios y reducción del 85% en tiempos de carga inicial.",
       },
       {
         title: "Caso de Éxito: Reportes de Campo Stan Semper",
         description:
-          "Problema: Ingenieros en campo perdían horas armando reportes con fotos y datos GPS. Solución: App Android offline-first que captura y sincroniza datos a Firebase automáticamente. Resultado: Generación de PDFs instantánea, eliminando el 100% de la carga administrativa en campo.",
+          "Problema: Ingenieros en campo perdían horas armando reportes manuales con fotos y datos GPS. Solución: App Android offline-first que captura fotos, GPS, números de serie y sincroniza a Firebase generando PDFs automáticos. Resultado: Proyecto ganador de la licitación C5 en 2021 y eliminación del 100% de la carga administrativa en campo.",
       },
     ],
 
@@ -292,7 +301,7 @@ export const translations = {
 
     experience: {
       sectionH2: "Trayectoria Profesional",
-      descriptor: "4+ años construyendo software de producción que mueve métricas reales",
+      descriptor: "4+ años construyendo software empresarial y moviendo métricas reales de negocio",
       activeBadge: "Activo",
       inDevBadge: "🚧 En desarrollo",
       typeLabels: {
@@ -304,88 +313,85 @@ export const translations = {
       entries: [
         {
           description:
-            "Desarrollo y mantenimiento de plataformas SaaS empresariales, ERPs y dashboards analíticos para clientes de mediana empresa. Paralelamente entrego proyectos de automatización IA (N8N, MCP) para clientes externos de forma independiente.",
+            "Desarrollo y mantenimiento de plataformas SaaS empresariales, módulos ERP y paneles analíticos para clientes de mediana empresa. Desarrollo soluciones de automatización e implementación de agentes de IA (n8n, MCP, LLMs) para clientes externos de forma independiente.",
           achievements: [
-            "Arquitectura de módulo de reportes con 1M+ registros y tiempos de carga <3s",
-            "Reducción del 85% en tiempo de carga inicial con lazy loading y code splitting",
-            "Implementación de sistema de roles y permisos granulares en múltiples plataformas",
-            "Migración Angular 12 → 17 sin downtime ni regresiones visibles",
-            "Mejora del 90% en satisfacción de usuarios en Portal Cliente XAMAI 2.0",
+            "Arquitectura de módulo de reportes que procesa más de 1 millón de registros con tiempos de carga menores a 3 segundos",
+            "Reducción del 85% en el tiempo de carga inicial mediante lazy loading, code splitting y optimización de assets",
+            "Lideré la migración de Angular 12 a Angular 17 sin downtime ni regresiones para usuarios",
+            "Implementación de control de acceso granular basado en roles y permisos (RBAC) en múltiples plataformas empresariales",
+            "Contribuí a una mejora del 90% en satisfacción de usuarios tras el rediseño de XAMAI Client Portal 2.0",
+            "Reduje hasta 80% del trabajo operativo manual mediante pipelines de automatización con n8n",
           ],
         },
         {
           description:
-            "Desarrollo de interfaces administrativas, landing pages de alto rendimiento y dashboards en tiempo real para clientes de e-commerce y logística.",
+            "Desarrollo de interfaces administrativas, landing pages de alto rendimiento, aplicaciones Android para reportes de campo y dashboards en tiempo real.",
           achievements: [
-            "3 landing pages con 95+ en Lighthouse en todas las categorías",
-            "Dashboard de logística en tiempo real con WebSockets",
-            "Integración de APIs de pago: Stripe y OpenPay",
+            "Construí 3 landing pages con puntuaciones de 95+ en todas las categorías de Lighthouse",
+            "Desarrollé app Android para reportes de campo con fotos, GPS, números de serie y sincronización Firebase (Proyecto ganador de la licitación C5 en 2021)",
+            "Integré APIs REST y pasarelas de pago como Stripe y OpenPay, además de dashboards de logística con WebSockets",
           ],
         },
         {
           description:
-            "App móvil full-stack construida de manera independiente fuera de compromisos laborales — desde el diseño de arquitectura hasta el envío a App Store. Propiedad total del backend, app móvil e infraestructura.",
+            "App móvil full-stack construida de manera independiente — desde el diseño de arquitectura hasta la publicación. Propiedad total del backend, app móvil e infraestructura.",
           achievements: [
-            "Arquitectura fullstack completa desde cero: backend + app móvil",
-            "Auth, feed social, perfiles y push notifications (iOS + Android)",
-            "En desarrollo activo — lanzamiento en App Store próximamente",
+            "Arquitectura full-stack completa desde cero: API Node.js + app móvil en React Native",
+            "Autenticación JWT, feed social, perfiles de usuario, geolocalización y notificaciones push",
+            "En desarrollo activo — lanzamiento en App Store y Google Play próximamente",
           ],
         },
       ],
     },
 
     services: {
-      sectionH2: "¿Qué puedo construir para ti?",
+      sectionH2: "Competencias Técnicas & Servicios",
       subtitle:
-        "Desde el diseño de arquitectura hasta el deploy en producción — entrego productos completos, escalables y con impacto medible.",
+        "Desde el diseño de arquitectura hasta el deploy en producción — entregando productos escalables con impacto medible.",
       hoverCta: "Hablemos",
       items: [
         {
-          title: "Desarrollo Web Fullstack",
+          title: "Full-Stack & Frontend",
           description:
-            "Apps web de alto rendimiento desde la arquitectura hasta el deploy. Especializado en Angular, Svelte y Node.js con APIs RESTful robustas e integración frontend fluida.",
+            "Aplicaciones web de alto rendimiento construidas con frameworks modernos. Especializado en Angular, TypeScript, Svelte y React con diseño responsivo de alta calidad.",
           deliverables: [
-            "Reducción del 85% en tiempos de carga en plataforma XAMAI.",
-            "SPAs y SSR con Angular / Next.js",
-            "APIs REST y GraphQL con Node.js",
-            "Bases de datos PostgreSQL / MongoDB",
-            "Deploy en Vercel, Railway o Docker",
+            "Migración y arquitectura Angular 12 → 17",
+            "SPAs y SSR con Svelte / Next.js / Angular",
+            "Lazy loading, code splitting & Core Web Vitals",
+            "Tailwind CSS & gestión de estado con RxJS",
           ],
         },
         {
-          title: "Automatización con IA",
+          title: "Backend & Arquitectura de Datos",
           description:
-            "Flujos de trabajo inteligentes que eliminan tareas repetitivas y liberan la capacidad de tu equipo — con N8N, MCP y LLMs incluyendo GPT-4, Claude y Gemini.",
+            "Sistemas del lado del servidor escalables, APIs RESTful y modelos de datos robustos que procesan alto volumen con baja latencia.",
           deliverables: [
-            "Reducción del 80% del trabajo manual en XAMAI con pipelines N8N.",
-            "Pipelines N8N para CRM, ERP, notificaciones",
-            "Integración de LLMs (GPT, Claude, Gemini)",
-            "MCP servers para automatización avanzada",
-            "Bots de WhatsApp y Telegram",
+            "APIs RESTful con Node.js & Express",
+            "Modelado de datos en PostgreSQL, SQL Server & MongoDB",
+            "Autenticación JWT & Permisos granulares RBAC",
+            "Integración con SQLite, Firebase & WebSockets",
           ],
         },
         {
-          title: "Apps Móviles",
+          title: "Agentes de IA & Automatización (LLMOps)",
           description:
-            "Apps iOS y Android multiplataforma con una sola base de código y experiencia de calidad nativa — desde prototipo hasta envío a App Store.",
+            "Flujos de trabajo inteligentes y agentes de IA autónomos que eliminan la carga operativa repetitiva con n8n, MCP y LLMs.",
           deliverables: [
-            "Actualmente construyendo Sharit, una red social deportiva full-stack.",
-            "Apps React Native / Expo cross-platform",
-            "Integración con APIs y backend propio",
-            "Push Notifications y autenticación",
-            "Publicación en App Store y Google Play",
+            "Pipelines n8n para CRM, ERP y facturación",
+            "Servidores Model Context Protocol (MCP) & Agentes IA",
+            "Integración de APIs de GPT-4, Claude & Gemini",
+            "Bots conversacionales de IA para WhatsApp & Telegram",
           ],
         },
         {
-          title: "Optimización & Performance",
+          title: "DevOps, Mobile & Performance",
           description:
-            "Auditoría y mejora de tu app existente: Core Web Vitals, SEO técnico y accesibilidad — orientado a 90+ en todas las categorías de Lighthouse.",
+            "Pipelines de despliegue, apps móviles multiplataforma y auditoría profunda de rendimiento para lograr 90+ en Lighthouse.",
           deliverables: [
-            "95+ en Lighthouse entregado en 3 landing pages de clientes.",
-            "Auditoría de Core Web Vitals",
-            "Code splitting y lazy loading",
-            "Optimización de imágenes y assets",
-            "Mejoras de SEO técnico y meta tags",
+            "Apps móviles multiplataforma React Native / Expo",
+            "Despliegues en contenedores Docker, Vercel & Railway",
+            "Pruebas automatizadas con Playwright & Apps Tauri",
+            "Optimización de rendimiento web & SEO Técnico",
           ],
         },
       ],

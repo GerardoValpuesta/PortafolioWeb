@@ -16,6 +16,34 @@ const Projects = () => {
   // Non-translatable project metadata (tags, images, links)
   const projectsMeta = [
     {
+      tags: ["Tauri", "Svelte", "SQLite", "AI / CAPTCHA", "Node.js"],
+      github: null,
+      images: [
+        "/projects/Agent/Agent- Login SAT.png",
+        "/projects/Agent/Agent - Login config.png",
+        "/projects/Agent/Agent - Login config 2.png",
+        "/projects/Agent/Agent - Mon Configuraciones.png",
+        "/projects/Agent/Agente - Monitor Upload.png",
+        "/projects/Agent/Agent Historial de cargas .png",
+        "/projects/Agent/Agent Historial de cargas 2.png",
+      ],
+      image: "/projects/Agent/Agent - Login config.png",
+      live: null,
+      date: "2024–present",
+      status: "completed",
+      containImage: true,
+      hideButtons: true,
+    },
+    {
+      tags: ["AI / LLM", "N8N", "Node.js", "REST API"],
+      github: null,
+      image: "/projects/n8n-screenshot.png",
+      live: null,
+      date: "2024–present",
+      status: "completed",
+      hideButtons: true,
+    },
+    {
       tags: ["Next.js", "React", "TypeScript"],
       github: null,
       images: [
@@ -32,7 +60,6 @@ const Projects = () => {
       status: "completed",
       storeLinks: {
         web: "https://studiokin.com.mx/",
-
       },
       containImage: false,
       verticalImages: true,
@@ -53,34 +80,13 @@ const Projects = () => {
       ],
       image: "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
       live: null,
-      date: "2026–present",
+      date: "2024–present",
       status: "in-progress",
       storeLinks: {
         web: "https://bolddy.app/",
-        // playStore: "https://play.google.com/store/apps/details?id=com.gosharit",
-        // appStore: "https://apps.apple.com/app/sharit/id0000000000",
       },
       containImage: false,
       verticalImages: true,
-    },
-    {
-      tags: [],
-      github: null,
-      images: [
-        "/projects/Agent/Agent- Login SAT.png",
-        "/projects/Agent/Agent - Login config.png",
-        "/projects/Agent/Agent - Login config 2.png",
-        "/projects/Agent/Agent - Mon Configuraciones.png",
-        "/projects/Agent/Agente - Monitor Upload.png",
-        "/projects/Agent/Agent Historial de cargas .png",
-        "/projects/Agent/Agent Historial de cargas 2.png",
-      ],
-      image: "/projects/Agent/Agent - Login config.png",
-      live: null,
-      date: "2026–present",
-      status: "completed",
-      containImage: true,
-      hideButtons: true,
     },
     {
       tags: ["Angular", "TypeScript", "SQL Server", "REST API"],
@@ -107,7 +113,7 @@ const Projects = () => {
       hideButtons: true,
     },
     {
-      tags: ["Angular", "TypeScript", "Tailwind CSS", "REST API"],
+      tags: ["Svelte", "TypeScript", "Tailwind CSS", "REST API"],
       github: null,
       images: [
         "/projects/mpx 2.0/mpx-login.png",
@@ -119,7 +125,7 @@ const Projects = () => {
       ],
       image: "/projects/mpx 2.0/mpx-login.png",
       live: null,
-      date: "2023–2024",
+      date: "2023–present",
       status: "completed",
       hideButtons: true,
     },
@@ -128,7 +134,7 @@ const Projects = () => {
       github: null,
       image: "/projects/c5bid-screenshot.png",
       live: null,
-      date: "2021–2022",
+      date: "2020–2022",
       status: "completed",
       hideButtons: true,
     },
