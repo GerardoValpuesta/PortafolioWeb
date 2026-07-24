@@ -743,31 +743,29 @@ const HomePage = () => {
         </motion.div>
       </motion.div>
 
-      {/* Status bar */}
+      {/* Status bar & Direct Mobile CTA */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={itemVariants}
         transition={{ delay: 0.6 }}
-        className="absolute bottom-5 left-1/2 z-50 -translate-x-1/2 max-md:hidden"
+        className="absolute bottom-16 left-1/2 z-50 -translate-x-1/2 md:bottom-5"
       >
-        <div className="dark:bg-background/30 border-border/15 flex items-center gap-3 rounded-full border px-4 py-1.5 backdrop-blur-md md:gap-4 md:px-6 md:py-2">
-          <div className="flex items-center gap-2">
-            <div
-              className={cn("size-2 animate-pulse rounded-full bg-green-500", {
-                "bg-red-500": !env.NEXT_PUBLIC_AVAILABLE_STATUS,
-              })}
-            />
-            <span className="text-xs">
-              {env.NEXT_PUBLIC_AVAILABLE_STATUS
-                ? "Available for work"
-                : "Currently not Available"}
+        <div className="dark:bg-background/80 bg-background/90 border-border/30 flex items-center gap-3 rounded-full border px-4 py-2 shadow-lg backdrop-blur-md md:gap-4 md:px-6">
+          <Link
+            href="/portfolio"
+            className="flex items-center gap-2 text-xs font-bold text-primary hover:opacity-80 transition-opacity"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
             </span>
-          </div>
-          <div className="bg-foreground/20 h-4 w-px" />
-          <span className="text-xs">Fullstack Engineer &amp; AI Builder</span>
-          <div className="bg-foreground/20 h-4 w-px" />
-          <span className="text-[10px] text-foreground/40 font-mono">v2.0 ✦ stable</span>
+            <span>Ver Portafolio Profesional →</span>
+          </Link>
+          <div className="bg-foreground/20 h-4 w-px max-md:hidden" />
+          <span className="text-xs max-md:hidden">Fullstack Engineer &amp; AI Builder</span>
+          <div className="bg-foreground/20 h-4 w-px max-md:hidden" />
+          <span className="text-[10px] text-foreground/40 font-mono max-md:hidden">v2.0 ✦ stable</span>
         </div>
       </motion.div>
 

@@ -30,12 +30,15 @@ const Noise: React.FC<NoiseProps> = ({
 
     let frame = 0;
     let animationId: number;
+    let isVisible = true;
 
-    const canvasSize = patternSize || 250;
+    const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || navigator.maxTouchPoints > 0);
+    const canvasSize = isMobile ? 256 : (patternSize || 512);
+    const effectiveInterval = isMobile ? Math.max(patternRefreshInterval, 4) : patternRefreshInterval;
     const framesCount = 4;
     const noiseFrames: ImageData[] = [];
 
-    // Pre-generate noise to avoid massive CPU load on every frame
+    // Pre-generate noise frames to avoid CPU load on every frame
     for (let f = 0; f < framesCount; f++) {
       const imageData = ctx.createImageData(canvasSize, canvasSize);
       const data = imageData.data;
@@ -59,13 +62,28 @@ const Noise: React.FC<NoiseProps> = ({
     };
 
     const loop = () => {
-      if (frame % patternRefreshInterval === 0) {
-        const currentFrame = Math.floor(frame / patternRefreshInterval) % framesCount;
+      if (isVisible && frame % effectiveInterval === 0) {
+        const currentFrame = Math.floor(frame / effectiveInterval) % framesCount;
         ctx.putImageData(noiseFrames[currentFrame], 0, 0);
       }
       frame++;
       animationId = window.requestAnimationFrame(loop);
     };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting && !document.hidden;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        isVisible = false;
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     window.addEventListener('resize', resize);
     resize();
@@ -73,6 +91,8 @@ const Noise: React.FC<NoiseProps> = ({
 
     return () => {
       window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      observer.disconnect();
       window.cancelAnimationFrame(animationId);
     };
   }, [patternSize, patternScaleX, patternScaleY, patternRefreshInterval, patternAlpha]);

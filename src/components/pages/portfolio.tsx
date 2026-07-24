@@ -32,12 +32,12 @@ const PortfolioPage = () => {
     <>
       <div
         ref={containerRef}
-        className="no-scrollbar portfolio-container relative size-full snap-y snap-proximity overflow-y-scroll overflow-x-hidden"
+        className="no-scrollbar portfolio-container relative size-full max-md:snap-none md:snap-y md:snap-proximity overflow-y-scroll overflow-x-hidden"
       >
         {/* === CAPA PARALLAX GLOBAL (Se renderiza atrás de todo, z-0) === */}
         <motion.div
           style={{ y: backgroundY, opacity: backgroundOpacity }}
-          className="pointer-events-none absolute left-0 top-0 z-0 h-[150vh] w-full"
+          className="pointer-events-none absolute left-0 top-0 z-0 h-[150vh] w-full max-md:hidden"
         >
           <div className="absolute inset-0 bg-[linear-gradient(rgba(103,208,230,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(103,208,230,0.05)_1px,transparent_1px)] bg-[size:56px_56px]" />
           <div className="absolute top-0 left-1/2 h-full w-px bg-cyan-200/10" />
@@ -48,20 +48,20 @@ const PortfolioPage = () => {
         {/* ============================================================== */}
 
         {/* El ruido de fondo viejo que tenías. Opcional bajarle opacidad si choca. */}
-        <BackgroundNoise className="z-50 opacity-10 mix-blend-overlay" />
+        <BackgroundNoise className="z-50 opacity-10 mix-blend-overlay max-md:opacity-5" />
 
-        <div className="h-dvh snap-start relative z-10">
+        <div className="h-dvh md:snap-start relative z-10">
           <PortfolioBootSplash />
         </div>
 
         {/* Main encapsulado en z-10 para quedar sobre el Parallax */}
-        <main className="before:border-border after:border-border relative z-10 min-h-screen snap-start before:absolute before:top-0 before:left-0 before:h-full before:w-12 before:border-r before:bg-[linear-gradient(-135deg,_var(--color-border)_25%,_transparent_25%,_transparent_50%,_var(--color-border)_50%,_var(--color-border)_75%,_transparent_75%,_transparent)] before:bg-[length:5px_5px] after:absolute after:top-0 after:right-0 after:h-full after:w-12 after:border-l after:bg-[linear-gradient(135deg,_var(--color-border)_25%,_transparent_25%,_transparent_50%,_var(--color-border)_50%,_var(--color-border)_75%,_transparent_75%,_transparent)] after:bg-[length:5px_5px] max-md:before:hidden max-md:after:hidden md:px-12">
+        <main className="before:border-border after:border-border relative z-10 min-h-screen md:snap-start before:absolute before:top-0 before:left-0 before:h-full before:w-12 before:border-r before:bg-[linear-gradient(-135deg,_var(--color-border)_25%,_transparent_25%,_transparent_50%,_var(--color-border)_50%,_var(--color-border)_75%,_transparent_75%,_transparent)] before:bg-[length:5px_5px] after:absolute after:top-0 after:right-0 after:h-full after:w-12 after:border-l after:bg-[linear-gradient(135deg,_var(--color-border)_25%,_transparent_25%,_transparent_50%,_var(--color-border)_50%,_var(--color-border)_75%,_transparent_75%,_transparent)] after:bg-[length:5px_5px] max-md:before:hidden max-md:after:hidden md:px-12">
           <Navbar />
 
           <div className="min-h-[calc(100vh-4rem)] md:px-8">
             {/* Si querés que se note bien el fondo de las luces pasando por detrás, 
                 acá le metí un fondo traslúcido con un blureado piola para q se luzca el parallax. */}
-            <div className="min-h-[calc(100vh-4rem)] md:border-r md:border-l bg-background/40 backdrop-blur-[2px] transition-colors">
+            <div className="min-h-[calc(100vh-4rem)] md:border-r md:border-l bg-background/40 max-md:backdrop-blur-none md:backdrop-blur-[2px] transition-colors">
               <Hero />
               <Services />
               <Projects />

@@ -220,6 +220,8 @@ const Projects = () => {
                               transition={{ duration: 0.35 }}
                               src={imgs[idx]}
                               alt={`${project.title} screenshot ${idx + 1}`}
+                              loading="lazy"
+                              decoding="async"
                               className={cn(
                                 "h-full w-full transition-transform duration-700 group-hover:scale-105",
                                 (project as any).containImage

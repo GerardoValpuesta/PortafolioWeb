@@ -155,7 +155,8 @@ const Particles: React.FC<ParticlesProps> = ({
       container.addEventListener('mousemove', handleMouseMove);
     }
 
-    const count = particleCount;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const count = isMobile ? Math.min(particleCount, 40) : particleCount;
     const positions = new Float32Array(count * 3);
     const randoms = new Float32Array(count * 4);
     const colors = new Float32Array(count * 3);
@@ -201,9 +202,12 @@ const Particles: React.FC<ParticlesProps> = ({
     let animationFrameId: number;
     let lastTime = performance.now();
     let elapsed = 0;
+    let isVisible = true;
 
     const update = (t: number) => {
       animationFrameId = requestAnimationFrame(update);
+      if (!isVisible) return;
+
       const delta = t - lastTime;
       lastTime = t;
       elapsed += delta * speed;
@@ -227,6 +231,14 @@ const Particles: React.FC<ParticlesProps> = ({
       renderer.render({ scene: particles, camera });
     };
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting && !document.hidden;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(container);
+
     animationFrameId = requestAnimationFrame(update);
 
     return () => {
@@ -234,6 +246,7 @@ const Particles: React.FC<ParticlesProps> = ({
       if (moveParticlesOnHover) {
         container.removeEventListener('mousemove', handleMouseMove);
       }
+      observer.disconnect();
       cancelAnimationFrame(animationFrameId);
       if (container.contains(gl.canvas)) {
         container.removeChild(gl.canvas);
