@@ -670,7 +670,7 @@ const HomePage = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.6))] opacity-20 md:mix-blend-multiply dark:bg-[radial-gradient(ellipse_at_center,transparent_65%,rgba(0,0,0,0.8))] dark:mix-blend-normal" />
 
         <div
-          className="absolute inset-0 z-0 opacity-100 dark:opacity-5"
+          className="absolute inset-0 z-0 opacity-100 dark:opacity-5 max-md:hidden"
           style={{
             backgroundImage: `
               linear-gradient(#F6EAC5 1px, transparent 1px),
@@ -681,9 +681,9 @@ const HomePage = () => {
         />
 
         <BackgroundNoise
-          className="z-20"
+          className="z-20 max-md:hidden"
           patternSize={300}
-          patternRefreshInterval={3}
+          patternRefreshInterval={4}
           patternAlpha={8}
         />
       </div>
@@ -694,45 +694,45 @@ const HomePage = () => {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="relative z-50 [perspective:1200px]"
+        className="relative z-50 md:[perspective:1200px]"
       >
-        {/* Breathing animation wrapper */}
+        {/* Breathing animation wrapper - disabled on mobile for zero GPU overhead */}
         <motion.div
-          animate={{ scale: [1, 1.006, 1] }}
+          animate={isClient && screenSize.lessThanOrEqual("md") ? undefined : { scale: [1, 1.006, 1] }}
           transition={{
             duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           style={{
-            rotateX: consoleRotateX,
-            rotateY: consoleRotateY,
-            transformStyle: "preserve-3d",
+            rotateX: isClient && screenSize.lessThanOrEqual("md") ? 0 : consoleRotateX,
+            rotateY: isClient && screenSize.lessThanOrEqual("md") ? 0 : consoleRotateY,
+            transformStyle: isClient && screenSize.lessThanOrEqual("md") ? undefined : "preserve-3d",
           }}
           className="relative"
         >
           <motion.div
-            className="pointer-events-none absolute left-1/2 top-[88%] -z-10 h-24 w-[72%] -translate-x-1/2 rounded-full bg-black/55 blur-xl md:blur-3xl"
+            className="pointer-events-none absolute left-1/2 top-[88%] -z-10 h-24 w-[72%] -translate-x-1/2 rounded-full bg-black/55 blur-xl max-md:hidden md:blur-3xl"
             style={{
               x: smoothX,
               y: smoothY,
             }}
-            animate={{ opacity: [0.32, 0.48, 0.32], scaleX: [0.94, 1.02, 0.94] }}
+            animate={isClient && screenSize.lessThanOrEqual("md") ? undefined : { opacity: [0.32, 0.48, 0.32], scaleX: [0.94, 1.02, 0.94] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
-          <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_50%_18%,rgba(103,208,230,0.18),transparent_42%)] blur-2xl" />
-          <div className="pointer-events-none absolute inset-0 -z-10 translate-x-4 translate-y-6 rounded-3xl bg-[#050609] opacity-70 shadow-[18px_28px_60px_rgba(0,0,0,0.5)]" />
+          <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_50%_18%,rgba(103,208,230,0.18),transparent_42%)] blur-2xl max-md:hidden" />
+          <div className="pointer-events-none absolute inset-0 -z-10 translate-x-4 translate-y-6 rounded-3xl bg-[#050609] opacity-70 max-md:shadow-none shadow-[18px_28px_60px_rgba(0,0,0,0.5)]" />
           <PlaydateConsole
             onDpadButtonClick={handleDpadButtonClick}
             onActionButtionClick={handleActionButtonClick}
             isPlaying={isMusicPlaying}
           >
             <div className="relative size-full overflow-hidden" ref={consoleRef}>
-              <BackgroundNoise className="relative z-30" />
+              <BackgroundNoise className="relative z-30 max-md:hidden" />
               {renderConsoleScreen()}
-              {/* CRT Scanlines */}
+              {/* CRT Scanlines - disabled on mobile */}
               <div
-                className="pointer-events-none absolute inset-0 z-40"
+                className="pointer-events-none absolute inset-0 z-40 max-md:hidden"
                 style={{
                   background:
                     "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px)",

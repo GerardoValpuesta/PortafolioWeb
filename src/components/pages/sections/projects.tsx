@@ -64,7 +64,7 @@ const Projects = () => {
       verticalImages: true,
     },
     {
-      tags: ["Tauri", "Svelte", "SQLite", "Chromium", "AI / CAPTCHA"],
+      tags: [],
       github: null,
       images: [
         "/projects/Agent/Agent- Login SAT.png",
@@ -272,7 +272,7 @@ const Projects = () => {
                 </div>
               </div>
 
-                {/* Content Side  */}
+              {/* Content Side  */}
               <div className="relative flex flex-col justify-center overflow-hidden p-8 md:p-12 lg:p-16">
                 {/* Date & Status */}
                 <div className="mb-6 flex flex-wrap items-center gap-3">
