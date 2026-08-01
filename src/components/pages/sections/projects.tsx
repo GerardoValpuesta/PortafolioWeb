@@ -5,10 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HeadingLine from "@/components/ui/heading-line";
 import { cn } from "@/lib/utils";
-import { Github, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Globe } from "lucide-react";
+import { Github, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Globe, Workflow } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { useTranslation } from "@/hooks/use-translation";
+import { N8nWorkflowModal, WorkflowItem } from "@/components/ui/n8n-workflow-modal";
 
 const Projects = () => {
   const t = useTranslation();
@@ -35,9 +36,14 @@ const Projects = () => {
       hideButtons: true,
     },
     {
-      tags: ["AI / LLM", "n8n", "Node.js", "REST API"],
+      tags: ["WhatsApp API", "AI / LLM", "n8n", "Node.js", "REST API"],
       github: null,
-      image: "/projects/n8n-screenshot.png",
+      images: [
+        "/projects/whatsapp-crm/whatsapp-crm-dashboard.png",
+        "/projects/whatsapp-crm/whatsapp-crm-flow.png",
+        "/projects/whatsapp-crm/whatsapp-crm-analytics.png",
+      ],
+      image: "/projects/whatsapp-crm/whatsapp-crm-dashboard.png",
       live: null,
       date: "2025–present",
       status: "completed",
@@ -104,13 +110,64 @@ const Projects = () => {
       hideButtons: true,
     },
     {
-      tags: ["n8n", "AI / LLM", "Node.js"],
+      tags: ["n8n", "AI / LLM", "MCP Protocol", "Node.js"],
       github: null,
       image: "/projects/n8n-screenshot.png",
       live: null,
       date: "2024–present",
       status: "completed",
-      hideButtons: true,
+      hideButtons: false,
+      workflows: [
+        {
+          id: "linkedin-bot-autentico",
+          name: "Linkedin Bot Auténtico (Generador de Posts con IA)",
+          description: "Bot autónomo programado que consulta un archivo de contexto en Google Sheets, selecciona temas aleatorios, ejecuta un Agente IA con reglas de redacción viral y envía borradores clasificados a Telegram.",
+          tags: ["Schedule", "LangChain AI", "Telegram", "Google Sheets", "n8n Code"],
+          nodesCount: 11,
+          trigger: "Schedule Trigger (Diario 16:00)",
+          downloadUrl: "/workflows/linkedin-bot-autentico.json",
+          sheetUrl: "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=sharing",
+          platform: "n8n",
+          features: [
+            "Extracción de contexto desde Google Sheets",
+            "Agente IA con prompts estructurados para LinkedIn/Twitter",
+            "Parsing automático JSON de salida",
+            "Notificaciones y entrega directa en Telegram"
+          ]
+        },
+        {
+          id: "prospeccion-leads-chatgpt-make",
+          name: "Prospección de Leads & Emailing con ChatGPT (Make.com)",
+          description: "Escenario de automatización en Make.com que monitorea nuevas filas en Google Sheets, analiza e investiga el prospecto con OpenAI / ChatGPT y genera borradores de correo personalizados.",
+          tags: ["Make.com", "Google Sheets", "ChatGPT / OpenAI", "Email Automation"],
+          nodesCount: 5,
+          trigger: "Google Sheets (Watch Rows)",
+          downloadUrl: "/workflows/prospeccion-leads-chatgpt-make.json",
+          platform: "make",
+          features: [
+            "Escuchador automático de prospectos en Google Sheets",
+            "Análisis y calificación de la empresa con ChatGPT",
+            "Generación de correos fríos hiper-personalizados",
+            "Blueprint `.json` importable en Make.com"
+          ]
+        },
+        {
+          id: "sistema-automatico-rrss-make",
+          name: "Sistema Autónomo Multicanal para Redes Sociales (Make + Perplexity + DALL-E)",
+          description: "Automatización en Make.com que monitorea URLs en Google Sheets, sintetiza noticias con Perplexity AI (Llama 3), genera gráficos con DALL-E y publica borradores adaptados para Instagram, Twitter, LinkedIn y Facebook.",
+          tags: ["Make.com", "Perplexity AI", "OpenAI / DALL-E", "Social Media", "Google Sheets"],
+          nodesCount: 12,
+          trigger: "Google Sheets (Watch Rows)",
+          downloadUrl: "/workflows/sistema-automatico-rrss-make.json",
+          platform: "make",
+          features: [
+            "Detección de artículos en Google Sheets",
+            "Síntesis de noticias con Perplexity AI (Llama 3)",
+            "Adaptación de copy por plataforma (Instagram, Twitter, LinkedIn, Facebook)",
+            "Generación automática de imágenes personalizadas con DALL-E"
+          ]
+        }
+      ],
     },
     {
       tags: ["Svelte", "TypeScript", "Tailwind CSS", "REST API"],
@@ -147,6 +204,7 @@ const Projects = () => {
   }));
 
   const tagColors: Record<string, string> = {
+    "WhatsApp API": "bg-emerald-600/10 text-emerald-500 border-emerald-600/30",
     Angular: "bg-red-500/10 text-red-600 border-red-500/30",
     TypeScript: "bg-blue-500/10 text-blue-600 border-blue-500/30",
     "REST API": "bg-orange-500/10 text-orange-600 border-orange-500/30",
@@ -178,6 +236,9 @@ const Projects = () => {
 
   // Per-project demos dropdown state
   const [openDemos, setOpenDemos] = useState<Record<string, boolean>>({});
+
+  // n8n Workflows modal state
+  const [selectedWorkflowsModal, setSelectedWorkflowsModal] = useState<WorkflowItem[] | null>(null);
 
   return (
     <SectionHeading id="projects" text="Projects">
@@ -441,8 +502,22 @@ const Projects = () => {
                       </div>
                     )}
 
+                    {/* Workflows Blueprints Button */}
+                    {(project as any).workflows && (project as any).workflows.length > 0 && (
+                      <Button
+                        onClick={() => setSelectedWorkflowsModal((project as any).workflows)}
+                        variant="default"
+                        size="lg"
+                        className="group/btn relative border-2 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
+                      >
+                        <Workflow className="mr-2 h-4 w-4" />
+                        Ver Plantillas n8n & JSON (.json)
+                        <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                      </Button>
+                    )}
+
                     {/* GitHub button — only when no storeLinks */}
-                    {!(project as any).storeLinks && (
+                    {!(project as any).storeLinks && !(project as any).workflows && (
                       <>
                         <Button
                           asChild
@@ -526,6 +601,11 @@ const Projects = () => {
           </Button>
         </motion.div>
       </div> */}
+      <N8nWorkflowModal
+        isOpen={!!selectedWorkflowsModal}
+        onClose={() => setSelectedWorkflowsModal(null)}
+        workflows={selectedWorkflowsModal || []}
+      />
     </SectionHeading>
   );
 };

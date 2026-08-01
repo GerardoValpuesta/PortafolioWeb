@@ -6,7 +6,8 @@ export const translations = {
       description:
         "Full-Stack Engineer with 4+ years of experience building enterprise SaaS platforms, ERP modules, analytics dashboards, mobile applications, and AI automations. Specialized in Angular, TypeScript, Node.js, Svelte, PostgreSQL, and Docker; focused on high performance, maintainable architecture, and measurable business ROI.",
       ctaPrimary: "Contact via WhatsApp",
-      ctaSecondary: "Download CV",
+      ctaSecondary: "View Projects",
+      downloadCv: "Download CV",
       availability: "Available for Projects",
       location: "Mexico (GMT-6) · Remote / Hybrid",
       langEs: "Spanish Native",
@@ -209,7 +210,8 @@ export const translations = {
       description:
         "Ingeniero Full-Stack con más de 4 años de experiencia desarrollando plataformas SaaS empresariales, módulos ERP, paneles analíticos, aplicaciones móviles y soluciones de automatización con IA. Especializado en Angular, TypeScript, Node.js, Svelte, PostgreSQL y Docker; enfocado en rendimiento, arquitectura mantenible y resultados de negocio medibles.",
       ctaPrimary: "Contactar por WhatsApp",
-      ctaSecondary: "Descargar CV",
+      ctaSecondary: "Ver Proyectos",
+      downloadCv: "Descargar CV",
       availability: "Disponible para Proyectos",
       location: "México (GMT-6) · Remoto / Híbrido",
       langEs: "Español Nativo",
