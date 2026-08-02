@@ -138,7 +138,7 @@ const Hero = () => {
                 size="lg"
                 className="group/btn border-2 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                <a href="/Gerardo_Nunez_Valpuesta_CV.pdf" download="Gerardo_Nunez_Valpuesta_CV.pdf">
+                <a href={t.hero.cvFile} download={t.hero.cvFileName}>
                   <Download className="mr-1.5 h-4 w-4 transition-transform group-hover/btn:translate-y-0.5" />
                   {t.hero.downloadCv}
                 </a>

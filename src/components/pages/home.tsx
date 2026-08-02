@@ -29,6 +29,7 @@ import { Typewriter } from "../ui/typewriter";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useMotionValue, useSpring, useTransform } from "motion/react";
+import { useLanguage } from "@/store/use-language";
 
 // dynamic imports
 const Particles = dynamic(() => import("@/components/ui/particles"), {
@@ -343,6 +344,7 @@ const HomePage = () => {
 
   const isClient = useIsClient();
   const { resolvedTheme, setTheme } = useTheme();
+  const { language } = useLanguage();
   const screenSize = useScreenSize();
   const router = useRouter();
 
@@ -502,7 +504,10 @@ const HomePage = () => {
             }, 950);
           },
           resume: () => {
-            const resumeUrl = "/Gerardo_Nunez_Valpuesta_CV.pdf";
+            const resumeUrl =
+              language === "en"
+                ? "/Gerardo_Nunez_Valpuesta_CV_EN.pdf"
+                : "/Gerardo_Nunez_Valpuesta_CV.pdf";
             window.open(resumeUrl, "_blank");
           },
         };
