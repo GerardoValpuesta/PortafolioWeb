@@ -57,6 +57,20 @@ export const CERTIFICATIONS: Cert[] = [
         },
     },
     {
+        title: "Claude 101",
+        issuer: "Anthropic",
+        year: "2026",
+        url: "https://verify.skilljar.com/c/3xdjs5wo4wyd",
+        category: "IA & Automatización",
+        featured: true,
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(212,162,127,0.15)] hover:shadow-[0_0_36px_rgba(212,162,127,0.3)]",
+            border: "border-amber-600/30 hover:border-amber-500/60",
+            icon: "text-amber-400 bg-amber-500/10",
+            chip: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+        },
+    },
+    {
         title: "Claude Code in Action",
         issuer: "Anthropic",
         year: "2025",
