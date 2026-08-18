@@ -1,0 +1,35 @@
+{
+  "name": "Enrutador Inteligente de Tickets de Soporte Zendesk a Slack / Jira con IA",
+  "nodes": [
+    {
+      "parameters": { "path": "zendesk-ticket-created", "httpMethod": "POST" },
+      "name": "Zendesk New Ticket Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "Identifica si el ticket es un Bug crítico (P0), Consulta de facturación o Solicitud de función. Asigna urgencia 1-5."
+      },
+      "name": "GPT Urgency Analyzer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [360, 300]
+    },
+    {
+      "parameters": { "resource": "issue", "operation": "create" },
+      "name": "Create Jira Ticket",
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Zendesk New Ticket Webhook": { "main": [[{ "node": "GPT Urgency Analyzer", "type": "main", "index": 0 }]] },
+    "GPT Urgency Analyzer": { "main": [[{ "node": "Create Jira Ticket", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

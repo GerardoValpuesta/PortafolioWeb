@@ -1,0 +1,43 @@
+{
+  "name": "Transcriptor de Reuniones de Google Meet / Zoom con Whisper & Resumen en Notion",
+  "nodes": [
+    {
+      "parameters": { "path": "zoom-recording-finished", "httpMethod": "POST" },
+      "name": "Zoom Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "resource": "audio", "operation": "transcribe", "model": "whisper-1" },
+      "name": "Whisper STT",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "Extrae: 1. Resumen ejecutivo. 2. Acuerdos alcanzados. 3. Tareas asignadas por persona."
+      },
+      "name": "GPT Meeting Summarizer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [620, 300]
+    },
+    {
+      "parameters": { "operation": "create", "databaseId": "YOUR_NOTION_MEETINGS_DB" },
+      "name": "Save Minutes to Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [880, 300]
+    }
+  ],
+  "connections": {
+    "Zoom Webhook": { "main": [[{ "node": "Whisper STT", "type": "main", "index": 0 }]] },
+    "Whisper STT": { "main": [[{ "node": "GPT Meeting Summarizer", "type": "main", "index": 0 }]] },
+    "GPT Meeting Summarizer": { "main": [[{ "node": "Save Minutes to Notion", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

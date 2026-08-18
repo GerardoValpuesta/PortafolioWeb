@@ -1,0 +1,35 @@
+{
+  "name": "Clasificador Inteligente de Etapas de Venta en Salesforce con Análisis de Correos",
+  "nodes": [
+    {
+      "parameters": { "path": "salesforce-email-webhook", "httpMethod": "POST" },
+      "name": "Email Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Determina si el correo indica intención de compra ('Negotiation', 'Proposal Sent', 'Closed Won') y actualiza la etapa del Deal."
+      },
+      "name": "Claude Deal Classifier",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [360, 300]
+    },
+    {
+      "parameters": { "resource": "opportunity", "operation": "update" },
+      "name": "Update Salesforce Opportunity",
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Email Webhook": { "main": [[{ "node": "Claude Deal Classifier", "type": "main", "index": 0 }]] },
+    "Claude Deal Classifier": { "main": [[{ "node": "Update Salesforce Opportunity", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Calificador de Prospectos Inmobiliarios & B2B por WhatsApp con ChatGPT",
+  "nodes": [
+    {
+      "parameters": { "path": "whatsapp-lead-incoming", "httpMethod": "POST" },
+      "name": "WhatsApp Lead Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "Realiza 3 preguntas clave para determinar presupuesto, plazo de compra y tipo de inmueble/servicio deseado."
+      },
+      "name": "GPT Lead Classifier",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [340, 300]
+    },
+    {
+      "parameters": { "resource": "contact", "operation": "create" },
+      "name": "Create HubSpot Lead",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [580, 300]
+    }
+  ],
+  "connections": {
+    "WhatsApp Lead Webhook": { "main": [[{ "node": "GPT Lead Classifier", "type": "main", "index": 0 }]] },
+    "GPT Lead Classifier": { "main": [[{ "node": "Create HubSpot Lead", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

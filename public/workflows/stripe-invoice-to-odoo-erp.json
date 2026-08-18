@@ -1,0 +1,32 @@
+{
+  "name": "Sincronizador de Cobros Stripe a ERP Odoo con Generación de Factura Electrónica",
+  "nodes": [
+    {
+      "parameters": { "events": ["charge.succeeded"] },
+      "name": "Stripe Charge Succeeded Event",
+      "type": "n8n-nodes-base.stripeTrigger",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "resource": "customer", "operation": "get" },
+      "name": "Get Stripe Customer Info",
+      "type": "n8n-nodes-base.stripe",
+      "typeVersion": 1,
+      "position": [340, 300]
+    },
+    {
+      "parameters": { "url": "https://odoo-instance.com/api/v2/invoices", "method": "POST" },
+      "name": "Create Odoo Invoice",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [580, 300]
+    }
+  ],
+  "connections": {
+    "Stripe Charge Succeeded Event": { "main": [[{ "node": "Get Stripe Customer Info", "type": "main", "index": 0 }]] },
+    "Get Stripe Customer Info": { "main": [[{ "node": "Create Odoo Invoice", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

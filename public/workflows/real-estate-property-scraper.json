@@ -1,0 +1,32 @@
+{
+  "name": "Agente de Monitoreo de Portales Inmobiliarios & Notificación a Telegram",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [{ "field": "hours", "hoursInterval": 2 }] } },
+      "name": "Cron 2 Hours",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "url": "https://api.scrapingbee.com/v1/?api_key=YOUR_KEY&url=https://inmuebles.example.com" },
+      "name": "ScrapingBee Dynamic Proxy",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [360, 300]
+    },
+    {
+      "parameters": { "chatId": "@realestate_alerts", "text": "🏠 Nueva propiedad detectada: {{ $json.title }} - ${{ $json.price }}" },
+      "name": "Send Telegram Alert",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Cron 2 Hours": { "main": [[{ "node": "ScrapingBee Dynamic Proxy", "type": "main", "index": 0 }]] },
+    "ScrapingBee Dynamic Proxy": { "main": [[{ "node": "Send Telegram Alert", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Generador de Reportes Financieros de MRR & Churn Semanal a Slack",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [{ "field": "weeks", "weeksInterval": 1 }] } },
+      "name": "Weekly Monday Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "resource": "subscription", "operation": "getAll" },
+      "name": "Fetch Active Subscriptions",
+      "type": "n8n-nodes-base.stripe",
+      "typeVersion": 1,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const subs = $input.all();\nconst mrr = subs.reduce((acc, curr) => acc + (curr.json.items.data[0].plan.amount / 100), 0);\nreturn [{ json: { mrr, totalActive: subs.length } }];"
+      },
+      "name": "Calculate MRR Metrics",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [620, 300]
+    },
+    {
+      "parameters": { "channel": "finance-metrics", "text": "📈 MRR Semanal: ${{ $json.mrr }} (Suscripciones activas: {{ $json.totalActive }})" },
+      "name": "Send Revenue Update to Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [880, 300]
+    }
+  ],
+  "connections": {
+    "Weekly Monday Cron": { "main": [[{ "node": "Fetch Active Subscriptions", "type": "main", "index": 0 }]] },
+    "Fetch Active Subscriptions": { "main": [[{ "node": "Calculate MRR Metrics", "type": "main", "index": 0 }]] },
+    "Calculate MRR Metrics": { "main": [[{ "node": "Send Revenue Update to Slack", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Agente de Transcripción & Resumen de Videos de YouTube a Notion / Email",
+  "nodes": [
+    {
+      "parameters": { "path": "youtube-url", "httpMethod": "POST" },
+      "name": "YouTube URL Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "command": "yt-dlp --write-auto-sub --skip-download --sub-format vtt -o transcript {{ $json.body.url }}" },
+      "name": "Download Transcript",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [340, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Extrae los 5 puntos clave más importantes de esta transcripción de video y crea un mapa mental conceptual."
+      },
+      "name": "Claude Video Summarizer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [580, 300]
+    },
+    {
+      "parameters": { "operation": "create", "databaseId": "YOUR_NOTION_DB" },
+      "name": "Save Summary to Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [820, 300]
+    }
+  ],
+  "connections": {
+    "YouTube URL Webhook": { "main": [[{ "node": "Download Transcript", "type": "main", "index": 0 }]] },
+    "Download Transcript": { "main": [[{ "node": "Claude Video Summarizer", "type": "main", "index": 0 }]] },
+    "Claude Video Summarizer": { "main": [[{ "node": "Save Summary to Notion", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

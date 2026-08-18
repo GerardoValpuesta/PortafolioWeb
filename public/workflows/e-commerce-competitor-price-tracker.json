@@ -1,0 +1,42 @@
+{
+  "name": "Monitor de Precios de Competidores E-Commerce & Alerta a Slack",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [{ "field": "hours", "hoursInterval": 6 }] } },
+      "name": "Cron 6 Hours",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "url": "https://competitor.com/product-page", "method": "GET" },
+      "name": "Fetch Product Page HTML",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const html = $input.first().json.data;\nconst match = html.match(/class=\"price\">\\$([0-9.]+)/);\nconst price = match ? parseFloat(match[1]) : null;\nreturn [{ json: { price, timestamp: new Date().toISOString() } }];"
+      },
+      "name": "Parse Price HTML",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [620, 300]
+    },
+    {
+      "parameters": { "channel": "price-alerts", "text": "📊 Cambio de precio detectado: ${{ $json.price }}" },
+      "name": "Send Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [880, 300]
+    }
+  ],
+  "connections": {
+    "Cron 6 Hours": { "main": [[{ "node": "Fetch Product Page HTML", "type": "main", "index": 0 }]] },
+    "Fetch Product Page HTML": { "main": [[{ "node": "Parse Price HTML", "type": "main", "index": 0 }]] },
+    "Parse Price HTML": { "main": [[{ "node": "Send Slack Alert", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

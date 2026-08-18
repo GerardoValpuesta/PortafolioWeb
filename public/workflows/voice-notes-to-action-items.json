@@ -1,0 +1,43 @@
+{
+  "name": "Procesador de Audios de Voz en WhatsApp/Telegram a Matriz Eisenhower de Tareas",
+  "nodes": [
+    {
+      "parameters": { "updates": ["message"] },
+      "name": "Audio Message Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "resource": "audio", "operation": "transcribe" },
+      "name": "OpenAI Whisper",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Organiza las tareas mencionadas en los 4 cuadrantes de Eisenhower: 1. Urgente e Importante. 2. No urgente pero Importante. 3. Delegar. 4. Eliminar."
+      },
+      "name": "Claude Eisenhower Categorizer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [620, 300]
+    },
+    {
+      "parameters": { "operation": "append", "documentId": { "__rl": true, "value": "YOUR_SPREADSHEET_ID" } },
+      "name": "Log to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [880, 300]
+    }
+  ],
+  "connections": {
+    "Audio Message Trigger": { "main": [[{ "node": "OpenAI Whisper", "type": "main", "index": 0 }]] },
+    "OpenAI Whisper": { "main": [[{ "node": "Claude Eisenhower Categorizer", "type": "main", "index": 0 }]] },
+    "Claude Eisenhower Categorizer": { "main": [[{ "node": "Log to Google Sheets", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

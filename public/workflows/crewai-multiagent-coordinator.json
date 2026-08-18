@@ -1,0 +1,32 @@
+{
+  "name": "Orquestador de Agentes Especializados (CrewAI + n8n Webhook)",
+  "nodes": [
+    {
+      "parameters": { "path": "crewai-task-dispatch", "httpMethod": "POST" },
+      "name": "CrewAI Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "url": "http://crewai-agent-server:8000/kickoff", "method": "POST" },
+      "name": "Call CrewAI Multi-Agent API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [340, 300]
+    },
+    {
+      "parameters": { "operation": "append", "documentId": { "__rl": true, "value": "YOUR_SPREADSHEET_ID" } },
+      "name": "Store Multi-Agent Results",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [580, 300]
+    }
+  ],
+  "connections": {
+    "CrewAI Webhook Trigger": { "main": [[{ "node": "Call CrewAI Multi-Agent API", "type": "main", "index": 0 }]] },
+    "Call CrewAI Multi-Agent API": { "main": [[{ "node": "Store Multi-Agent Results", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

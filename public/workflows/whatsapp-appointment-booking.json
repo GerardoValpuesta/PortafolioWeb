@@ -1,0 +1,43 @@
+{
+  "name": "Agente de Reservas de Citas & Recordatorios por WhatsApp (Cal.com / Google Calendar)",
+  "nodes": [
+    {
+      "parameters": { "path": "whatsapp-booking-incoming", "httpMethod": "POST" },
+      "name": "WhatsApp Booking Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "Identifica la fecha, hora y servicio deseado por el cliente. Revisa disponibilidad y sugiere horarios libres."
+      },
+      "name": "AI Appointment Scheduler",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [340, 300]
+    },
+    {
+      "parameters": { "calendarId": "primary" },
+      "name": "Create Calendar Booking",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 2,
+      "position": [580, 300]
+    },
+    {
+      "parameters": { "requestMethod": "POST", "url": "https://graph.facebook.com/v18.0/YOUR_PHONE_NUMBER_ID/messages" },
+      "name": "Send WhatsApp Confirmation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [820, 300]
+    }
+  ],
+  "connections": {
+    "WhatsApp Booking Webhook": { "main": [[{ "node": "AI Appointment Scheduler", "type": "main", "index": 0 }]] },
+    "AI Appointment Scheduler": { "main": [[{ "node": "Create Calendar Booking", "type": "main", "index": 0 }]] },
+    "Create Calendar Booking": { "main": [[{ "node": "Send WhatsApp Confirmation", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

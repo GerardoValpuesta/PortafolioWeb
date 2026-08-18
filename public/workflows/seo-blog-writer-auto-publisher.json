@@ -1,0 +1,35 @@
+{
+  "name": "Redactor de Artículos SEO con Claude 3.5 & Publicador Automático en WordPress",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [{ "field": "weeks", "weeksInterval": 1 }] } },
+      "name": "Weekly Schedule",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Escribe un artículo optimizado para SEO (1500 palabras) sobre desarrollo de software con IA en formato HTML con encabezados H2, H3 y meta description."
+      },
+      "name": "Claude SEO Content Writer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [340, 300]
+    },
+    {
+      "parameters": { "postType": "post", "status": "draft" },
+      "name": "Publish Draft to WordPress",
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [580, 300]
+    }
+  ],
+  "connections": {
+    "Weekly Schedule": { "main": [[{ "node": "Claude SEO Content Writer", "type": "main", "index": 0 }]] },
+    "Claude SEO Content Writer": { "main": [[{ "node": "Publish Draft to WordPress", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

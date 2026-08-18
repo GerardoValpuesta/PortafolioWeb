@@ -1,0 +1,32 @@
+{
+  "name": "Extractor de Datos de Negocios Locales desde Google Maps a Google Sheets",
+  "nodes": [
+    {
+      "parameters": { "path": "start-maps-scrape", "httpMethod": "POST" },
+      "name": "Scrape Trigger Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "url": "https://maps.googleapis.com/maps/api/place/textsearch/json?query={{ $json.query }}&key=YOUR_API_KEY" },
+      "name": "Google Places API Query",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [360, 300]
+    },
+    {
+      "parameters": { "operation": "append", "documentId": { "__rl": true, "value": "YOUR_SPREADSHEET_ID" } },
+      "name": "Append Leads to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Scrape Trigger Webhook": { "main": [[{ "node": "Google Places API Query", "type": "main", "index": 0 }]] },
+    "Google Places API Query": { "main": [[{ "node": "Append Leads to Google Sheets", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

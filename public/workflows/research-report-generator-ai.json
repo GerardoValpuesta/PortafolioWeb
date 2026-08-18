@@ -1,0 +1,43 @@
+{
+  "name": "Agente Generador de Reportes de Investigación & Mercado con DeepSeek / LLaMA 3.3",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "research-topic" },
+      "name": "Topic Request Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "url": "https://api.tavily.com/search", "method": "POST" },
+      "name": "Tavily Web Search Tool",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [340, 300]
+    },
+    {
+      "parameters": {
+        "model": "deepseek-reasoner",
+        "prompt": "Sintetiza la investigación web y redacta un reporte ejecutivo en Markdown con análisis SWOT y conclusiones."
+      },
+      "name": "DeepSeek Research Synthesizer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [580, 300]
+    },
+    {
+      "parameters": { "operation": "create", "databaseId": "YOUR_NOTION_DB" },
+      "name": "Save Report to Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [820, 300]
+    }
+  ],
+  "connections": {
+    "Topic Request Webhook": { "main": [[{ "node": "Tavily Web Search Tool", "type": "main", "index": 0 }]] },
+    "Tavily Web Search Tool": { "main": [[{ "node": "DeepSeek Research Synthesizer", "type": "main", "index": 0 }]] },
+    "DeepSeek Research Synthesizer": { "main": [[{ "node": "Save Report to Notion", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Analizador de Sentimiento en Tiempo Real para X/Twitter & Reddit con Postgres",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [{ "field": "minutes", "minutesInterval": 30 }] } },
+      "name": "Cron 30 Min",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "url": "https://api.twitter.com/2/tweets/search/recent?query=AI%20Automation" },
+      "name": "Search Twitter API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "Clasifica el sentimiento de cada tweet: Positivo (1), Neutro (0), Negativo (-1)."
+      },
+      "name": "GPT Sentiment Score",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [620, 300]
+    },
+    {
+      "parameters": { "operation": "executeQuery", "query": "INSERT INTO social_sentiment (tweet_id, score) VALUES ($1, $2);" },
+      "name": "Save to PostgreSQL",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [880, 300]
+    }
+  ],
+  "connections": {
+    "Cron 30 Min": { "main": [[{ "node": "Search Twitter API", "type": "main", "index": 0 }]] },
+    "Search Twitter API": { "main": [[{ "node": "GPT Sentiment Score", "type": "main", "index": 0 }]] },
+    "GPT Sentiment Score": { "main": [[{ "node": "Save to PostgreSQL", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

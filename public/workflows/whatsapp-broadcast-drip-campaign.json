@@ -1,0 +1,43 @@
+{
+  "name": "Pipeline de Emisión de Campañas Personalizadas por WhatsApp con IA",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [{ "field": "days", "daysInterval": 1 }] } },
+      "name": "Daily Broadcast Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "documentId": { "__rl": true, "value": "YOUR_SPREADSHEET_ID" } },
+      "name": "Fetch Target Audience",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [340, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Personaliza el mensaje promocional usando el nombre del cliente, historial de compras y producto recomendado."
+      },
+      "name": "Claude Copywriting Personalizer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [580, 300]
+    },
+    {
+      "parameters": { "requestMethod": "POST", "url": "https://graph.facebook.com/v18.0/YOUR_PHONE_NUMBER_ID/messages" },
+      "name": "Batch Send WhatsApp Template",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [820, 300]
+    }
+  ],
+  "connections": {
+    "Daily Broadcast Cron": { "main": [[{ "node": "Fetch Target Audience", "type": "main", "index": 0 }]] },
+    "Fetch Target Audience": { "main": [[{ "node": "Claude Copywriting Personalizer", "type": "main", "index": 0 }]] },
+    "Claude Copywriting Personalizer": { "main": [[{ "node": "Batch Send WhatsApp Template", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

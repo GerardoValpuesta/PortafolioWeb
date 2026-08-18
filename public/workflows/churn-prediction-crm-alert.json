@@ -1,0 +1,43 @@
+{
+  "name": "Detector de Riesgo de Churn en Clientes SaaS & Alerta Automática a Customer Success",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [{ "field": "weeks", "weeksInterval": 1 }] } },
+      "name": "Weekly Audit Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": { "operation": "executeQuery", "query": "SELECT user_id, last_login, usage_count FROM user_activity WHERE last_login < NOW() - INTERVAL '14 days';" },
+      "name": "Query Low Engagement Users",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [340, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "Calcula el riesgo de cancelación de suscripción (0-100%) y genera recomendaciones de retención para la cuenta."
+      },
+      "name": "AI Churn Risk Scoring",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [580, 300]
+    },
+    {
+      "parameters": { "channel": "churn-alerts", "text": "🚨 Alerta Churn: {{ $json.text }}" },
+      "name": "Alert CS Team in Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [820, 300]
+    }
+  ],
+  "connections": {
+    "Weekly Audit Trigger": { "main": [[{ "node": "Query Low Engagement Users", "type": "main", "index": 0 }]] },
+    "Query Low Engagement Users": { "main": [[{ "node": "AI Churn Risk Scoring", "type": "main", "index": 0 }]] },
+    "AI Churn Risk Scoring": { "main": [[{ "node": "Alert CS Team in Slack", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

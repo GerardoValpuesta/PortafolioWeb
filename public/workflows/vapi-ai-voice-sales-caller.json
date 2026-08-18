@@ -1,0 +1,35 @@
+{
+  "name": "Agente Telefónico de Ventas & Prospección con Vapi.ai / Bland.ai + n8n",
+  "nodes": [
+    {
+      "parameters": { "path": "vapi-call-completed", "httpMethod": "POST" },
+      "name": "Vapi Call Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Analiza la llamada telefónica realizada. Determina la objeción principal del prospecto y sugiere el siguiente paso de venta."
+      },
+      "name": "Claude Call Analysis",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [360, 300]
+    },
+    {
+      "parameters": { "resource": "contact", "operation": "create" },
+      "name": "Update CRM Deal",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Vapi Call Webhook": { "main": [[{ "node": "Claude Call Analysis", "type": "main", "index": 0 }]] },
+    "Claude Call Analysis": { "main": [[{ "node": "Update CRM Deal", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

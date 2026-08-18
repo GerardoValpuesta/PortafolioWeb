@@ -1,0 +1,35 @@
+{
+  "name": "Agente de Análisis Estático & Refactorización de Código con SonarQube & Claude",
+  "nodes": [
+    {
+      "parameters": { "path": "sonar-scan-result", "httpMethod": "POST" },
+      "name": "SonarQube Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Genera el diff de código refactorizado para corregir los code smells e incidencias encontradas."
+      },
+      "name": "Claude Code Refactorer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [340, 300]
+    },
+    {
+      "parameters": { "channel": "dev-alerts", "text": "={{ $json.text }}" },
+      "name": "Notify Slack Dev Team",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [580, 300]
+    }
+  ],
+  "connections": {
+    "SonarQube Webhook": { "main": [[{ "node": "Claude Code Refactorer", "type": "main", "index": 0 }]] },
+    "Claude Code Refactorer": { "main": [[{ "node": "Notify Slack Dev Team", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}
