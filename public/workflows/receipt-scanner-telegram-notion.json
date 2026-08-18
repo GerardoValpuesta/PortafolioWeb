@@ -1,0 +1,45 @@
+{
+  "name": "Extractor & Clasificador de Gastos Financieros con Vision AI (Telegram + Notion)",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": ["message"]
+      },
+      "name": "Telegram Photo Receiver",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Extrae de esta imagen de recibo/factura: { concepto, monto_total, moneda, fecha, categoria_gasto }."
+      },
+      "name": "Claude Vision Receipt Parser",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "create",
+        "databaseId": "YOUR_NOTION_EXPENSES_DB"
+      },
+      "name": "Log Expense to Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Telegram Photo Receiver": {
+      "main": [[{ "node": "Claude Vision Receipt Parser", "type": "main", "index": 0 }]]
+    },
+    "Claude Vision Receipt Parser": {
+      "main": [[{ "node": "Log Expense to Notion", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

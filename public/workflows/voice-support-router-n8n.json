@@ -1,0 +1,45 @@
+{
+  "name": "Router de Soporte por Voz & Transcripción en Tiempo Real (Groq + ElevenLabs)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "voice-call-event"
+      },
+      "name": "Call Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.groq.com/openai/v1/audio/transcriptions",
+        "method": "POST"
+      },
+      "name": "Groq Whisper API (Fast Speech-to-Text)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/voice-id",
+        "method": "POST"
+      },
+      "name": "ElevenLabs Audio Generation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Call Webhook Trigger": {
+      "main": [[{ "node": "Groq Whisper API (Fast Speech-to-Text)", "type": "main", "index": 0 }]]
+    },
+    "Groq Whisper API (Fast Speech-to-Text)": {
+      "main": [[{ "node": "ElevenLabs Audio Generation", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

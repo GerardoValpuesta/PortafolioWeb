@@ -1,0 +1,58 @@
+{
+  "name": "Asistente de Atención al Cliente para E-Commerce con WhatsApp & Shopify",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "shopify-whatsapp"
+      },
+      "name": "WhatsApp Customer Message",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get"
+      },
+      "name": "Fetch Shopify Order",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "Responde cordialmente al cliente con el estado actual de su pedido e información de rastreo."
+      },
+      "name": "AI Support Generator",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [620, 300]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://graph.facebook.com/v18.0/YOUR_PHONE_NUMBER_ID/messages"
+      },
+      "name": "Send WhatsApp Response",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [880, 300]
+    }
+  ],
+  "connections": {
+    "WhatsApp Customer Message": {
+      "main": [[{ "node": "Fetch Shopify Order", "type": "main", "index": 0 }]]
+    },
+    "Fetch Shopify Order": {
+      "main": [[{ "node": "AI Support Generator", "type": "main", "index": 0 }]]
+    },
+    "AI Support Generator": {
+      "main": [[{ "node": "Send WhatsApp Response", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

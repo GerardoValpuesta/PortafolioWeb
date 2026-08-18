@@ -1,0 +1,56 @@
+{
+  "name": "Agente RAG de Documentos PDF & Notion con Vector DB (Supabase + OpenAI)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rag-query"
+      },
+      "name": "Query Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small"
+      },
+      "name": "OpenAI Embeddings",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [340, 300]
+    },
+    {
+      "parameters": {
+        "tableName": "documents",
+        "queryName": "match_documents"
+      },
+      "name": "Supabase Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1,
+      "position": [580, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o"
+      },
+      "name": "RAG Conversational Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "typeVersion": 1.4,
+      "position": [820, 300]
+    }
+  ],
+  "connections": {
+    "Query Webhook": {
+      "main": [[{ "node": "OpenAI Embeddings", "type": "main", "index": 0 }]]
+    },
+    "OpenAI Embeddings": {
+      "main": [[{ "node": "Supabase Vector Store", "type": "main", "index": 0 }]]
+    },
+    "Supabase Vector Store": {
+      "main": [[{ "node": "RAG Conversational Chain", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

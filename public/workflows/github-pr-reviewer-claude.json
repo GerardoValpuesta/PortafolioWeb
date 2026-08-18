@@ -1,0 +1,44 @@
+{
+  "name": "Asistente de Revisión Automática de PRs en GitHub con Claude 3.5 Sonnet",
+  "nodes": [
+    {
+      "parameters": {
+        "events": ["pull_request"]
+      },
+      "name": "GitHub PR Event",
+      "type": "n8n-nodes-base.githubTrigger",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Eres un Lead Software Architect. Revisa el siguiente diff de código. Identifica: 1. Bugs o race conditions. 2. Fallas de seguridad. 3. Sugerencias de optimización en Markdown."
+      },
+      "name": "Claude Code Auditor",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "resource": "issueComment",
+        "operation": "create"
+      },
+      "name": "Post GitHub Comment",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "GitHub PR Event": {
+      "main": [[{ "node": "Claude Code Auditor", "type": "main", "index": 0 }]]
+    },
+    "Claude Code Auditor": {
+      "main": [[{ "node": "Post GitHub Comment", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

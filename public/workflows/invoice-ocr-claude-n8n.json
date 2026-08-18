@@ -1,0 +1,45 @@
+{
+  "name": "Procesador Autónomo de Facturas & OCR con Claude 3.5 Sonnet",
+  "nodes": [
+    {
+      "parameters": {
+        "postPath": "invoice-upload"
+      },
+      "name": "Invoice Receiver Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "prompt": "Analiza la imagen o PDF adjunto de esta factura. Extrae en formato JSON exacto: { rfc, emisor, receptor, subtotal, iva, total, fecha, folio_fiscal }.",
+        "text": "={{ $json.body }}"
+      },
+      "name": "Claude Vision OCR",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "YOUR_SPREADSHEET_ID", "mode": "list" }
+      },
+      "name": "Log Invoice in Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [620, 300]
+    }
+  ],
+  "connections": {
+    "Invoice Receiver Webhook": {
+      "main": [[{ "node": "Claude Vision OCR", "type": "main", "index": 0 }]]
+    },
+    "Claude Vision OCR": {
+      "main": [[{ "node": "Log Invoice in Google Sheets", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}

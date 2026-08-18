@@ -1,0 +1,64 @@
+{
+  "name": "Agente de Investigación Web & Extracción con MCP & Browserless",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "name": "Cron Daily Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [120, 280]
+    },
+    {
+      "parameters": {
+        "mcpServer": "wss://browserless.mcp.local",
+        "tool": "navigate_and_extract",
+        "arguments": "={ \"url\": \"https://example.com/data\", \"selector\": \".pricing-card\" }"
+      },
+      "name": "MCP Browser Agent",
+      "type": "n8n-nodes-base.mcpTool",
+      "typeVersion": 1,
+      "position": [360, 280]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer y formatear objetos de precios\nconst raw = $input.first().json;\nreturn raw.items.map(item => ({\n  name: item.title,\n  price: parseFloat(item.price.replace('$', '')),\n  fetchedAt: new Date().toISOString()\n}));"
+      },
+      "name": "Transform & Clean Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [600, 280]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO market_research (name, price, fetched_at) VALUES ($1, $2, $3);"
+      },
+      "name": "Save to PostgreSQL",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2,
+      "position": [840, 280]
+    }
+  ],
+  "connections": {
+    "Cron Daily Trigger": {
+      "main": [[{ "node": "MCP Browser Agent", "type": "main", "index": 0 }]]
+    },
+    "MCP Browser Agent": {
+      "main": [[{ "node": "Transform & Clean Data", "type": "main", "index": 0 }]]
+    },
+    "Transform & Clean Data": {
+      "main": [[{ "node": "Save to PostgreSQL", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "author": "Gerardo Nuñez Valpuesta" }
+}
