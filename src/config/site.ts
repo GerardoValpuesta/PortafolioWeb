@@ -3,8 +3,8 @@ import env from "./env";
 
 
 export const siteConfig = {
-    title: "Gerardo Valpuesta — Full-Stack Engineer | Angular, SaaS & AI Automation",
-    description: "Portafolio de Gerardo Núñez Valpuesta — Full-Stack Engineer. Especializado en Angular, TypeScript, Node.js, Svelte, PostgreSQL, Docker y automatización con IA / LLMOps.",
+    title: "Gerardo Valpuesta — Full-Stack Engineer | Svelte 5, SvelteKit, TypeScript & Liderazgo Técnico",
+    description: "Portafolio de Gerardo Núñez Valpuesta — Full-Stack Engineer con 6+ años de experiencia en plataformas SaaS, Svelte 5, SvelteKit, Angular, TypeScript, Node.js, SQL Server, Docker, Agentes IA y automatizaciones n8n.",
     url: env.NEXT_PUBLIC_APP_URL,
     linkedin: "https://www.linkedin.com/in/gerardovalpuesta/",
     instagram: "https://www.instagram.com/gerardo_valpuesta",

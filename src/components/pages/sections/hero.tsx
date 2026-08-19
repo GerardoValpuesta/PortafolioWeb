@@ -164,7 +164,7 @@ const Hero = () => {
         <div className="grid grid-cols-2 border md:max-w-3/4 md:border-0 md:border-t md:border-r lg:grid-cols-4">
           {[
 
-            { label: t.hero.stats.years, value: 4 },
+            { label: t.hero.stats.years, value: 6 },
             { label: t.hero.stats.products, value: 16 },
             { label: t.hero.stats.companies, value: 8 },
             { label: t.hero.stats.projectsDelivered, value: 24 },
