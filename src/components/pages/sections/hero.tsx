@@ -15,7 +15,7 @@ const Hero = () => {
   const t = useTranslation();
 
   return (
-    <div className="relative flex flex-col justify-center overflow-hidden border-b pt-12">
+    <div id="home" className="relative flex flex-col justify-center overflow-hidden border-b pt-12 scroll-mt-20 md:scroll-mt-24">
       <div className="px-4 pb-6 md:px-8 md:pb-14 lg:px-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

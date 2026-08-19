@@ -13,8 +13,9 @@ import { useIsClient } from "@uidotdev/usehooks";
 
 const NAV_LINKS = [
   { id: "home", labelEn: "Home", labelEs: "Inicio" },
-  { id: "about", labelEn: "About", labelEs: "Sobre mí" },
   { id: "projects", labelEn: "Projects", labelEs: "Proyectos" },
+  { id: "experience", labelEn: "Experience", labelEs: "Trayectoria" },
+  { id: "about", labelEn: "About", labelEs: "Sobre mí" },
   { id: "contact", labelEn: "Contact", labelEs: "Contacto" },
 ] as const;
 
@@ -31,18 +32,60 @@ const Navbar = () => {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const activeTabRef = useRef<HTMLAnchorElement | null>(null);
 
-  // Update active tab from URL hash
+  // Update active tab from URL hash & Scroll Spy
   useEffect(() => {
     const ids = NAV_LINKS.map((x) => x.id);
     const setFromHash = () => {
       const hash =
         (typeof window !== "undefined" && window.location.hash) || "";
       const id = (hash.replace("#", "") || "home") as NavId;
-      setActive(ids.includes(id) ? id : "home");
+      if (ids.includes(id)) setActive(id);
     };
     setFromHash();
     window.addEventListener("hashchange", setFromHash);
-    return () => window.removeEventListener("hashchange", setFromHash);
+
+    const scrollContainer = document.querySelector(".portfolio-container");
+
+    const handleScroll = () => {
+      const scrollTop = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
+      if (scrollTop < 80) {
+        setActive("home");
+      }
+    };
+
+    if (scrollContainer) {
+      scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
+    } else {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
+    // Scroll spy observer for sections
+    const observerOptions: IntersectionObserverInit = {
+      root: scrollContainer || null,
+      rootMargin: "-20% 0px -50% 0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id") as NavId;
+          if (id && ids.includes(id)) {
+            setActive(id);
+          }
+        }
+      });
+    }, observerOptions);
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("hashchange", setFromHash);
+      observer.disconnect();
+    };
   }, []);
 
   // Compute clip-path for animated tabs highlight
@@ -77,21 +120,42 @@ const Navbar = () => {
       cancelAnimationFrame(id);
       window.removeEventListener("resize", updateClip);
     };
-  }, [active]);
+  }, [active, language]);
 
-  const handleNavClick = (id: NavId) => {
+  const handleNavClick = (id: NavId, e?: React.MouseEvent) => {
+    e?.preventDefault();
     setActive(id);
     setOpen(false);
+
+    const targetElement = document.getElementById(id);
+    const scrollContainer = document.querySelector(".portfolio-container") || window;
+
+    if (targetElement) {
+      const containerEl = scrollContainer instanceof HTMLElement ? scrollContainer : null;
+      const containerTop = containerEl ? containerEl.getBoundingClientRect().top : 0;
+      const targetTop = targetElement.getBoundingClientRect().top;
+      const currentScrollTop = containerEl ? containerEl.scrollTop : window.scrollY;
+
+      // Sticky navbar height offset (~80px) so section titles & hero are cleanly positioned below header
+      const navOffset = 80;
+      const targetY = currentScrollTop + (targetTop - containerTop) - navOffset;
+
+      if (containerEl) {
+        containerEl.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+      }
+    }
   };
 
   return (
-    <nav className="w-full border-b px-4 py-2.5 md:px-8" id="home">
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur-md px-4 py-2.5 md:px-8 transition-all duration-300 shadow-sm">
       <div className="flex items-center justify-between gap-4">
         {/* Logo */}
         <a
           href="#home"
           className="group relative inline-flex items-center"
-          onClick={() => handleNavClick("home")}
+          onClick={(e) => handleNavClick("home", e)}
         >
           <div className="absolute -top-2 -left-2 h-4 w-4 border-t-2 border-l-2 duration-200 group-hover:-top-1 group-hover:-left-1" />
           <Logo className="w-14" hover />
@@ -126,7 +190,7 @@ const Navbar = () => {
                   key={x.id}
                   ref={isActive ? activeTabRef : null}
                   href={`#${x.id}`}
-                  onClick={() => handleNavClick(x.id)}
+                  onClick={(e) => handleNavClick(x.id, e)}
                   className={cn(
                     "relative rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200",
                     isActive ? "" : "opacity-70 hover:opacity-100",
@@ -236,7 +300,7 @@ const Navbar = () => {
                 <motion.a
                   key={x.id}
                   href={`#${x.id}`}
-                  onClick={() => handleNavClick(x.id)}
+                  onClick={(e) => handleNavClick(x.id, e)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
