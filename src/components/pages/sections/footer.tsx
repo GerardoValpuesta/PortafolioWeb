@@ -43,7 +43,7 @@ const Footer = () => {
 
         <div className="inline-flex items-center gap-2">
           <Logo className="w-10" />
-          <span>© {dayjs().year() - 1} Gerardo Valpuesta. All rights reserved.</span>
+          <span>© {dayjs().year() - 2} Gerardo Valpuesta. All rights reserved.</span>
         </div>
 
         <motion.div
