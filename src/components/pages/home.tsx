@@ -478,6 +478,38 @@ const HomePage = () => {
     [currentConsoleNavigation, selectedItem, getNextMenuItem, navigateSong, isPortalOpening],
   );
 
+  const executeNavigationAction = useCallback(
+    (item: MenuItem) => {
+      setSelectedItem(item);
+      const navigationActions: Record<MenuItem, () => void> = {
+        music: () => {
+          setCurrentConsoleNavigation("music");
+          setIsMusicPlaying(true);
+        },
+        play: () => setCurrentConsoleNavigation("play"),
+        portfolio: () => {
+          setIsPortalOpening(true);
+          if (portalTimeoutRef.current) {
+            clearTimeout(portalTimeoutRef.current);
+          }
+          portalTimeoutRef.current = setTimeout(() => {
+            router.push("/portfolio");
+          }, 950);
+        },
+        resume: () => {
+          const resumeUrl =
+            language === "en"
+              ? "/Gerardo_Nunez_Valpuesta_CV_EN.pdf"
+              : "/Gerardo_Nunez_Valpuesta_CV.pdf";
+          window.open(resumeUrl, "_blank");
+        },
+      };
+
+      navigationActions[item]?.();
+    },
+    [language, router],
+  );
+
   const handleActionButtonClick = useCallback(
     (action: ActionButtonLabel) => {
       if (action === "A") {
@@ -491,28 +523,7 @@ const HomePage = () => {
           return;
         }
 
-        const navigationActions: Record<MenuItem, () => void> = {
-          music: () => setCurrentConsoleNavigation("music"),
-          play: () => setCurrentConsoleNavigation("play"),
-          portfolio: () => {
-            setIsPortalOpening(true);
-            if (portalTimeoutRef.current) {
-              clearTimeout(portalTimeoutRef.current);
-            }
-            portalTimeoutRef.current = setTimeout(() => {
-              router.push("/portfolio");
-            }, 950);
-          },
-          resume: () => {
-            const resumeUrl =
-              language === "en"
-                ? "/Gerardo_Nunez_Valpuesta_CV_EN.pdf"
-                : "/Gerardo_Nunez_Valpuesta_CV.pdf";
-            window.open(resumeUrl, "_blank");
-          },
-        };
-
-        navigationActions[selectedItem]?.();
+        executeNavigationAction(selectedItem);
         return;
       }
 
@@ -534,7 +545,7 @@ const HomePage = () => {
         setCurrentConsoleNavigation("main");
       }
     },
-    [currentConsoleNavigation, selectedItem, musicPlaylist, router, isPortalOpening],
+    [currentConsoleNavigation, selectedItem, musicPlaylist, isPortalOpening, executeNavigationAction],
   );
 
   useEffect(() => {
@@ -568,7 +579,7 @@ const HomePage = () => {
       main: (
         <MainScreen
           selectedItem={selectedItem}
-          onItemSelect={setSelectedItem}
+          onItemSelect={executeNavigationAction}
           portalOpening={isPortalOpening}
         />
       ),
@@ -598,6 +609,7 @@ const HomePage = () => {
     navigateSong,
     songIndex,
     musicPlaylist?.length,
+    executeNavigationAction,
     isPortalOpening,
   ]);
 
