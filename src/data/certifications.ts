@@ -5,6 +5,7 @@ export type Cert = {
     url: string;
     category: string;
     featured: boolean;
+    iconUrl?: string;
     accent: {
         glow: string;
         border: string;
@@ -13,7 +14,57 @@ export type Cert = {
     };
 };
 
+/* ── Helpers for icons ── */
+export const SI = (slug: string, color: string) => `https://cdn.simpleicons.org/${slug}/${color}`;
+export const DI = (name: string, variant = "original") =>
+    `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${name}-${variant}.svg`;
+
 export const CERTIFICATIONS: Cert[] = [
+    {
+        title: "AI Fluency: Framework & Foundations",
+        issuer: "Anthropic",
+        year: "2026",
+        url: "https://verify.skilljar.com/c/cdsyhim2mtf4",
+        category: "IA & Automatización",
+        featured: true,
+        iconUrl: SI("anthropic", "D4A27F"),
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(212,162,127,0.15)] hover:shadow-[0_0_36px_rgba(212,162,127,0.3)]",
+            border: "border-amber-600/30 hover:border-amber-500/60",
+            icon: "text-amber-400 bg-amber-500/10",
+            chip: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+        },
+    },
+    {
+        title: "Claude 101",
+        issuer: "Anthropic",
+        year: "2026",
+        url: "https://verify.skilljar.com/c/3xdjs5wo4wyd",
+        category: "IA & Automatización",
+        featured: true,
+        iconUrl: SI("anthropic", "D4A27F"),
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(212,162,127,0.15)] hover:shadow-[0_0_36px_rgba(212,162,127,0.3)]",
+            border: "border-amber-600/30 hover:border-amber-500/60",
+            icon: "text-amber-400 bg-amber-500/10",
+            chip: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+        },
+    },
+    {
+        title: "Claude Code in Action",
+        issuer: "Anthropic",
+        year: "2026",
+        url: "https://verify.skilljar.com/c/spd5ctfavaod",
+        category: "IA & Automatización",
+        featured: true,
+        iconUrl: SI("anthropic", "D4A27F"),
+        accent: {
+            glow: "shadow-[0_0_24px_rgba(212,162,127,0.15)] hover:shadow-[0_0_36px_rgba(212,162,127,0.3)]",
+            border: "border-amber-600/30 hover:border-amber-500/60",
+            icon: "text-amber-400 bg-amber-500/10",
+            chip: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+        },
+    },
     {
         title: "SEO 2026: Posicionamiento Orgánico con IA",
         issuer: "The Big School",
@@ -54,34 +105,6 @@ export const CERTIFICATIONS: Cert[] = [
             border: "border-cyan-500/30 hover:border-cyan-400/60",
             icon: "text-cyan-400 bg-cyan-500/10",
             chip: "bg-cyan-500/15 text-cyan-400 border-cyan-500/30",
-        },
-    },
-    {
-        title: "Claude 101",
-        issuer: "Anthropic",
-        year: "2026",
-        url: "https://verify.skilljar.com/c/3xdjs5wo4wyd",
-        category: "IA & Automatización",
-        featured: true,
-        accent: {
-            glow: "shadow-[0_0_24px_rgba(212,162,127,0.15)] hover:shadow-[0_0_36px_rgba(212,162,127,0.3)]",
-            border: "border-amber-600/30 hover:border-amber-500/60",
-            icon: "text-amber-400 bg-amber-500/10",
-            chip: "bg-amber-500/15 text-amber-400 border-amber-500/30",
-        },
-    },
-    {
-        title: "Claude Code in Action",
-        issuer: "Anthropic",
-        year: "2025",
-        url: "https://verify.skilljar.com/c/spd5ctfavaod",
-        category: "IA & Automatización",
-        featured: true,
-        accent: {
-            glow: "shadow-[0_0_24px_rgba(212,162,127,0.15)] hover:shadow-[0_0_36px_rgba(212,162,127,0.3)]",
-            border: "border-amber-600/30 hover:border-amber-500/60",
-            icon: "text-amber-400 bg-amber-500/10",
-            chip: "bg-amber-500/15 text-amber-400 border-amber-500/30",
         },
     },
     {
@@ -246,11 +269,6 @@ export const LANGUAGES = [
 ];
 
 /* ── Tech Marquee ── */
-// Helpers: simpleicons CDN = SI, devicons CDN = DI (more reliable for some logos)
-export const SI = (slug: string, color: string) => `https://cdn.simpleicons.org/${slug}/${color}`;
-export const DI = (name: string, variant = "original") =>
-    `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${name}-${variant}.svg`;
-
 export const ROW1 = [
     { name: "Angular", icon: SI("angular", "DD0031") },
     { name: "React Native", icon: SI("react", "61DAFB") },

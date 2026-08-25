@@ -72,7 +72,11 @@ function CertCard({ cert, featured, delay }: { cert: Cert; featured?: boolean; d
             <div className="flex items-center gap-3">
                 {/* Icon */}
                 <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${cert.accent.icon}`}>
-                    <Award className="h-4 w-4" />
+                    {cert.iconUrl ? (
+                        <img src={cert.iconUrl} alt={cert.issuer} width={18} height={18} className="h-4.5 w-4.5 object-contain" />
+                    ) : (
+                        <Award className="h-4 w-4" />
+                    )}
                 </div>
 
                 {/* Title */}
