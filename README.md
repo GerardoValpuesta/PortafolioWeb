@@ -1,82 +1,39 @@
+# Gerardo Valpuesta — Portafolio Web
 
-# Stark's Portfolio
-
-![Portfolio Screenshot](public/projects/portfolio-screenshot.png)
-
-A modern, interactive **[developer portfolio](https://next-portfolio-stark.vercel.app)** built with **Next.js 15**, **Prisma**, and **shadcn/ui**
-
-> This portfolio showcases my work, my projects, and my personality
+Portafolio web profesional e interactivo desarrollado con **Next.js**, **TypeScript**, **Tailwind CSS**, **Framer Motion** y **Prisma**.
 
 ---
 
-## Tech Stack
+## 🛠️ Tecnologías Utilizadas
 
-**Framework & Runtime**
-- [Next.js 15](https://nextjs.org/) — UI Framework
-- [TypeScript 5](https://www.typescriptlang.org/) — For type safety
-
-**Styling & UI**
-- [Tailwind CSS 4](https://tailwindcss.com/) — For Styling
-- [shadcn/ui](https://ui.shadcn.com/) — for accessible components
-- [Lucide Icons](https://lucide.dev/) — for Icon
-- [Framer Motion (motion)](https://motion.dev/) — for animation
-
-**Backend & Data**
-- [Prisma ORM 6](https://www.prisma.io/) 
-- [Better Auth](https://better-auth.dev/)
-- [Zod](https://zod.dev/) — for runtime schema validation
-- [Unami](https://umami.is/) — Analytics
-
-**State & Utilities**
-- [Zustand](https://github.com/pmndrs/zustand)
-- [TanStack Query](https://tanstack.com/query)
-- [Day.js](https://day.js.org/)
-- [Lodash](https://lodash.com/)
+- **Framework & Runtime:** [Next.js](https://nextjs.org/) & [TypeScript](https://www.typescriptlang.org/)
+- **Estilos & UI:** [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/), Lucide Icons, Framer Motion
+- **Backend & Datos:** Prisma ORM, Zod, Better Auth
+- **Estado:** Zustand & TanStack Query
 
 ---
 
+## 🚀 Ejecución en Local
 
-## Run Project Locally
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/GerardoValpuesta/PortafolioWeb.git
+   cd PortafolioWeb
+   ```
 
-### Clone the repository
-```bash
-git clone https://github.com/NotStark/portfolio.git
-cd portfolio
-````
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
 
-### Install dependencies 
+3. **Generar el cliente de Prisma:**
+   ```bash
+   npx prisma generate
+   ```
 
-```bash
-npm install
-```
+4. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
 
-### Set up environment variables
-
-Create a `.env` & copy the variables from `.env.example` file in the root and configure it.
-
-### Generate Prisma Client
-
-```bash
-npx prisma generate
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-> Your portfolio should now be live at **[http://localhost:3000](http://localhost:3000)** 🎉
-
----
-
-## Deployment
-
-Deployed easily via [Vercel](https://vercel.com/) (recommended).
-
-1. Connect your GitHub repository.
-2. Add your environment variables in the Vercel dashboard.
-3. Deploy → done!
-
----
-
+El proyecto estará disponible en `http://localhost:3000`.
