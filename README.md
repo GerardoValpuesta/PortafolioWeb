@@ -1,4 +1,4 @@
-# Gerardo Valpuesta — Portafolio Web
+# Gerardo Valpuesta — Portafolio Web https://gerardovalpuesta.vercel.app/ 
 
 Portafolio web profesional e interactivo desarrollado con **Next.js**, **TypeScript**, **Tailwind CSS**, **Framer Motion** y **Prisma**.
 
