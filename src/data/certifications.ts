@@ -110,7 +110,7 @@ export const CERTIFICATIONS: Cert[] = [
     {
         title: "n8n: Agentes de IA Avanzados — MCP, WhatsApp, Voz y más",
         issuer: "Udemy",
-        year: "2024",
+        year: "2025",
         url: "https://www.udemy.com/certificate/UC-d03882c7-17a3-49b8-bd91-421d9b5fcf8d/",
         category: "IA & Automatización",
         featured: false,
@@ -124,7 +124,7 @@ export const CERTIFICATIONS: Cert[] = [
     {
         title: "Chat Bot con Inteligencia Artificial",
         issuer: "Udemy",
-        year: "2024",
+        year: "2025",
         url: "https://www.udemy.com/certificate/UC-53ae95af-f8b4-47bf-8a4e-66f7fb71ac1e/",
         category: "IA & Automatización",
         featured: false,
@@ -222,7 +222,7 @@ export const CERTIFICATIONS: Cert[] = [
     {
         title: "Grafana: Desde CERO a Avanzado",
         issuer: "Udemy",
-        year: "2024",
+        year: "2025",
         url: "https://www.udemy.com/certificate/UC-fc46f5c2-558b-4d47-9e3b-e0f462d62adb/",
         category: "Infraestructura",
         featured: false,
@@ -236,7 +236,7 @@ export const CERTIFICATIONS: Cert[] = [
     {
         title: "Android 14 con Kotlin: Intensivo y práctico",
         issuer: "Udemy",
-        year: "2024",
+        year: "2025",
         url: "https://www.udemy.com/certificate/UC-9d151dea-79e4-402e-aab4-7d4617f6af0c/",
         category: "Mobile",
         featured: false,
@@ -250,7 +250,7 @@ export const CERTIFICATIONS: Cert[] = [
     {
         title: ".NET MAUI con Visual Studio 2022 — Proyectos reales",
         issuer: "Udemy",
-        year: "2024",
+        year: "2025",
         url: "https://www.udemy.com/certificate/UC-da61b0f2-9226-44e5-840c-be4d7a14a239/",
         category: "Mobile",
         featured: false,
