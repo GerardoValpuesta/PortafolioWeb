@@ -32,7 +32,7 @@ const EXPERIENCE_META = [
         location: "México, Remoto",
         period: "2022 — Presente",
         type: "fulltime" as const,
-        stack: ["Svelte 5", "SvelteKit", "TypeScript", "Tauri", "Node.js", "SQL Server", "Docker", "n8n", "MCP"],
+        stack: ["Tauri", "Playwright", "Docker", "n8n", "MCP", "Svelte 5", "TypeScript", "Node.js", "SQL Server", "GitHub Actions"],
         current: true,
     },
     {
@@ -41,7 +41,7 @@ const EXPERIENCE_META = [
         location: "México, Contrato",
         period: "2020 — 2022",
         type: "contract" as const,
-        stack: ["Kotlin", "Android", "Firebase", "JavaScript", "HTML5", "CSS", "Stripe", "Mapbox", "WebSockets"],
+        stack: ["Kotlin", "Android", "Firebase", "WebSockets", "Stripe", "Mapbox", "JavaScript", "HTML5", "CSS"],
     },
     {
         role: "Creador & Full-Stack Dev",

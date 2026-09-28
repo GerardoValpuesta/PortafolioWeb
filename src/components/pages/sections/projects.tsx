@@ -16,8 +16,9 @@ const Projects = () => {
 
   // Non-translatable project metadata (tags, images, links)
   const projectsMeta = [
+    // 0: SAT Agent
     {
-      tags: ["Tauri", "Svelte", "SQLite", "AI / CAPTCHA", "Node.js"],
+      tags: ["Tauri", "SvelteKit", "Playwright", "Docker", "Node.js", "AI / CAPTCHA"],
       github: null,
       images: [
         "/projects/Agent/Agent- Login SAT.png",
@@ -35,6 +36,7 @@ const Projects = () => {
       containImage: true,
       hideButtons: true,
     },
+    // 1: WhatsApp CRM
     {
       tags: ["WhatsApp API", "AI / LLM", "n8n", "Node.js", "REST API"],
       github: null,
@@ -49,68 +51,20 @@ const Projects = () => {
       status: "completed",
       hideButtons: true,
     },
+    // 2: HomeLab OS
     {
-      tags: ["Next.js", "React", "TypeScript"],
+      tags: ["Linux / Proxmox", "Docker", "Ollama / Local LLMs", "n8n Self-Hosted", "Cloudflare Tunnels"],
       github: null,
-      images: [
-        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
-        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.39 p.m..png",
-        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.56 p.m..png",
-        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.15 p.m..png",
-        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.35 p.m..png",
-        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.54 p.m..png",
-      ],
-      image: "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
+      image: "/projects/homelab-dashboard.jpg",
       live: null,
-      date: "2025–present",
-      status: "completed",
-      storeLinks: {
-        web: "https://studiokin.com.mx/",
-      },
-      containImage: false,
-      verticalImages: true,
-    },
-    {
-      tags: ["React Native", "Expo", "Node.js", "MongoDB", "TypeScript"],
-      github: null,
-      images: [
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (1).jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (2).jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (3).jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (4).jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (5).jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13.jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (1).jpeg",
-        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (2).jpeg",
-      ],
-      image: "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
-      live: null,
-      date: "2025–present",
-      status: "in-progress",
-      storeLinks: {
-        web: "https://bolddy.app/",
-      },
-      containImage: false,
-      verticalImages: true,
-    },
-    {
-      tags: ["Angular", "TypeScript", "SQL Server", "REST API"],
-      github: null,
-      images: [
-        "/projects/tersa/tersanet-login.png",
-        "/projects/tersa/tersanet-inventory.png",
-        "/projects/tersa/tersanet-cotizacion.png",
-        "/projects/tersa/tersanet-pdf.png",
-      ],
-      image: "/projects/tersa/tersanet-login.png",
-      live: null,
-      date: "2022–present",
+      date: "2024–present",
       status: "completed",
       hideButtons: true,
+      containImage: false,
     },
+    // 3: n8n & MCP Pipelines
     {
-      tags: ["n8n", "AI / LLM", "MCP Protocol", "Node.js"],
+      tags: ["n8n", "AI / LLM", "MCP Protocol", "Node.js", "REST API"],
       github: null,
       image: "/projects/n8n-screenshot.png",
       live: null,
@@ -172,8 +126,9 @@ const Projects = () => {
         }
       ],
     },
+    // 4: XAMAI Client Portal 2.0
     {
-      tags: ["Svelte", "TypeScript", "Tailwind CSS", "REST API"],
+      tags: ["SvelteKit", "Svelte 5", "TypeScript", "SQL Server", "JWT"],
       github: null,
       images: [
         "/projects/mpx 2.0/mpx-login.png",
@@ -189,12 +144,86 @@ const Projects = () => {
       status: "completed",
       hideButtons: true,
     },
+    // 5: PWA Tools (Expense Tracker & Chronos TO-DO)
     {
-      tags: ["Kotlin", "Firebase", "Android", "PDF Reports"],
+      tags: ["PWA", "TypeScript", "Tailwind CSS", "IndexedDB", "SvelteKit"],
+      github: null,
+      image: "/projects/egastos-screenshot.png",
+      live: null,
+      date: "2024–present",
+      status: "completed",
+      hideButtons: true,
+    },
+    // 6: Bolddy - Sharit
+    {
+      tags: ["React Native", "Expo", "Node.js", "MongoDB", "TypeScript", "Railway"],
+      github: null,
+      images: [
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (1).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (2).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (3).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (4).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (5).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13.jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (1).jpeg",
+        "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (2).jpeg",
+      ],
+      image: "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
+      live: null,
+      date: "2025–present",
+      status: "in-progress",
+      storeLinks: {
+        web: "https://bolddy.app/",
+      },
+      containImage: false,
+      verticalImages: true,
+    },
+    // 7: Stan Semper C5 field reports
+    {
+      tags: ["Kotlin", "Firebase", "Android", "PDF Reports", "WebSockets"],
       github: null,
       image: "/projects/c5bid-screenshot.png",
       live: null,
       date: "2020–2022",
+      status: "completed",
+      hideButtons: true,
+    },
+    // 8: StudioKin
+    {
+      tags: ["Next.js", "React", "TypeScript"],
+      github: null,
+      images: [
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.39 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.56 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.15 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.35 p.m..png",
+        "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.54 p.m..png",
+      ],
+      image: "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
+      live: null,
+      date: "2025–present",
+      status: "completed",
+      storeLinks: {
+        web: "https://studiokin.com.mx/",
+      },
+      containImage: false,
+      verticalImages: true,
+    },
+    // 9: TersaNet
+    {
+      tags: ["Angular", "TypeScript", "SQL Server", "REST API"],
+      github: null,
+      images: [
+        "/projects/tersa/tersanet-login.png",
+        "/projects/tersa/tersanet-inventory.png",
+        "/projects/tersa/tersanet-cotizacion.png",
+        "/projects/tersa/tersanet-pdf.png",
+      ],
+      image: "/projects/tersa/tersanet-login.png",
+      live: null,
+      date: "2022–present",
       status: "completed",
       hideButtons: true,
     },
@@ -212,11 +241,14 @@ const Projects = () => {
     TypeScript: "bg-blue-500/10 text-blue-600 border-blue-500/30",
     "REST API": "bg-orange-500/10 text-orange-600 border-orange-500/30",
     Svelte: "bg-orange-600/10 text-orange-700 border-orange-600/30",
+    "Svelte 5": "bg-orange-600/10 text-orange-600 border-orange-600/30",
+    SvelteKit: "bg-orange-500/10 text-orange-500 border-orange-500/30",
     "Tailwind CSS": "bg-cyan-500/10 text-cyan-600 border-cyan-500/30",
     "React Native": "bg-emerald-500/10 text-emerald-600 border-emerald-500/30",
     "Node.js": "bg-green-500/10 text-green-600 border-green-500/30",
     Maps: "bg-indigo-500/10 text-indigo-600 border-indigo-500/30",
-    N8N: "bg-orange-500/10 text-orange-600 border-orange-500/30",
+    n8n: "bg-orange-500/10 text-orange-600 border-orange-500/30",
+    "n8n Self-Hosted": "bg-orange-500/10 text-orange-500 border-orange-500/30",
     "AI / LLM": "bg-purple-500/10 text-purple-600 border-purple-500/30",
     Tauri: "bg-yellow-500/10 text-yellow-600 border-yellow-500/30",
     SQLite: "bg-blue-400/10 text-blue-500 border-blue-400/30",
@@ -229,6 +261,17 @@ const Projects = () => {
     "PDF Reports": "bg-red-400/10 text-red-500 border-red-400/30",
     MongoDB: "bg-green-500/10 text-green-600 border-green-500/30",
     Expo: "bg-slate-500/10 text-slate-400 border-slate-500/30",
+    "Linux / Proxmox": "bg-amber-600/10 text-amber-500 border-amber-600/30",
+    Docker: "bg-sky-500/10 text-sky-500 border-sky-500/30",
+    "Ollama / Local LLMs": "bg-purple-500/10 text-purple-400 border-purple-500/30",
+    "Cloudflare Tunnels": "bg-orange-400/10 text-orange-400 border-orange-400/30",
+    Playwright: "bg-emerald-600/10 text-emerald-500 border-emerald-600/30",
+    PWA: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
+    IndexedDB: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+    Railway: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+    "MCP Protocol": "bg-violet-500/10 text-violet-400 border-violet-500/30",
+    WebSockets: "bg-teal-500/10 text-teal-400 border-teal-500/30",
+    JWT: "bg-yellow-500/10 text-yellow-600 border-yellow-500/30",
   };
 
   // Per-project carousel index state

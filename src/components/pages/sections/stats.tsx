@@ -60,27 +60,41 @@ const TAB_CONTENT = [
 ];
 
 const TECH_STACK = {
-  Frontend: [
+  "AI & LLMOps": [
+    { name: "Claude", icon: "https://cdn.simpleicons.org/anthropic/D4A27F" },
+    { name: "OpenAI", icon: "https://cdn.simpleicons.org/openai/412991" },
+    { name: "Gemini", icon: "https://cdn.simpleicons.org/googlegemini/8E75B2" },
+    { name: "n8n", icon: "/icons/n8n.svg" },
+    { name: "Ollama", icon: "https://cdn.simpleicons.org/ollama/FFFFFF" },
+    { name: "Playwright", icon: "https://cdn.simpleicons.org/playwright/2EAD33" },
+  ],
+  "Backend & APIs": [
+    { name: "Node.js", icon: "/icons/nodejs.svg" },
+    { name: "Express", icon: "https://cdn.simpleicons.org/express/FFFFFF" },
+    { name: "Spring", icon: "https://cdn.simpleicons.org/springboot/6DB33F" },
+    { name: "Python", icon: "/icons/python.svg" },
+    { name: "SQL Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
+    { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
+    { name: "MongoDB", icon: "/icons/mongodb.svg" },
+    { name: "SQLite", icon: "https://cdn.simpleicons.org/sqlite/003B57" },
+  ],
+  "DevOps & HomeLab": [
+    { name: "Docker", icon: "/icons/docker.svg" },
+    { name: "GitHub Actions", icon: "https://cdn.simpleicons.org/githubactions/2088FF" },
+    { name: "Linux", icon: "https://cdn.simpleicons.org/linux/FCC624" },
+    { name: "Cloudflare", icon: "https://cdn.simpleicons.org/cloudflare/F38020" },
+    { name: "Tailscale", icon: "https://cdn.simpleicons.org/tailscale/FFFFFF" },
+    { name: "Git", icon: "/icons/git.svg" },
+    { name: "Vercel", icon: "https://cdn.simpleicons.org/vercel/FFFFFF" },
+  ],
+  "Frontend & Mobile": [
+    { name: "Svelte 5", icon: "/icons/svelte.svg" },
     { name: "Angular", icon: "/icons/angular.svg" },
-    { name: "Svelte", icon: "/icons/svelte.svg" },
     { name: "TypeScript", icon: "/icons/typescript.svg" },
     { name: "Next.js", icon: "/icons/nextjs.svg" },
+    { name: "React", icon: "/icons/react.svg" },
     { name: "Tailwind", icon: "/icons/tailwind.svg" },
-    { name: "HTML", icon: "/icons/html.svg" },
-  ],
-  Backend: [
-    { name: "Node.js", icon: "/icons/nodejs.svg" },
-    { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
-    { name: "Prisma", icon: "/icons/prisma.svg" },
-    { name: "Python", icon: "/icons/python.svg" },
-    { name: "MongoDB", icon: "/icons/mongodb.svg" },
-  ],
-  Tools: [
-    { name: "N8N", icon: "/icons/n8n.svg" },
-    { name: "Docker", icon: "/icons/docker.svg" },
-    { name: "Git", icon: "/icons/git.svg" },
-    { name: "VS Code", icon: "/icons/vscode.svg" },
-    { name: "Figma", icon: "/icons/figma.svg" },
+    { name: "Kotlin", icon: "https://cdn.simpleicons.org/kotlin/7F52FF" },
   ],
 };
 
@@ -94,14 +108,14 @@ const TechStackCard = () => {
     >
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-lg font-semibold tracking-wide">Tech Stack</h3>
+        <h3 className="text-lg font-semibold tracking-wide">Tech Stack & Infraestructura</h3>
         <div className="bg-muted/30 rounded-lg border p-2 backdrop-blur-sm">
           <Layers className="text-muted-foreground h-4 w-4" />
         </div>
       </div>
 
       {/*  Categories */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {Object.entries(TECH_STACK).map(([category, techs]) => (
           <div key={category} className="space-y-3">
             {/*  Label */}

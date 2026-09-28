@@ -2,41 +2,15 @@
 
 import { motion } from "motion/react";
 import SectionHeading from "@/components/section-heading";
-import { Bot, Zap, Code2, ArrowUpRight, Smartphone, Database, Server, Sparkles, Layout } from "lucide-react";
+import { Bot, Zap, ArrowUpRight, Database, Server, Sparkles, Workflow, Cpu } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 
 // Only non-translatable data (icons, accent styles)
 const SERVICES_META = [
     {
-        icon: Code2,
-        badgeIcon: Layout,
-        badgeLabel: "Frontend",
-        accent: {
-            glow: "hover:shadow-[0_0_32px_rgba(59,130,246,0.25)]",
-            border: "border-blue-500/20 hover:border-blue-500/50",
-            iconBox: "border-blue-500/40 bg-blue-500/10 shadow-[0_0_12px_rgba(59,130,246,0.2)]",
-            iconColor: "text-blue-400",
-            badge: "bg-blue-500/10 text-blue-400 border-blue-500/30",
-            bullet: "text-blue-400",
-        },
-    },
-    {
-        icon: Database,
-        badgeIcon: Server,
-        badgeLabel: "Backend",
-        accent: {
-            glow: "hover:shadow-[0_0_32px_rgba(34,197,94,0.25)]",
-            border: "border-green-500/20 hover:border-green-500/50",
-            iconBox: "border-green-500/40 bg-green-500/10 shadow-[0_0_12px_rgba(34,197,94,0.2)]",
-            iconColor: "text-green-400",
-            badge: "bg-green-500/10 text-green-400 border-green-500/30",
-            bullet: "text-green-400",
-        },
-    },
-    {
         icon: Bot,
         badgeIcon: Sparkles,
-        badgeLabel: "AI Agents",
+        badgeLabel: "LLMOps & IA",
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(139,92,246,0.25)]",
             border: "border-violet-500/20 hover:border-violet-500/50",
@@ -47,9 +21,9 @@ const SERVICES_META = [
         },
     },
     {
-        icon: Zap,
-        badgeIcon: Smartphone,
-        badgeLabel: "Mobile / DevOps",
+        icon: Workflow,
+        badgeIcon: Zap,
+        badgeLabel: "n8n & RPA",
         accent: {
             glow: "hover:shadow-[0_0_32px_rgba(245,158,11,0.25)]",
             border: "border-amber-500/20 hover:border-amber-500/50",
@@ -57,6 +31,32 @@ const SERVICES_META = [
             iconColor: "text-amber-400",
             badge: "bg-amber-500/10 text-amber-400 border-amber-500/30",
             bullet: "text-amber-400",
+        },
+    },
+    {
+        icon: Database,
+        badgeIcon: Server,
+        badgeLabel: "APIs & Data",
+        accent: {
+            glow: "hover:shadow-[0_0_32px_rgba(34,197,94,0.25)]",
+            border: "border-green-500/20 hover:border-green-500/50",
+            iconBox: "border-green-500/40 bg-green-500/10 shadow-[0_0_12px_rgba(34,197,94,0.2)]",
+            iconColor: "text-green-400",
+            badge: "bg-green-500/10 text-green-400 border-green-500/30",
+            bullet: "text-green-400",
+        },
+    },
+    {
+        icon: Server,
+        badgeIcon: Cpu,
+        badgeLabel: "DevOps & HomeLab",
+        accent: {
+            glow: "hover:shadow-[0_0_32px_rgba(59,130,246,0.25)]",
+            border: "border-blue-500/20 hover:border-blue-500/50",
+            iconBox: "border-blue-500/40 bg-blue-500/10 shadow-[0_0_12px_rgba(59,130,246,0.2)]",
+            iconColor: "text-blue-400",
+            badge: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+            bullet: "text-blue-400",
         },
     },
 ];

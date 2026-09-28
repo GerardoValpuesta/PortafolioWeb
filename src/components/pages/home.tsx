@@ -497,10 +497,7 @@ const HomePage = () => {
           }, 950);
         },
         resume: () => {
-          const resumeUrl =
-            language === "en"
-              ? "/Gerardo_Nunez_Valpuesta_CV_EN.pdf"
-              : "/Gerardo_Nunez_Valpuesta_CV.pdf";
+          const resumeUrl = "/Gerardo_Nunez_Valpuesta_CV.pdf";
           window.open(resumeUrl, "_blank");
         },
       };
