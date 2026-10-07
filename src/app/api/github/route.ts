@@ -110,7 +110,7 @@ class GitHubStatsCalculator {
   ): { open: number; closed: number; merged: number } {
     return pullRequests.reduce(
       (acc, pr) => {
-        const s = pr.state.toUpperCase();
+        const s = pr.state?.toUpperCase() ?? '';
         if (s === 'OPEN') acc.open++;
         else if (s === 'MERGED') acc.merged++;
         else if (s === 'CLOSED') acc.closed++;
@@ -123,7 +123,7 @@ class GitHubStatsCalculator {
   static countIssueStates(issues: Array<{ state: string }>): { open: number; closed: number } {
     return issues.reduce(
       (acc, i) => {
-        const s = i.state.toUpperCase();
+        const s = i.state?.toUpperCase() ?? '';
         if (s === 'OPEN') acc.open++;
         else if (s === 'CLOSED') acc.closed++;
         return acc;

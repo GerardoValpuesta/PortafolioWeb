@@ -18,7 +18,7 @@ const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const getRandomInt = (max: number) => Math.floor(Math.random() * max);
 
 export function HyperText({
-  text,
+  text = "",
   duration = 800,
   framerProps = {
     initial: { opacity: 0, y: -10 },
@@ -28,12 +28,12 @@ export function HyperText({
   className,
   animateOnLoad = true,
 }: HyperTextProps) {
-  const [displayText, setDisplayText] = useState(text.split(""));
+  const [displayText, setDisplayText] = useState((text || "").split(""));
   const [trigger, setTrigger] = useState(false);
   const interations = useRef(0);
   const isFirstRender = useRef(true);
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref , {once: true})
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true });
 
   const triggerAnimation = () => {
     interations.current = 0;
@@ -41,6 +41,15 @@ export function HyperText({
   };
 
   useEffect(() => {
+    setDisplayText((text || "").split(""));
+    interations.current = 0;
+    triggerAnimation();
+  }, [text]);
+
+  useEffect(() => {
+    const safeText = text || "";
+    if (!safeText) return;
+
     const interval = setInterval(
       () => {
         if (!animateOnLoad && isFirstRender.current) {
@@ -48,47 +57,47 @@ export function HyperText({
           isFirstRender.current = false;
           return;
         }
-        if (interations.current < text.length) {
-          setDisplayText((t) =>
-            t.map((l, i) =>
-              l === " "
-                ? l
+        if (interations.current < safeText.length) {
+          setDisplayText(() =>
+            safeText.split("").map((char, i) =>
+              char === " "
+                ? " "
                 : i <= interations.current
-                  ? text[i]
+                  ? char
                   : alphabets[getRandomInt(26)],
             ),
           );
           interations.current = interations.current + 0.1;
         } else {
+          setDisplayText(safeText.split(""));
           setTrigger(false);
           clearInterval(interval);
         }
       },
-      duration / (text.length * 10),
+      duration / (Math.max(safeText.length, 1) * 10),
     );
     // Clean up interval on unmount
     return () => clearInterval(interval);
   }, [text, duration, trigger, animateOnLoad]);
 
   useEffect(() => {
-    triggerAnimation()
-  } , [inView])
+    triggerAnimation();
+  }, [inView]);
 
   return (
     <div
-      className="flex scale-100 cursor-default overflow-hidden "
+      className="flex scale-100 cursor-default overflow-hidden"
       onMouseEnter={triggerAnimation}
       ref={ref}
-
     >
-      <AnimatePresence >
+      <AnimatePresence>
         {displayText.map((letter, i) => (
           <motion.span
             key={i}
             className={cn("font-mono", letter === " " ? "w-3" : "", className)}
             {...framerProps}
           >
-            {letter.toUpperCase()}
+            {letter ? letter.toUpperCase() : ""}
           </motion.span>
         ))}
       </AnimatePresence>

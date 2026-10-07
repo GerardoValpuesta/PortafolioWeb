@@ -137,7 +137,7 @@ const Card = ({ item, lang }: { item: CatalogItem; lang: Lang }) => {
         )}
 
         <span className="bg-background/80 absolute top-2 left-2 rounded-full border px-2.5 py-0.5 font-mono text-[10px] tracking-wider uppercase backdrop-blur">
-          {GROUP_LABELS[item.g][lang]}
+          {GROUP_LABELS[item.g]?.[lang] ?? item.g}
         </span>
         {hasMotion && !hover && (
           <span className="bg-background/80 absolute right-2 bottom-2 flex size-6 items-center justify-center rounded-full border backdrop-blur">
