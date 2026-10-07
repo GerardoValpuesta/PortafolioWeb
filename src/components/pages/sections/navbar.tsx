@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { ThemeToggleButton2 } from "../../theme-toggle";
 import { Logo } from "../../ui/logo";
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useIsSoundEnabled } from "@/store/use-sound-enabled";
 import { useLanguage } from "@/store/use-language";
 import { useIsClient } from "@uidotdev/usehooks";
@@ -126,26 +126,33 @@ const Navbar = () => {
   const handleNavClick = (id: NavId, e?: React.MouseEvent) => {
     e?.preventDefault();
     setActive(id);
-    setOpen(false);
 
     const targetElement = document.getElementById(id);
     const scrollContainer = document.querySelector(".portfolio-container") || window;
 
     if (targetElement) {
       const containerEl = scrollContainer instanceof HTMLElement ? scrollContainer : null;
+      // If mobile sheet was open, its height inflated targetTop. Subtract it to avoid overshooting after collapse.
+      const sheetEl = document.querySelector(".mobile-menu-sheet");
+      const sheetHeight = open && sheetEl ? sheetEl.getBoundingClientRect().height : 0;
+
       const containerTop = containerEl ? containerEl.getBoundingClientRect().top : 0;
       const targetTop = targetElement.getBoundingClientRect().top;
       const currentScrollTop = containerEl ? containerEl.scrollTop : window.scrollY;
 
-      // Sticky navbar height offset (~80px) so section titles & hero are cleanly positioned below header
-      const navOffset = 80;
-      const targetY = currentScrollTop + (targetTop - containerTop) - navOffset;
+      // Base sticky navbar height (~65px) so section titles & hero are cleanly positioned below header
+      const navOffset = 65;
+      const targetY = currentScrollTop + (targetTop - containerTop) - sheetHeight - navOffset;
+
+      setOpen(false);
 
       if (containerEl) {
         containerEl.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
       } else {
         window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
       }
+    } else {
+      setOpen(false);
     }
   };
 
@@ -289,7 +296,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden md:hidden"
+            className="mobile-menu-sheet overflow-hidden md:hidden"
           >
             <motion.div
               initial={{ y: -20 }}
@@ -327,7 +334,7 @@ const Navbar = () => {
                   )}
 
                   {/* Hover gradient effect */}
-                  <div className="from-foreground/0 via-foreground/5 to-foreground/0 absolute inset-0 translate-x-[-100%] bg-gradient-to-r transition-transform duration-700 ease-in-out group-hover:translate-x-[100%]" />
+                  <div className="pointer-events-none from-foreground/0 via-foreground/5 to-foreground/0 absolute inset-0 translate-x-[-100%] bg-gradient-to-r transition-transform duration-700 ease-in-out group-hover:translate-x-[100%]" />
 
                   <div className="relative flex items-center justify-between">
                     <span>{language === "en" ? x.labelEn : x.labelEs}</span>

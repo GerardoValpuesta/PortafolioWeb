@@ -1,4 +1,4 @@
-import { MotionConfig } from "framer-motion";
+import { MotionConfig } from "motion/react";
 import React from "react";
 
 const MotionConfigWrapper = ({ children }: { children: React.ReactNode }) => {
