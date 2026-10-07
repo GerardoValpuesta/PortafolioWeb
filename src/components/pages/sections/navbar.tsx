@@ -14,6 +14,7 @@ import { useIsClient } from "@uidotdev/usehooks";
 const NAV_LINKS = [
   { id: "home", labelEn: "Home", labelEs: "Inicio" },
   { id: "projects", labelEn: "Projects", labelEs: "Proyectos" },
+  { id: "catalog", labelEn: "Websites", labelEs: "Sitios" },
   { id: "experience", labelEn: "Experience", labelEs: "Trayectoria" },
   { id: "about", labelEn: "About", labelEs: "Sobre mí" },
   { id: "contact", labelEn: "Contact", labelEs: "Contacto" },

@@ -13,6 +13,7 @@ import Contact from "./sections/contact";
 import Services from "./sections/services";
 import Experience from "./sections/experience";
 import Certifications from "./sections/certifications";
+import TemplatesCatalog from "./sections/templates-catalog";
 
 const PortfolioPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,6 +66,7 @@ const PortfolioPage = () => {
               <Hero />
               <Services />
               <Projects />
+              <TemplatesCatalog />
               <Experience />
               <About />
               <Certifications />
