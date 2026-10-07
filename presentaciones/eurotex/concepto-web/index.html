@@ -1,0 +1,63 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--navy:#0B1B3A;--blue:#1E5BFF;--sky:#5CA8FF;--ink:#0B1B3A;--mut:#5B6B88;--line:#E3E9F5;--bg:#F5F8FF}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.hero{position:relative;background:radial-gradient(900px 500px at 85% 10%,#DCE8FF 0,transparent 60%),radial-gradient(600px 400px at 0% 100%,#EAF1FF 0,transparent 60%),#fff;overflow:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+.logo{font-weight:800;font-size:26px;letter-spacing:-.04em}.logo b{color:var(--blue)}
+.links{display:flex;gap:34px;font-size:15px;color:var(--mut);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border-radius:999px;padding:12px 22px;font-size:14px;font-weight:600}
+.dot{width:8px;height:8px;border-radius:50%;background:#25D366}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:56px 0 90px}
+.tag{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:600;color:var(--blue);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;box-shadow:0 4px 14px rgba(30,91,255,.08)}
+h1{font-size:68px;line-height:1.02;letter-spacing:-.045em;margin:22px 0 22px;font-weight:800}
+h1 span{background:linear-gradient(90deg,var(--blue),var(--sky));-webkit-background-clip:text;color:transparent}
+.sub{font-size:19px;line-height:1.55;color:var(--mut);max-width:520px}
+.cta{display:flex;gap:14px;margin-top:34px}
+.btn{border-radius:14px;padding:16px 26px;font-weight:700;font-size:16px}
+.p{background:var(--blue);color:#fff;box-shadow:0 12px 28px rgba(30,91,255,.35)}.g{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.vis{position:relative;height:470px}
+.panel{position:absolute;border-radius:28px;background:linear-gradient(145deg,#0B1B3A,#16327A);box-shadow:0 30px 60px rgba(11,27,58,.25);overflow:hidden}
+.p1{inset:20px 0 40px 40px}
+.panel svg{position:absolute;inset:0;width:100%;height:100%}
+.glass{position:absolute;background:rgba(255,255,255,.92);border-radius:18px;padding:16px 18px;box-shadow:0 18px 40px rgba(11,27,58,.18);font-size:14px;font-weight:700}
+.glass small{display:block;font-weight:500;color:var(--mut);margin-top:3px;font-size:12px}
+.sec{padding:80px 0 90px;background:var(--bg)}
+.sec h2{font-size:44px;letter-spacing:-.04em;font-weight:800}.sec p.l{color:var(--mut);font-size:18px;margin-top:10px}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:40px}
+.t{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;grid-column:span 2;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
+.t.w{grid-column:span 3;background:var(--navy);color:#fff;border:0}.t.w .c{color:#9DB8FF}
+.t h3{font-size:30px;letter-spacing:-.03em}.c{font-size:14px;color:var(--blue);font-weight:600;margin-top:6px}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600}
+.arr{width:36px;height:36px;border-radius:50%;background:var(--bg);display:grid;place-items:center;color:var(--blue)}.t.w .arr{background:rgba(255,255,255,.12);color:#fff}
+.wa{position:fixed;right:28px;bottom:28px;width:62px;height:62px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px rgba(37,211,102,.45)}
+@media(max-width:600px){.wrap{padding:0 22px}.links,.nav-cta{display:none}.burger{display:block!important}
+.grid{grid-template-columns:1fr;padding:24px 0 40px;gap:30px}h1{font-size:44px}.sub{font-size:16px}.cta{flex-direction:column}.btn{text-align:center}
+.vis{display:none}.chips{display:flex!important}.bento{grid-template-columns:1fr}.t,.t.w{grid-column:span 1;min-height:120px}.sec h2{font-size:32px}.sec{padding:50px 0}.wa{width:54px;height:54px;right:18px;bottom:18px}}
+.chips{display:none;flex-wrap:wrap;gap:8px;margin-top:22px}.chips span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600}
+.burger{display:none;width:40px;height:40px;border-radius:12px;background:var(--navy);position:relative}
+.burger:before,.burger:after{content:"";position:absolute;left:11px;right:11px;height:2px;background:#fff;top:15px}.burger:after{top:23px}
+</style></head><body>
+<header class="hero"><div class="wrap">
+<nav><div class="logo">EURO<b>TEX</b></div><div class="links"><span>Marcas</span><span>Servicios</span><span>Nosotros</span><span>Contacto</span></div><span class="pill nav-cta"><i class="dot"></i>Cotizar por WhatsApp</span><div class="burger"></div></nav>
+<div class="grid"><div>
+<span class="tag"><i class="dot" style="background:var(--blue)"></i>Maquinaria, refacciones y servicio técnico</span>
+<h1>Tecnología textil que <span>nunca se detiene</span></h1>
+<p class="sub">Representamos las marcas líderes de la industria y acompañamos su operación con refacciones y soporte técnico en México.</p>
+<div class="cta"><span class="btn p">Solicitar cotización</span><span class="btn g">Explorar marcas</span></div><div class="chips"><span>Refacciones</span><span>Servicio técnico</span><span>Laboratorio</span></div></div>
+<div class="vis"><div class="panel p1"><svg viewBox="0 0 500 420" fill="none"><g stroke="#5CA8FF" stroke-opacity=".55" stroke-width="1.4"><path d="M-20 300C100 200 160 380 280 260S420 120 540 200"/><path d="M-20 320C100 220 160 400 280 280S420 140 540 220"/><path d="M-20 340C100 240 160 420 280 300S420 160 540 240"/><path d="M-20 360C100 260 160 440 280 320S420 180 540 260"/><path d="M-20 380C100 280 160 460 280 340S420 200 540 280"/><path d="M-20 280C100 180 160 360 280 240S420 100 540 180"/></g><circle cx="360" cy="90" r="120" fill="#1E5BFF" fill-opacity=".35"/></svg></div>
+<div class="glass" style="left:0;top:70px">Refacciones<small>Originales y a tiempo</small></div>
+<div class="glass" style="right:-10px;top:170px">Servicio técnico<small>Instalación y mantenimiento</small></div>
+<div class="glass" style="left:60px;bottom:10px">Laboratorio<small>Medición y control de color</small></div></div></div></div></header>
+<section class="sec"><div class="wrap"><h2>Marcas que representamos</h2><p class="l">Cada marca con sus productos y servicios, a un clic.</p>
+<div class="bento">
+<div class="t w"><div><h3>Rieter</h3><div class="c">Hilatura</div></div><div class="row">Ver línea <span class="arr">→</span></div></div>
+<div class="t w"><div><h3>Datacolor</h3><div class="c">Laboratorio y color</div></div><div class="row">Ver línea <span class="arr">→</span></div></div>
+<div class="t"><div><h3>Graf</h3><div class="c">Hilatura</div></div><div class="row">Ver línea <span class="arr">→</span></div></div>
+<div class="t"><div><h3>Fong's</h3><div class="c">Teñido y acabado</div></div><div class="row">Ver línea <span class="arr">→</span></div></div>
+<div class="t"><div><h3>SSM</h3><div class="c">Hilatura</div></div><div class="row">Ver línea <span class="arr">→</span></div></div>
+</div></div></section>
+<div class="wa"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.1-1.3A10 10 0 1012 2zm5.3 14c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.9 2.100c.1.200.1.400 0 .5l-.4.600-.4.500c-.1.100-.3.300-.1.600.2.300.8 1.300 1.700 2 1.100 1 2.100 1.300 2.400 1.400.3.100.5.100.6-.1l.9-1.100c.2-.2.400-.2.600-.1l2 .9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg></div>
+</body></html>
