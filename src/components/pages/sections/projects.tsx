@@ -36,7 +36,20 @@ const Projects = () => {
       containImage: true,
       hideButtons: true,
     },
-    // 1: WhatsApp CRM
+    // 1: SYMTHREE Studio & 3D Interactive Platform
+    {
+      tags: ["Three.js", "WebGL", "TypeScript", "SvelteKit", "Vercel", "Tailwind CSS"],
+      github: "https://github.com/GerardoValpuesta/Sym3",
+      image: "/projects/symthree-preview.png",
+      live: "https://symthree.vercel.app",
+      date: "2026–present",
+      status: "completed",
+      storeLinks: {
+        web: "https://symthree.vercel.app",
+      },
+      hideButtons: false,
+    },
+    // 2: WhatsApp CRM
     {
       tags: ["WhatsApp API", "AI / LLM", "n8n", "Node.js", "REST API"],
       github: null,
@@ -272,6 +285,9 @@ const Projects = () => {
     "MCP Protocol": "bg-violet-500/10 text-violet-400 border-violet-500/30",
     WebSockets: "bg-teal-500/10 text-teal-400 border-teal-500/30",
     JWT: "bg-yellow-500/10 text-yellow-600 border-yellow-500/30",
+    "Three.js": "bg-sky-500/10 text-sky-400 border-sky-500/30",
+    WebGL: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
+    Vercel: "bg-slate-500/10 text-slate-300 border-slate-500/30",
   };
 
   // Per-project carousel index state

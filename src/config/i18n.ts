@@ -49,6 +49,12 @@ export const translations = {
         liveLabel: "Case Study",
       },
       {
+        title: "SYMTHREE — Software, AI & Automation Studio (3D WebGL Platform)",
+        description:
+          "Problem: Engineering and automation consultancies frequently rely on generic, static marketing pages that fail to prove technical excellence to enterprise clients. Solution: Architected and built SYMTHREE, a high-converting digital product studio platform featuring an interactive 18,000-particle WebGL engine (Three.js) with scroll-driven geometric morphing, responsive fullscreen drawer navigation, a live ROI operational waste calculator, and modular dark glassmorphic design deployed on Vercel. Result: Enterprise-grade branding delivering 60 FPS fluid rendering, sub-second load times, and an interactive conversion funnel for high-ticket clients.",
+        liveLabel: "Live Platform",
+      },
+      {
         title: "AI WhatsApp CRM & Lead Automation",
         description:
           "Problem: Businesses struggled with delayed response times and manual lead tracking on WhatsApp. Solution: Architected and validated an AI-powered WhatsApp CRM deployed on Vercel to centralize conversations, automate initial qualification, and execute conversational follow-up flows with prospects. Result: Streamlined sales pipeline responses and instant lead engagement.",
@@ -264,6 +270,12 @@ export const translations = {
         description:
           "Problema: Los equipos contables desperdiciaban docenas de horas manejando accesos CIEC/e.firma, resolviendo CAPTCHAs y descargando facturas fiscales (CFDI). Solución: Diseñé e implementé un agente autónomo de escritorio (Tauri, SvelteKit, Svelte, Express.js, SQLite, Docker) multicompañía y multi-RFC usando Playwright para automatización de navegador y resolución de CAPTCHAs con IA. Incluí un Copiloto de IA para detectar riesgos fiscales, apoyar en conciliación bancaria y generar reportes mensuales. Resultado: Reducción del 95% del tiempo operativo (de días a ~5 minutos por sesión) y eliminación del 100% de comprobantes faltantes.",
         liveLabel: "Caso de Éxito",
+      },
+      {
+        title: "SYMTHREE — Software, AI & Automation Studio (Plataforma 3D WebGL)",
+        description:
+          "Problema: Los estudios de ingeniería y automatización suelen depender de sitios estáticos genéricos que no demuestran su verdadero calibre técnico a clientes corporativos. Solución: Diseñé y desarrollé SYMTHREE, una plataforma web de alto impacto para estudio de producto con un motor 3D de 18,000 partículas en Three.js con metamorfosis geométrica por scroll, menú responsive con drawer flotante, calculadora de desperdicio operativo / ROI en tiempo real y arquitectura glassmorphic de grado empresarial desplegada en Vercel. Resultado: Posicionamiento institucional de alta conversión con renderizado fluido a 60 FPS, tiempos de carga instantáneos y simulador interactivo de rentabilidad para clientes B2B.",
+        liveLabel: "Ver Plataforma",
       },
       {
         title: "CRM de WhatsApp con IA & Automatización",
