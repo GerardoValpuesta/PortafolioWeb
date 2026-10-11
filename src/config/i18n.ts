@@ -49,9 +49,9 @@ export const translations = {
         liveLabel: "Case Study",
       },
       {
-        title: "SYMTHREE — Software, AI & Automation Studio (3D WebGL Platform)",
+        title: "SYMTHREE — Digital Product Studio & 3D Interactive WebGL Platform",
         description:
-          "Problem: Engineering and automation consultancies frequently rely on generic, static marketing pages that fail to prove technical excellence to enterprise clients. Solution: Architected and built SYMTHREE, a high-converting digital product studio platform featuring an interactive 18,000-particle WebGL engine (Three.js) with scroll-driven geometric morphing, responsive fullscreen drawer navigation, a live ROI operational waste calculator, and modular dark glassmorphic design deployed on Vercel. Result: Enterprise-grade branding delivering 60 FPS fluid rendering, sub-second load times, and an interactive conversion funnel for high-ticket clients.",
+          "Problem: Software & AI engineering consultancies frequently rely on generic, static landing pages that fail to demonstrate their technical caliber to high-ticket corporate prospects. Solution: Architected and deployed SYMTHREE as Lead Engineer & Creative Developer—an institutional-grade studio platform featuring an 18,000-particle WebGL engine (Three.js) with cursor-reactive volumetric physics (raycasting & 3D planes) and scroll-driven geometric morphing (lerp with smoothstep interpolation between the orbital triad and official logo inside an isometric cube), responsive glass-capsule navigation with an animated 28px blur drawer, custom GLSL shaders, and an interactive operational waste / ROI simulator with automated WhatsApp quote links on SvelteKit & Vercel Edge Network. Result: Rock-solid 60 FPS on desktop and mobile, zero external UI dependencies, sub-second load times with zero memory leaks, and an optimized B2B conversion funnel.",
         liveLabel: "Live Platform",
       },
       {
@@ -272,9 +272,9 @@ export const translations = {
         liveLabel: "Caso de Éxito",
       },
       {
-        title: "SYMTHREE — Software, AI & Automation Studio (Plataforma 3D WebGL)",
+        title: "SYMTHREE — Digital Product Studio & Plataforma 3D WebGL",
         description:
-          "Problema: Los estudios de ingeniería y automatización suelen depender de sitios estáticos genéricos que no demuestran su verdadero calibre técnico a clientes corporativos. Solución: Diseñé y desarrollé SYMTHREE, una plataforma web de alto impacto para estudio de producto con un motor 3D de 18,000 partículas en Three.js con metamorfosis geométrica por scroll, menú responsive con drawer flotante, calculadora de desperdicio operativo / ROI en tiempo real y arquitectura glassmorphic de grado empresarial desplegada en Vercel. Resultado: Posicionamiento institucional de alta conversión con renderizado fluido a 60 FPS, tiempos de carga instantáneos y simulador interactivo de rentabilidad para clientes B2B.",
+          "Problema: Las consultoras y agencias de desarrollo de software e IA frecuentemente utilizan páginas de aterrizaje genéricas y estáticas que no demuestran su calibre técnico a prospectos corporativos de alto ticket. Solución: Como Lead Engineer & Creative Developer, diseñé y desplegué SYMTHREE: una plataforma digital de grado institucional con motor 3D en WebGL (Three.js) de 18,000 partículas con físicas reactivas al cursor (repulsión volumétrica con raycasting en planos 3D) y metamorfosis geométrica por scroll (lerp con smoothstep entre la tríada orbital y el logotipo oficial en cubo isométrico), navegación responsive tipo cápsula de cristal con drawer móvil animado (blur de 28px), shaders GLSL a medida para suelo con ondas radiales y simulador interactivo de ROI / desperdicio operativo con deep links a WhatsApp sobre SvelteKit y Vercel Edge Network. Resultado: 60 FPS constantes en escritorio y smartphones sin fugas de memoria, cero dependencias pesadas de UI externas y canalización optimizada de prospectos calificados.",
         liveLabel: "Ver Plataforma",
       },
       {

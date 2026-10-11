@@ -39,8 +39,15 @@ const Projects = () => {
     // 1: SYMTHREE Studio & 3D Interactive Platform
     {
       tags: ["Three.js", "WebGL", "TypeScript", "SvelteKit", "Vercel", "Tailwind CSS"],
-      github: "https://github.com/GerardoValpuesta/Sym3",
-      image: "/projects/symthree-preview.png",
+      github: null,
+      images: [
+        "/projects/symthree/symthree-1-hero.png",
+        "/projects/symthree/symthree-2-solutions.png",
+        "/projects/symthree/symthree-3-calculator.png",
+        "/projects/symthree/symthree-4-metrics.png",
+        "/projects/symthree/symthree-5-industries.png",
+      ],
+      image: "/projects/symthree/symthree-1-hero.png",
       live: "https://symthree.vercel.app",
       date: "2026–present",
       status: "completed",
@@ -505,6 +512,26 @@ const Projects = () => {
                         >
                           <ExternalLink className="mr-2 h-4 w-4" />
                           {(project as any).liveLabel || "Visit Site"}
+                          <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </a>
+                      </Button>
+                    )}
+
+                    {/* GitHub Link */}
+                    {(project as any).github && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="lg"
+                        className="group/btn border-2 font-medium"
+                      >
+                        <a
+                          href={(project as any).github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          View Code
                           <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                         </a>
                       </Button>
