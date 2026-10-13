@@ -56,6 +56,25 @@ const Projects = () => {
       },
       hideButtons: false,
     },
+    // 2: Coccinella Dental Studio
+    {
+      tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "Vercel", "WhatsApp API", "SEO"],
+      github: null,
+      images: [
+        "/projects/dental-studio/dental-1-hero.png",
+        "/projects/dental-studio/dental-2-about.png",
+        "/projects/dental-studio/dental-3-treatments.png",
+        "/projects/dental-studio/dental-4-location.png",
+      ],
+      image: "/projects/dental-studio/dental-1-hero.png",
+      live: "https://dental-lab-five.vercel.app/",
+      date: "2026–present",
+      status: "completed",
+      storeLinks: {
+        web: "https://dental-lab-five.vercel.app/",
+      },
+      hideButtons: false,
+    },
     // 2: WhatsApp CRM
     {
       tags: ["WhatsApp API", "AI / LLM", "n8n", "Node.js", "REST API"],
@@ -295,6 +314,9 @@ const Projects = () => {
     "Three.js": "bg-sky-500/10 text-sky-400 border-sky-500/30",
     WebGL: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
     Vercel: "bg-slate-500/10 text-slate-300 border-slate-500/30",
+    React: "bg-cyan-500/10 text-cyan-500 border-cyan-500/30",
+    Vite: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+    SEO: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
   };
 
   // Per-project carousel index state

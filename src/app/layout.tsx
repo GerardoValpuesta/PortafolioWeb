@@ -61,6 +61,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={cn(
           "mx-auto font-sans antialiased",
           geistSans.variable,

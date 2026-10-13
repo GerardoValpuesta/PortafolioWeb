@@ -55,6 +55,12 @@ export const translations = {
         liveLabel: "Live Platform",
       },
       {
+        title: "Coccinella Dental Studio — Clinical Web Platform & Online Booking",
+        description:
+          "Problem: Dental clinics frequently lose prospective patients due to obsolete web presences, cold and stressful healthcare imagery, and burdensome manual booking procedures. Solution: Designed and developed Coccinella Dental Studio—a modern, warm, and patient-first clinical web platform built with React, Vite, Tailwind CSS, and Lucide Icons. Features an interactive treatment catalog (ultrasonic prophylaxis, LED whitening, biomimetic resins, invisible aligners), zero-friction instant WhatsApp booking with pre-configured treatment messages, Google Maps geolocation integration for Zacatlán, Puebla, and Schema.org rich snippets for local medical search optimization. Result: 100% responsive experience, lightning-fast load times on mobile devices, and an inviting conversion funnel that transforms visitors into scheduled patients.",
+        liveLabel: "Visit Site",
+      },
+      {
         title: "AI WhatsApp CRM & Lead Automation",
         description:
           "Problem: Businesses struggled with delayed response times and manual lead tracking on WhatsApp. Solution: Architected and validated an AI-powered WhatsApp CRM deployed on Vercel to centralize conversations, automate initial qualification, and execute conversational follow-up flows with prospects. Result: Streamlined sales pipeline responses and instant lead engagement.",
@@ -276,6 +282,12 @@ export const translations = {
         description:
           "Problema: Las consultoras y agencias de desarrollo de software e IA frecuentemente utilizan páginas de aterrizaje genéricas y estáticas que no demuestran su calibre técnico a prospectos corporativos de alto ticket. Solución: Como Lead Engineer & Creative Developer, diseñé y desplegué SYMTHREE: una plataforma digital de grado institucional con motor 3D en WebGL (Three.js) de 18,000 partículas con físicas reactivas al cursor (repulsión volumétrica con raycasting en planos 3D) y metamorfosis geométrica por scroll (lerp con smoothstep entre la tríada orbital y el logotipo oficial en cubo isométrico), navegación responsive tipo cápsula de cristal con drawer móvil animado (blur de 28px), shaders GLSL a medida para suelo con ondas radiales y simulador interactivo de ROI / desperdicio operativo con deep links a WhatsApp sobre SvelteKit y Vercel Edge Network. Resultado: 60 FPS constantes en escritorio y smartphones sin fugas de memoria, cero dependencias pesadas de UI externas y canalización optimizada de prospectos calificados.",
         liveLabel: "Ver Plataforma",
+      },
+      {
+        title: "Coccinella Dental Studio — Plataforma Clínica & Agendamiento Dental",
+        description:
+          "Problema: Los consultorios dentales pierden pacientes potenciales debido a sitios web anticuados, falta de optimización móvil y procesos lentos para solicitar informes o citas. Solución: Diseño y desarrollo integral de Coccinella Dental Studio—una plataforma web moderna, cálida y de alta conversión desarrollada con React, Vite, Tailwind CSS y Lucide Icons. Incluye catálogo interactivo de tratamientos (profilaxis ultrasónica, blanqueamiento LED, resinas biomiméticas y ortodoncia invisible), sistema de agendamiento directo a WhatsApp con mensajes preconfigurados, integración de mapas y geolocalización en Zacatlán, Puebla, y metadatos optimizados con Schema.org para SEO local. Resultado: Carga ultra rápida en dispositivos móviles, experiencia de usuario libre de estrés y canal directo de captación de pacientes.",
+        liveLabel: "Visitar Sitio",
       },
       {
         title: "CRM de WhatsApp con IA & Automatización",
