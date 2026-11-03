@@ -14,6 +14,7 @@ import Services from "./sections/services";
 import Experience from "./sections/experience";
 import Certifications from "./sections/certifications";
 import TemplatesCatalog from "./sections/templates-catalog";
+import AiArsenal from "./sections/ai-arsenal";
 
 const PortfolioPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -67,6 +68,7 @@ const PortfolioPage = () => {
               <Services />
               <Projects />
               <TemplatesCatalog />
+              <AiArsenal />
               <Experience />
               <About />
               <Certifications />
