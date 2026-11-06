@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 import Script from "next/script";
 import env from "@/config/env";
 import FloatingAvatar from "@/components/floating-avatar";
-// import FloatingAvatar from "@/components/floating-avatar";
+import { Analytics } from "@vercel/analytics/next";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -83,6 +83,7 @@ export default function RootLayout({
           src="https://cloud.umami.is/script.js"
           data-website-id={env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
         />
+        <Analytics />
       </body>
     </html>
   );
