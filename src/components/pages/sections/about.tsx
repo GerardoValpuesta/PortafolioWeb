@@ -100,7 +100,7 @@ const About = () => {
                 <div className="text-center">
                   <div className="border-foreground/20 bg-muted/20 mb-4 overflow-hidden rounded-lg border-2 border-dashed p-4">
                     <img
-                      src="/profile-real.jpg"
+                      src="/profile-about.jpg"
                       alt="Gerardo Valpuesta"
                       className="h-auto w-full rounded-lg object-cover object-center"
                     />
