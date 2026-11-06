@@ -52,9 +52,10 @@ const PortfolioPage = () => {
         {/* El ruido de fondo viejo que tenías. Opcional bajarle opacidad si choca. */}
         <BackgroundNoise className="z-50 opacity-10 mix-blend-overlay max-md:opacity-5" />
 
-        <div className="h-dvh md:snap-start relative z-10">
+        {/* Splash screen inicial con logo cursiva */}
+        {/* <div className="h-dvh md:snap-start relative z-10">
           <PortfolioBootSplash />
-        </div>
+        </div> */}
 
         {/* Main encapsulado en z-10 para quedar sobre el Parallax */}
         <main className="before:border-border after:border-border relative z-10 min-h-screen md:snap-start before:absolute before:top-0 before:left-0 before:h-full before:w-12 before:border-r before:bg-[linear-gradient(-135deg,_var(--color-border)_25%,_transparent_25%,_transparent_50%,_var(--color-border)_50%,_var(--color-border)_75%,_transparent_75%,_transparent)] before:bg-[length:5px_5px] after:absolute after:top-0 after:right-0 after:h-full after:w-12 after:border-l after:bg-[linear-gradient(135deg,_var(--color-border)_25%,_transparent_25%,_transparent_50%,_var(--color-border)_50%,_var(--color-border)_75%,_transparent_75%,_transparent)] after:bg-[length:5px_5px] max-md:before:hidden max-md:after:hidden md:px-12">
