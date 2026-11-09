@@ -4,7 +4,7 @@ export const translations = {
       badge: "AI & Automation Engineering · LLMOps & DevOps",
       subtitle: "AI & Automation Engineer · LLMOps, DevOps & API Integration",
       description:
-        "Software Engineer with 6+ years of experience building system integrations and automation, focused on applying Artificial Intelligence across the development lifecycle: autonomous agents, LLM coding assistants (Claude, GPT-4, Gemini), prompt engineering, n8n orchestration, and Model Context Protocol (MCP). Proven track record automating government and fiscal APIs (SAT e.firma/CIEC), batch processing, Docker containerization, GitHub Actions CI/CD, and Playwright automation, backed by a personal bare-metal HomeLab.",
+        "Software engineer with 6+ years building system integrations and automation. Focused on applying AI across the development workflow: autonomous agents, LLM coding assistants, n8n orchestration, and Model Context Protocol (MCP). Hands-on experience automating fiscal APIs (SAT e.firma/CIEC), batch pipelines, Docker deployments, and Playwright RPA, backed by a personal bare-metal HomeLab.",
       ctaPrimary: "Contact via WhatsApp",
       ctaSecondary: "View Projects",
       downloadCv: "Download CV",
@@ -28,7 +28,7 @@ export const translations = {
       heading1: "I Build AI Agents & Automations,",
       heading2: "Not Just Run-of-the-mill Code",
       robotGreeting: "Hey👋",
-      p1Start: "Looking for an engineer who integrates autonomous AI agents, orchestrates robust automation pipelines, and connects complex APIs to business workflows?",
+      p1Start: "Looking for an engineer who integrates autonomous AI agents, builds reliable automation pipelines, and connects complex APIs to business workflows?",
       p1End: "That's my core focus.",
       p2Start: "I provide hands-on development and technical leadership — from government interoperability with digital certificates (SAT CIEC/e.firma) and backend APIs (Node.js, Express, Spring, SQL Server) to modern frontends (Svelte 5, Angular 17) and CI/CD pipelines.",
       p2End: "My core stack: LLMs (Claude, GPT-4, Gemini), n8n, MCP, Docker, GitHub Actions, TypeScript, and Playwright.",
@@ -43,62 +43,74 @@ export const translations = {
 
     projects: [
       {
+        title: "Autonomous Reels Pipeline in HomeLab (Remotion + n8n + Kokoro)",
+        tagline: "«From prompt to vertical MP4 rendered on bare-metal server at $0 API cost»",
+        description:
+          "Automated vertical video production and rendering pipeline self-hosted on bare-metal HomeLab with Docker. Orchestrated with AI agents and n8n, executing local neural speech synthesis (Kokoro), word-level Whisper subtitles, and code-based headless rendering (Remotion + React) without recurring API costs.",
+        bullets: [
+          "Orchestrated end-to-end workflow with n8n and Docker, automating from script generation to final MP4 render.",
+          "Integrated local neural TTS (Kokoro) and millimetric subtitle sync (Whisper), cutting audio API costs to $0.",
+          "Built headless rendering engine using Remotion and React with 13 modular animation components.",
+        ],
+        liveLabel: "Live Demo",
+      },
+      {
         title: "Autonomous SAT Tax AI Agent & Copilot",
         description:
-          "Problem: Accounting teams wasted dozens of hours manually managing CIEC/e.firma logins, resolving CAPTCHAs, and downloading tax vouchers (CFDI). Solution: Engineered a multi-company, multi-RFC autonomous desktop AI agent built with Tauri, SvelteKit, Svelte, Express.js, SQLite, and Docker, using Playwright for browser automation and AI CAPTCHA solving. Added an AI Copilot to detect tax risks, assist bank reconciliation, and generate executive monthly closing reports. Result: Reduced processing time by 95% (from days to ~5 minutes per session) and eliminated voucher missing rates to 0%.",
+          "Accounting teams lost hours manually solving CAPTCHAs and downloading tax vouchers (CFDI). I built an autonomous desktop agent (Tauri, SvelteKit, Playwright) with local AI CAPTCHA solving, cutting processing time by 95% and eliminating missing vouchers.",
         liveLabel: "Case Study",
       },
       {
         title: "SYMTHREE — Digital Product Studio & 3D Interactive WebGL Platform",
         description:
-          "Problem: Software & AI engineering consultancies frequently rely on generic, static landing pages that fail to demonstrate their technical caliber to high-ticket corporate prospects. Solution: Architected and deployed SYMTHREE as Lead Engineer & Creative Developer—an institutional-grade studio platform featuring an 18,000-particle WebGL engine (Three.js) with cursor-reactive volumetric physics (raycasting & 3D planes) and scroll-driven geometric morphing (lerp with smoothstep interpolation between the orbital triad and official logo inside an isometric cube), responsive glass-capsule navigation with an animated 28px blur drawer, custom GLSL shaders, and an interactive operational waste / ROI simulator with automated WhatsApp quote links on SvelteKit & Vercel Edge Network. Result: Rock-solid 60 FPS on desktop and mobile, zero external UI dependencies, sub-second load times with zero memory leaks, and an optimized B2B conversion funnel.",
+          "Interactive studio platform featuring an 18,000-particle Three.js engine with cursor-reactive physics, smoothstep scroll morphing, custom GLSL shaders, and an ROI simulator on SvelteKit. Delivers stable 60 FPS on mobile and desktop with zero memory leaks.",
         liveLabel: "Live Platform",
       },
       {
         title: "Coccinella Dental Studio — Clinical Web Platform & Online Booking",
         description:
-          "Problem: Dental clinics frequently lose prospective patients due to obsolete web presences, cold and stressful healthcare imagery, and burdensome manual booking procedures. Solution: Designed and developed Coccinella Dental Studio—a modern, warm, and patient-first clinical web platform built with React, Vite, Tailwind CSS, and Lucide Icons. Features an interactive treatment catalog (ultrasonic prophylaxis, LED whitening, biomimetic resins, invisible aligners), zero-friction instant WhatsApp booking with pre-configured treatment messages, Google Maps geolocation integration for Zacatlán, Puebla, and Schema.org rich snippets for local medical search optimization. Result: 100% responsive experience, lightning-fast load times on mobile devices, and an inviting conversion funnel that transforms visitors into scheduled patients.",
+          "Clinical web platform for a dental practice in Puebla, featuring direct WhatsApp booking, local medical SEO with Schema.org, and fast mobile performance built with React and Tailwind CSS.",
         liveLabel: "Visit Site",
       },
       {
         title: "AI WhatsApp CRM & Lead Automation",
         description:
-          "Problem: Businesses struggled with delayed response times and manual lead tracking on WhatsApp. Solution: Architected and validated an AI-powered WhatsApp CRM deployed on Vercel to centralize conversations, automate initial qualification, and execute conversational follow-up flows with prospects. Result: Streamlined sales pipeline responses and instant lead engagement.",
+          "AI-driven WhatsApp CRM deployed on Vercel to centralize incoming chats, automate initial qualification, and run conversational follow-ups with prospective clients.",
       },
       {
         title: "Personal AI & DevOps HomeLab (Bare-Metal)",
         description:
-          "Problem: 100% reliance on public cloud APIs for AI workflows inflates token costs, raises data privacy concerns, and limits local experimentation with MCP servers and autonomous agents. Solution: Engineered and maintain a dedicated bare-metal Linux HomeLab server running Docker, local LLM inference via Ollama (DeepSeek, Llama 3), a 24/7 self-hosted n8n instance backed by PostgreSQL, custom MCP servers, and zero-trust remote access via Cloudflare Tunnels and Tailscale mesh VPN without exposing open ports. Result: High-resilience, zero-token-cost sandbox for agentic development, complete data privacy, and 99.9% uptime.",
+          "Bare-metal Linux HomeLab running Docker, local LLM inference via Ollama, a 24/7 self-hosted n8n instance, and custom MCP servers over Cloudflare Zero-Trust tunnels—providing an offline, zero-token-cost development sandbox.",
       },
       {
         title: "Enterprise AI Automation Pipelines (n8n & MCP)",
         description:
-          "Problem: Operations teams lost weeks to repetitive manual data entry, lead qualification, and cross-platform synchronization. Solution: Architected enterprise automation pipelines using n8n, Model Context Protocol (MCP), and LLMs (GPT-4, Claude, Gemini) for document processing, intelligent scrapers, and CRM sync without human intervention. Result: Reduced manual operational work by up to 50%.",
+          "Enterprise automation pipelines using n8n, Model Context Protocol (MCP), and LLMs for document processing, intelligent scraping, and CRM synchronization, reducing repetitive manual operations by up to 50%.",
       },
       {
         title: "Case Study: XAMAI Client Portal 2.0 (SaaS ERP)",
         description:
-          "Problem: Legacy client portal suffered from poor UX and slow load times, causing customer churn. Solution: Redesigned and rebuilt portal architecture using SvelteKit, Svelte, TypeScript, SQL Server, and JWT auth with lazy loading and code splitting. Result: Achieved a 90% boost in user satisfaction and an 85% reduction in initial load time.",
+          "Redesigned the client portal architecture using SvelteKit, TypeScript, and SQL Server. Implemented code splitting and lazy loading, reducing initial load times by 85% and improving customer satisfaction.",
       },
       {
         title: "PWA Tools (Expense Tracker & Chronos TO-DO)",
         description:
-          "Problem: Everyday task logging and expense tracking required heavy web platform access with unreliable offline connectivity. Solution: Developed an offline-first Expense Tracker PWA in TypeScript and Tailwind CSS with IndexedDB storage, plus a lightweight SvelteKit TO-DO PWA connected to Chronos for quick daily team task logging. Result: Streamlined daily task logging and instant expense budget tracking.",
+          "Offline-first PWA tools: an expense tracker using IndexedDB storage, and a lightweight SvelteKit task manager connected to Chronos for quick daily team logging.",
       },
       {
         title: "Sharit - Bolddy (Sports Social Network App)",
         description:
-          "Problem: Sports enthusiasts lacked a dedicated platform to discover, organize, and join local athletic activities. Solution: Active full-stack development of a cross-platform mobile app in TypeScript using React Native, Expo, Node.js, MongoDB, Railway, REST API, JWT authentication, geolocation with Leaflet, push notifications, and gamification. Result: Robust mobile application in active deployment preparation for App Store and Google Play.",
+          "Full-stack cross-platform mobile sports app built with React Native, Expo, Node.js, and MongoDB, featuring geolocation, push notifications, and real-time activity feeds.",
       },
       {
         title: "Case Study: Stan Semper Field Reports App & Logistics",
         description:
-          "Problem: Field technicians lost hours compiling manual paper reports with photos and GPS data. Solution: Developed an offline-first Kotlin Android app with automatic Firebase sync, instant PDF/Excel generation, photo capture, serial number tracking, plus real-time logistics dashboards with WebSockets. Result: Winning project for the C5 tender in 2021.",
+          "Offline-first Android app (Kotlin) for field engineers, with automatic Firebase sync, instant PDF/Excel generation, and WebSocket logistics dashboards. Winning project for the C5 tender in 2021.",
       },
       {
         title: "Case Study: StudioKin (Creative Agency Portfolio)",
         description:
-          "Problem: StudioKin needed a high-performance interactive portfolio platform to showcase high-fidelity design work and host functional client web demos. Solution: Built a Next.js web application with React and TypeScript featuring modular route assets and dynamic transitions for live client demo embeds. Result: Delivered an interactive agency showcase driving client conversions and demonstrating real software capabilities.",
+          "Interactive agency portfolio built with Next.js and TypeScript, featuring modular route assets, dynamic transitions, and live embedded client demos.",
         liveLabel: "Visit Site",
         demos: [
           { label: "Mechanic Demo", url: "https://studiokin.com.mx/demo-mecanico.html" },
@@ -109,7 +121,7 @@ export const translations = {
       {
         title: "TersaNet (ERP Quotation & Inventory System)",
         description:
-          "Problem: Sales reps struggled with complex manual quotation calculations and inventory lookup delays. Solution: Built administrative web interfaces and quotation modules using Angular, TypeScript, SQL Server, and REST APIs, generating instant automated PDF documents. Result: Accelerated quote turnaround and eliminated calculation discrepancies.",
+          "Administrative quotation and inventory modules in Angular and SQL Server with automated PDF generation, eliminating calculation errors and speeding up quote delivery.",
       },
     ],
 
@@ -198,7 +210,7 @@ export const translations = {
         {
           title: "APIs, Interoperability & Backend Systems",
           description:
-            "High-throughput server-side systems, government API interoperability, and robust database architectures handling critical data.",
+            "High-throughput server-side systems, government API interoperability, and resilient database architectures handling critical data.",
           deliverables: [
             "Digital certificates handling (.cer / .key, SAT e.firma & CIEC)",
             "Node.js, Express.js & Java Spring Framework RESTful APIs",
@@ -233,7 +245,7 @@ export const translations = {
       badge: "Ingeniería de IA & Automatización · LLMOps & DevOps",
       subtitle: "Ingeniero de IA & Automatización · LLMOps, DevOps e Integración de APIs",
       description:
-        "Ingeniero de software con más de 6 años de experiencia construyendo integraciones y automatización, enfocado en aplicar Inteligencia Artificial al ciclo de desarrollo: agentes autónomos, asistentes de código con LLMs (Claude, GPT-4, Gemini), prompt engineering, orquestación con n8n y Model Context Protocol (MCP). Experiencia comprobable automatizando capas de interoperabilidad contra APIs externas y gubernamentales (SAT e.firma/CIEC), procesos batch programados, contenerización con Docker, pipelines de CI/CD en GitHub Actions, pruebas con Playwright y experimentación en HomeLab propio.",
+        "Ingeniero de software con más de 6 años conectando sistemas y automatizando procesos. Aplico IA directamente al ciclo de desarrollo: agentes autónomos, asistentes de código, orquestación con n8n y Model Context Protocol (MCP). Experiencia comprobable automatizando APIs gubernamentales (SAT e.firma/CIEC), procesos batch, contenedores Docker, CI/CD con GitHub Actions y pruebas con Playwright, respaldado por un HomeLab bare-metal propio.",
       ctaPrimary: "Contactar por WhatsApp",
       ctaSecondary: "Ver Proyectos",
       downloadCv: "Descargar CV",
@@ -257,7 +269,7 @@ export const translations = {
       heading1: "Construyo Sistemas Inteligentes,",
       heading2: "No Solo Código Repetitivo",
       robotGreeting: "Hey👋",
-      p1Start: "¿Buscas un ingeniero enfocado en aplicar IA al ciclo de desarrollo, orquestar pipelines de automatización e integrar capas complejas de APIs?",
+      p1Start: "¿Buscas un ingeniero enfocado en aplicar IA al ciclo de desarrollo, construir pipelines de automatización fiables e integrar capas complejas de APIs?",
       p1End: "Esa es mi especialidad.",
       p2Start: "Asumo el liderazgo técnico y desarrollo hands-on — desde interoperabilidad gubernamental con certificados digitales (SAT CIEC/e.firma) y arquitecturas backend (Node.js, Express, Spring, SQL Server) hasta frontends modernos (Svelte 5, Angular 17) y pipelines de CI/CD.",
       p2End: "Mi stack principal: LLMs (Claude, GPT-4, Gemini), n8n, MCP, Docker, GitHub Actions, TypeScript y Playwright.",
@@ -272,62 +284,74 @@ export const translations = {
 
     projects: [
       {
+        title: "Pipeline Autónomo de Reels en HomeLab (Remotion + n8n + Kokoro)",
+        tagline: "«De prompt a MP4 vertical renderizado en servidor bare-metal a costo $0»",
+        description:
+          "Pipeline de producción y renderizado automatizado de video vertical desplegado en HomeLab con Docker. Orquestado con agentes de IA y n8n, ejecuta síntesis de voz neuronal local (Kokoro), subtitulado dinámico (Whisper) y renderizado headless en código (Remotion + React) sin depender de APIs de pago por minuto.",
+        bullets: [
+          "Orquesté el flujo end-to-end con n8n y Docker, automatizando desde el guion hasta el render final en servidor bare-metal.",
+          "Integré inferencia local de voz (Kokoro TTS) y transcripción milimétrica (Whisper), reduciendo los costos de generación de audio a $0.",
+          "Construí el motor de renderizado headless con Remotion y 13 componentes modulares de animación en React.",
+        ],
+        liveLabel: "Live Demo",
+      },
+      {
         title: "Agente SAT Autónomo & Copiloto Fiscal IA",
         description:
-          "Problema: Los equipos contables desperdiciaban docenas de horas manejando accesos CIEC/e.firma, resolviendo CAPTCHAs y descargando facturas fiscales (CFDI). Solución: Diseñé e implementé un agente autónomo de escritorio (Tauri, SvelteKit, Svelte, Express.js, SQLite, Docker) multicompañía y multi-RFC usando Playwright para automatización de navegador y resolución de CAPTCHAs con IA. Incluí un Copiloto de IA para detectar riesgos fiscales, apoyar en conciliación bancaria y generar reportes mensuales. Resultado: Reducción del 95% del tiempo operativo (de días a ~5 minutos por sesión) y eliminación del 100% de comprobantes faltantes.",
+          "Los equipos contables perdían horas resolviendo CAPTCHAs y descargando facturas (CFDI). Desarrollé un agente de escritorio autónomo (Tauri, Svelte, Playwright) con resolución local de CAPTCHAs mediante IA, reduciendo el tiempo de proceso en un 95% y eliminando facturas faltantes.",
         liveLabel: "Caso de Éxito",
       },
       {
         title: "SYMTHREE — Digital Product Studio & Plataforma 3D WebGL",
         description:
-          "Problema: Las consultoras y agencias de desarrollo de software e IA frecuentemente utilizan páginas de aterrizaje genéricas y estáticas que no demuestran su calibre técnico a prospectos corporativos de alto ticket. Solución: Como Lead Engineer & Creative Developer, diseñé y desplegué SYMTHREE: una plataforma digital de grado institucional con motor 3D en WebGL (Three.js) de 18,000 partículas con físicas reactivas al cursor (repulsión volumétrica con raycasting en planos 3D) y metamorfosis geométrica por scroll (lerp con smoothstep entre la tríada orbital y el logotipo oficial en cubo isométrico), navegación responsive tipo cápsula de cristal con drawer móvil animado (blur de 28px), shaders GLSL a medida para suelo con ondas radiales y simulador interactivo de ROI / desperdicio operativo con deep links a WhatsApp sobre SvelteKit y Vercel Edge Network. Resultado: 60 FPS constantes en escritorio y smartphones sin fugas de memoria, cero dependencias pesadas de UI externas y canalización optimizada de prospectos calificados.",
+          "Plataforma interactiva para estudio digital con motor 3D en Three.js (18,000 partículas), físicas reactivas al cursor, metamorfosis geométrica por scroll, shaders GLSL y simulador de ROI en SvelteKit. Mantiene 60 FPS estables sin fugas de memoria.",
         liveLabel: "Ver Plataforma",
       },
       {
         title: "Coccinella Dental Studio — Plataforma Clínica & Agendamiento Dental",
         description:
-          "Problema: Los consultorios dentales pierden pacientes potenciales debido a sitios web anticuados, falta de optimización móvil y procesos lentos para solicitar informes o citas. Solución: Diseño y desarrollo integral de Coccinella Dental Studio—una plataforma web moderna, cálida y de alta conversión desarrollada con React, Vite, Tailwind CSS y Lucide Icons. Incluye catálogo interactivo de tratamientos (profilaxis ultrasónica, blanqueamiento LED, resinas biomiméticas y ortodoncia invisible), sistema de agendamiento directo a WhatsApp con mensajes preconfigurados, integración de mapas y geolocalización en Zacatlán, Puebla, y metadatos optimizados con Schema.org para SEO local. Resultado: Carga ultra rápida en dispositivos móviles, experiencia de usuario libre de estrés y canal directo de captación de pacientes.",
+          "Plataforma clínica para consultorio dental en Zacatlán, Puebla. Incluye agendamiento directo por WhatsApp, SEO local médico con Schema.org y carga rápida en móviles sobre React y Tailwind CSS.",
         liveLabel: "Visitar Sitio",
       },
       {
         title: "CRM de WhatsApp con IA & Automatización",
         description:
-          "Problema: Las empresas perdían prospectos por respuestas lentas y seguimiento manual en WhatsApp. Solución: Diseñé y validé un CRM para WhatsApp desplegado en Vercel e integrado con IA para centralizar conversaciones, automatizar la atención inicial y ejecutar flujos conversacionales de seguimiento con prospectos. Resultado: Optimización del embudo de ventas y atención inmediata.",
+          "CRM para WhatsApp desplegado en Vercel e integrado con LLMs para centralizar conversaciones, automatizar la calificación inicial de prospectos y ejecutar seguimientos conversacionales.",
       },
       {
         title: "HomeLab Personal de IA & DevOps (Bare-Metal)",
         description:
-          "Problema: Depender 100% de APIs públicas en la nube incrementa costos de tokens, expone datos sensibles y limita la experimentación libre con agentes autónomos y servidores MCP. Solución: Diseñé y opero un servidor HomeLab bare-metal con Linux y Docker, ejecutando inferencia local de LLMs con Ollama (DeepSeek, Llama 3), una instancia 24/7 de n8n con PostgreSQL, runners de CI/CD para GitHub Actions, y túneles seguros con Cloudflare Zero-Trust y Tailscale sin abrir puertos a internet. Resultado: Entorno de alta resiliencia, privacidad total y cero costos en tokens para pruebas de agentes de IA y automatización, con 99.9% de uptime.",
+          "Servidor HomeLab bare-metal con Linux y Docker, ejecutando inferencia local con Ollama, n8n 24/7 y servidores MCP sobre túneles seguros con Cloudflare Zero-Trust, creando un entorno de desarrollo privado y con costo cero en tokens.",
       },
       {
         title: "Pipelines de Automatización IA con n8n & MCP",
         description:
-          "Problema: Los equipos operativos perdían semanas en tareas manuales de entrada de datos, calificación de prospectos y sincronización entre plataformas. Solución: Diseñé pipelines de automatización empresarial con n8n, Model Context Protocol (MCP) y LLMs (GPT-4, Claude, Gemini) para procesamiento de documentos, scrapers inteligentes y sincronización con CRMs sin intervención humana. Resultado: Reducción de hasta el 50% del trabajo manual operativo.",
+          "Pipelines de automatización empresarial con n8n, MCP y LLMs para procesamiento de documentos, scrapers y sincronización con CRMs, reduciendo hasta un 50% la carga operativa manual.",
       },
       {
         title: "Caso de Éxito: Portal Cliente XAMAI 2.0 (SaaS ERP)",
         description:
-          "Problema: El portal legacy tenía UX deficiente y carga lenta, generando fricción y tickets de soporte. Solución: Rediseño y reconstrucción de la arquitectura usando SvelteKit, Svelte, TypeScript, SQL Server y JWT mediante lazy loading y code splitting. Resultado: Aumento del 90% en satisfacción de usuarios y reducción del 85% en tiempos de carga inicial.",
+          "Reconstrucción de la arquitectura del portal de clientes usando SvelteKit, TypeScript y SQL Server. Mediante lazy loading y code splitting se redujo un 85% el tiempo de carga inicial.",
       },
       {
         title: "Herramientas PWA (Control de Gastos & Chronos TO-DO)",
         description:
-          "Problema: El control cotidiano de gastos y registro de tareas requería el uso de plataformas complejas sin soporte offline. Solución: Desarrollé una PWA Expense Tracker en TypeScript y Tailwind CSS con almacenamiento offline-first en IndexedDB, además de un TO-DO ligero en SvelteKit conectado a Chronos para registro rápido de actividades por sprint. Resultado: Registro diario ágil y control financiero instantáneo.",
+          "Herramientas PWA con enfoque offline-first: control de gastos con almacenamiento en IndexedDB y gestor de tareas ágil en SvelteKit conectado con Chronos.",
       },
       {
         title: "Sharit - Bolddy (Red Social Deportiva Móvil)",
         description:
-          "Problema: Los deportistas carecían de una plataforma dedicada para descubrir y unirse a actividades deportivas locales. Solución: Construcción full-stack de una app móvil en TypeScript con React Native, Expo, backend en Node.js, MongoDB, Railway, APIs REST, autenticación JWT, geolocalización (Leaflet), notificaciones push y gamificación. Resultado: Aplicación en desarrollo activo lista para producción y lanzamiento en App Store y Google Play.",
+          "App móvil deportiva full-stack en TypeScript con React Native, Expo, Node.js y MongoDB, con geolocalización, notificaciones push y feeds de actividad en tiempo real.",
       },
       {
         title: "Caso de Éxito: Reportes de Campo Stan Semper & Logística",
         description:
-          "Problema: Ingenieros en campo perdían horas armando reportes manuales con fotos y datos GPS. Solución: App Android en Kotlin offline-first que captura fotos, GPS, números de serie y sincroniza a Firebase generando PDFs/Excel automáticos en tiempo real, además de dashboards de logística con WebSockets. Resultado: Proyecto ganador de la licitación C5 en 2021.",
+          "App Android offline-first en Kotlin para personal de campo, con sincronización automática a Firebase, generación instantánea de reportes en PDF/Excel y dashboards con WebSockets. Proyecto ganador de la licitación C5 en 2021.",
       },
       {
         title: "Caso de Éxito: StudioKin (Agencia Creativa)",
         description:
-          "Problema: StudioKin necesitaba una plataforma portafolio altamente interactiva para exhibir trabajos de diseño de alta fidelidad y alojar demos web funcionales para sus clientes. Solución: Construcción de una aplicación web en Next.js, React y TypeScript con assets modulares y transiciones dinámicas que integra demos en vivo. Resultado: Portafolio interactivo que impulsa la conversión de clientes y demuestra capacidades técnicas reales.",
+          "Portafolio interactivo para agencia creativa desarrollado en Next.js y TypeScript, con transiciones dinámicas y demos web funcionales integrados en vivo.",
         liveLabel: "Visitar Sitio",
         demos: [
           { label: "Demo Taller Mecánico", url: "https://studiokin.com.mx/demo-mecanico.html" },
@@ -338,7 +362,7 @@ export const translations = {
       {
         title: "TersaNet (Sistema ERP de Cotizaciones & Inventario)",
         description:
-          "Problema: Los asesores comerciales perdían tiempo calculando cotizaciones complejas manualmente con retrasos en inventario. Solución: Desarrollo de interfaces web administrativas y módulos de cotización en Angular, TypeScript, SQL Server y APIs REST, con generación instantánea de reportes en PDF. Resultado: Agilización del ciclo de venta y eliminación de errores de cálculo.",
+          "Módulos web de cotización e inventario en Angular y SQL Server con generación automática de PDFs, acelerando el ciclo comercial y eliminando discrepancias de cálculo.",
       },
     ],
 
@@ -427,7 +451,7 @@ export const translations = {
         {
           title: "APIs, Interoperabilidad & Backend",
           description:
-            "Sistemas backend escalables, interoperabilidad con APIs gubernamentales y arquitecturas de datos robustas para alta concurrencia.",
+            "Sistemas backend escalables, interoperabilidad con APIs gubernamentales y arquitecturas de datos de alta disponibilidad para concurrencia crítica.",
           deliverables: [
             "Manejo de certificados digitales (.cer / .key, e.firma y CIEC del SAT)",
             "APIs RESTful con Node.js, Express.js y Java Spring Framework",

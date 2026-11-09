@@ -1,724 +1,1537 @@
 "use client";
 
+
+
 import SectionHeading from "@/components/section-heading";
+
 import { Badge } from "@/components/ui/badge";
+
 import { Button } from "@/components/ui/button";
+
 import HeadingLine from "@/components/ui/heading-line";
+
 import { cn } from "@/lib/utils";
-import { Github, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Globe, Workflow } from "lucide-react";
+
+import { Github, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Globe, Workflow, Play } from "lucide-react";
+
 import { motion, AnimatePresence } from "motion/react";
+
 import { useState } from "react";
+
 import { useTranslation } from "@/hooks/use-translation";
+
 import { N8nWorkflowModal, WorkflowItem } from "@/components/ui/n8n-workflow-modal";
+import { ReelsVideoModal } from "@/components/ui/reels-video-modal";
+
+
 
 const Projects = () => {
+
   const t = useTranslation();
 
+
+
   // Non-translatable project metadata (tags, images, links)
+
   const projectsMeta = [
-    // 0: SAT Agent
+
+    // 0: Autonomous Reels Pipeline in HomeLab (Remotion + n8n + Kokoro)
     {
+      tags: ["HomeLab / Docker", "n8n", "Remotion", "React", "Python", "Whisper AI", "Kokoro TTS", "AI Agents"],
+      github: null,
+      images: [
+        "/projects/gelik-reels/1-pipeline-architecture.png",
+        "/projects/gelik-reels/2-code-and-render-mockup.png",
+        "/projects/gelik-reels/3-remotion-studio-player.png",
+        "/projects/gelik-reels/4-n8n-homelab-workflow.png",
+      ],
+      image: "/projects/gelik-reels/1-pipeline-architecture.png",
+      live: "https://gelikman.com",
+      date: "2026–present",
+      status: "completed",
+      storeLinks: {
+        web: "https://gelikman.com",
+      },
+      hideButtons: false,
+      videoDemos: true,
+    },
+    // 1: SAT Agent
+
+    {
+
       tags: ["Tauri", "SvelteKit", "Playwright", "Docker", "Node.js", "AI / CAPTCHA"],
+
       github: null,
+
       images: [
+
         "/projects/Agent/Agent- Login SAT.png",
+
         "/projects/Agent/Agent - Login config.png",
+
         "/projects/Agent/Agent - Login config 2.png",
+
         "/projects/Agent/Agent - Mon Configuraciones.png",
+
         "/projects/Agent/Agente - Monitor Upload.png",
+
         "/projects/Agent/Agent Historial de cargas .png",
+
         "/projects/Agent/Agent Historial de cargas 2.png",
+
       ],
+
       image: "/projects/Agent/Agent - Login config.png",
+
       live: null,
+
       date: "2025–present",
+
       status: "completed",
+
       containImage: true,
+
       hideButtons: true,
+
     },
+
     // 1: SYMTHREE Studio & 3D Interactive Platform
+
     {
+
       tags: ["Three.js", "WebGL", "TypeScript", "SvelteKit", "Vercel", "Tailwind CSS"],
+
       github: null,
+
       images: [
+
         "/projects/symthree/symthree-1-hero.png",
+
         "/projects/symthree/symthree-2-solutions.png",
+
         "/projects/symthree/symthree-3-calculator.png",
+
         "/projects/symthree/symthree-4-metrics.png",
+
         "/projects/symthree/symthree-5-industries.png",
+
       ],
+
       image: "/projects/symthree/symthree-1-hero.png",
+
       live: "https://symthree.vercel.app",
+
       date: "2026–present",
+
       status: "completed",
+
       storeLinks: {
+
         web: "https://symthree.vercel.app",
+
       },
+
       hideButtons: false,
+
     },
+
     // 2: Coccinella Dental Studio
+
     {
+
       tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "Vercel", "WhatsApp API", "SEO"],
+
       github: null,
+
       images: [
+
         "/projects/dental-studio/dental-1-hero.png",
+
         "/projects/dental-studio/dental-2-about.png",
+
         "/projects/dental-studio/dental-3-treatments.png",
+
         "/projects/dental-studio/dental-4-location.png",
+
       ],
+
       image: "/projects/dental-studio/dental-1-hero.png",
+
       live: "https://dental-lab-five.vercel.app/",
+
       date: "2026–present",
+
       status: "completed",
+
       storeLinks: {
+
         web: "https://dental-lab-five.vercel.app/",
+
       },
+
       hideButtons: false,
+
     },
+
     // 2: WhatsApp CRM
+
     {
+
       tags: ["WhatsApp API", "AI / LLM", "n8n", "Node.js", "REST API"],
+
       github: null,
+
       images: [
+
         "/projects/whatsapp-crm/whatsapp-crm-dashboard.png",
+
         "/projects/whatsapp-crm/whatsapp-crm-flow.png",
+
         "/projects/whatsapp-crm/whatsapp-crm-analytics.png",
+
       ],
+
       image: "/projects/whatsapp-crm/whatsapp-crm-dashboard.png",
+
       live: null,
+
       date: "2025–present",
+
       status: "completed",
+
       hideButtons: true,
+
     },
+
     // 2: HomeLab OS
+
     {
+
       tags: ["Linux / Proxmox", "Docker", "Ollama / Local LLMs", "n8n Self-Hosted", "Cloudflare Tunnels"],
+
       github: null,
+
       image: "/projects/homelab-dashboard.jpg",
+
       live: null,
+
       date: "2024–present",
+
       status: "completed",
+
       hideButtons: true,
+
       containImage: false,
+
     },
+
     // 3: n8n & MCP Pipelines
+
     {
+
       tags: ["n8n", "AI / LLM", "MCP Protocol", "Node.js", "REST API"],
+
       github: null,
+
       image: "/projects/n8n-screenshot.png",
+
       live: null,
+
       date: "2024–present",
+
       status: "completed",
+
       hideButtons: false,
+
       workflows: [
+
         {
+
           id: "linkedin-bot-autentico",
+
           name: "Linkedin Bot Auténtico (Generador de Posts con IA)",
+
           description: "Bot autónomo programado que consulta un archivo de contexto en Google Sheets, selecciona temas aleatorios, ejecuta un Agente IA con reglas de redacción viral y envía borradores clasificados a Telegram.",
+
           category: "IA & Agentes",
+
           tags: ["Schedule", "LangChain AI", "Telegram", "Google Sheets", "n8n Code"],
+
           nodesCount: 11,
+
           trigger: "Schedule Trigger (Diario 16:00)",
+
           downloadUrl: "/workflows/linkedin-bot-autentico.json",
+
           sheetUrl: "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=sharing",
+
           platform: "n8n",
+
           features: [
+
             "Extracción de contexto desde Google Sheets",
+
             "Agente IA con prompts estructurados para LinkedIn/Twitter",
+
             "Parsing automático JSON de salida",
+
             "Notificaciones y entrega directa en Telegram"
+
           ]
+
         },
+
         {
+
           id: "prospeccion-leads-chatgpt-make",
+
           name: "Prospección de Leads & Emailing con ChatGPT (Make.com)",
+
           description: "Escenario de automatización en Make.com que monitorea nuevas filas en Google Sheets, analiza e investiga el prospecto con OpenAI / ChatGPT y genera borradores de correo personalizados.",
+
           category: "CRM & ERP Sync",
+
           tags: ["Make.com", "Google Sheets", "ChatGPT / OpenAI", "Email Automation"],
+
           nodesCount: 5,
+
           trigger: "Google Sheets (Watch Rows)",
+
           downloadUrl: "/workflows/prospeccion-leads-chatgpt-make.json",
+
           platform: "make",
+
           features: [
+
             "Escuchador automático de prospectos en Google Sheets",
+
             "Análisis y calificación de la empresa con ChatGPT",
+
             "Generación de correos fríos hiper-personalizados",
+
             "Blueprint `.json` importable en Make.com"
+
           ]
+
         },
+
         {
+
           id: "sistema-automatico-rrss-make",
+
           name: "Sistema Autónomo Multicanal para Redes Sociales (Make + Perplexity + DALL-E)",
+
           description: "Automatización en Make.com que monitorea URLs en Google Sheets, sintetiza noticias con Perplexity AI (Llama 3), genera gráficos con DALL-E y publica borradores adaptados para Instagram, Twitter, LinkedIn y Facebook.",
+
           category: "IA & Agentes",
+
           tags: ["Make.com", "Perplexity AI", "OpenAI / DALL-E", "Social Media", "Google Sheets"],
+
           nodesCount: 12,
+
           trigger: "Google Sheets (Watch Rows)",
+
           downloadUrl: "/workflows/sistema-automatico-rrss-make.json",
+
           platform: "make",
+
           features: [
+
             "Detección de artículos en Google Sheets",
+
             "Síntesis de noticias con Perplexity AI (Llama 3)",
+
             "Adaptación de copy por plataforma (Instagram, Twitter, LinkedIn, Facebook)",
+
             "Generación automática de imágenes personalizadas con DALL-E"
+
           ]
+
         }
+
       ],
+
     },
+
     // 4: XAMAI Client Portal 2.0
+
     {
+
       tags: ["SvelteKit", "Svelte 5", "TypeScript", "SQL Server", "JWT"],
+
       github: null,
+
       images: [
+
         "/projects/mpx 2.0/mpx-login.png",
+
         "/projects/mpx 2.0/mpx-2.png",
+
         "/projects/mpx 2.0/mpx-3.png",
+
         "/projects/mpx 2.0/mpx-4.png",
+
         "/projects/mpx 2.0/mpx-5.png",
+
         "/projects/mpx 2.0/mpx-6.png",
+
       ],
+
       image: "/projects/mpx 2.0/mpx-login.png",
+
       live: null,
+
       date: "2023–present",
+
       status: "completed",
+
       hideButtons: true,
+
     },
+
     // 5: PWA Tools (Expense Tracker & Chronos TO-DO)
+
     {
+
       tags: ["PWA", "TypeScript", "Tailwind CSS", "IndexedDB", "SvelteKit"],
+
       github: null,
+
       image: "/projects/egastos-screenshot.png",
+
       live: null,
+
       date: "2024–present",
+
       status: "completed",
+
       hideButtons: true,
+
     },
+
     // 6: Bolddy - Sharit
+
     {
+
       tags: ["React Native", "Expo", "Node.js", "MongoDB", "TypeScript", "Railway"],
+
       github: null,
+
       images: [
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (1).jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (2).jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (3).jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (4).jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12 (5).jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13.jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (1).jpeg",
+
         "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.13 (2).jpeg",
+
       ],
+
       image: "/projects/goSharitt/WhatsApp Image 2026-03-01 at 21.26.12.jpeg",
+
       live: null,
+
       date: "2025–present",
+
       status: "in-progress",
+
       storeLinks: {
+
         web: "https://bolddy.app/",
+
       },
+
       containImage: false,
+
       verticalImages: true,
+
     },
+
     // 7: Stan Semper C5 field reports
+
     {
+
       tags: ["Kotlin", "Firebase", "Android", "PDF Reports", "WebSockets"],
+
       github: null,
+
       image: "/projects/c5bid-screenshot.png",
+
       live: null,
+
       date: "2020–2022",
+
       status: "completed",
+
       hideButtons: true,
+
     },
+
     // 8: StudioKin
+
     {
+
       tags: ["Next.js", "React", "TypeScript"],
+
       github: null,
+
       images: [
+
         "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
+
         "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.39 p.m..png",
+
         "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.56 p.m..png",
+
         "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.15 p.m..png",
+
         "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.35 p.m..png",
+
         "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.27.54 p.m..png",
+
       ],
+
       image: "/projects/StudioKin/Captura de pantalla 2026-05-19 a la(s) 7.26.09 p.m..png",
+
       live: null,
+
       date: "2025–present",
+
       status: "completed",
+
       storeLinks: {
+
         web: "https://studiokin.com.mx/",
+
       },
+
       containImage: false,
+
       verticalImages: true,
+
     },
+
     // 9: TersaNet
+
     {
+
       tags: ["Angular", "TypeScript", "SQL Server", "REST API"],
+
       github: null,
+
       images: [
+
         "/projects/tersa/tersanet-login.png",
+
         "/projects/tersa/tersanet-inventory.png",
+
         "/projects/tersa/tersanet-cotizacion.png",
+
         "/projects/tersa/tersanet-pdf.png",
+
       ],
+
       image: "/projects/tersa/tersanet-login.png",
+
       live: null,
+
       date: "2022–present",
+
       status: "completed",
+
       hideButtons: true,
+
     },
+
   ];
 
+
+
   // Merge translatable title+description with metadata
+
   const projects = projectsMeta.map((meta, i) => ({
+
     ...meta,
+
     ...t.projects[i],
+
   }));
 
+
+
   const tagColors: Record<string, string> = {
+
     "WhatsApp API": "bg-emerald-600/10 text-emerald-500 border-emerald-600/30",
+
     Angular: "bg-red-500/10 text-red-600 border-red-500/30",
+
     TypeScript: "bg-blue-500/10 text-blue-600 border-blue-500/30",
+
     "REST API": "bg-orange-500/10 text-orange-600 border-orange-500/30",
+
     Svelte: "bg-orange-600/10 text-orange-700 border-orange-600/30",
+
     "Svelte 5": "bg-orange-600/10 text-orange-600 border-orange-600/30",
+
     SvelteKit: "bg-orange-500/10 text-orange-500 border-orange-500/30",
-    "Tailwind CSS": "bg-cyan-500/10 text-cyan-600 border-cyan-500/30",
+
+    "Tailwind CSS": "bg-sky-500/10 text-sky-600 border-sky-500/30",
+
     "React Native": "bg-emerald-500/10 text-emerald-600 border-emerald-500/30",
+
     "Node.js": "bg-green-500/10 text-green-600 border-green-500/30",
+
     Maps: "bg-indigo-500/10 text-indigo-600 border-indigo-500/30",
+
     n8n: "bg-orange-500/10 text-orange-600 border-orange-500/30",
+
     "n8n Self-Hosted": "bg-orange-500/10 text-orange-500 border-orange-500/30",
-    "AI / LLM": "bg-purple-500/10 text-purple-600 border-purple-500/30",
+
+    "AI / LLM": "bg-indigo-500/10 text-indigo-500 border-indigo-500/30",
+
     Tauri: "bg-yellow-500/10 text-yellow-600 border-yellow-500/30",
+
     SQLite: "bg-blue-400/10 text-blue-500 border-blue-400/30",
+
     Chromium: "bg-teal-500/10 text-teal-600 border-teal-500/30",
+
     "SQL Server": "bg-rose-500/10 text-rose-600 border-rose-500/30",
+
     "AI / CAPTCHA": "bg-violet-500/10 text-violet-600 border-violet-500/30",
+
     Kotlin: "bg-purple-500/10 text-purple-600 border-purple-500/30",
+
     Firebase: "bg-yellow-500/10 text-yellow-700 border-yellow-500/30",
+
     Android: "bg-green-600/10 text-green-700 border-green-600/30",
+
     "PDF Reports": "bg-red-400/10 text-red-500 border-red-400/30",
+
     MongoDB: "bg-green-500/10 text-green-600 border-green-500/30",
+
     Expo: "bg-slate-500/10 text-slate-400 border-slate-500/30",
+
     "Linux / Proxmox": "bg-amber-600/10 text-amber-500 border-amber-600/30",
+
     Docker: "bg-sky-500/10 text-sky-500 border-sky-500/30",
-    "Ollama / Local LLMs": "bg-purple-500/10 text-purple-400 border-purple-500/30",
+
+    "Ollama / Local LLMs": "bg-zinc-700/20 text-zinc-300 border-zinc-600/30",
+
     "Cloudflare Tunnels": "bg-orange-400/10 text-orange-400 border-orange-400/30",
+
     Playwright: "bg-emerald-600/10 text-emerald-500 border-emerald-600/30",
+
     PWA: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
+
     IndexedDB: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+
     Railway: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+
     "MCP Protocol": "bg-violet-500/10 text-violet-400 border-violet-500/30",
+
     WebSockets: "bg-teal-500/10 text-teal-400 border-teal-500/30",
+
     JWT: "bg-yellow-500/10 text-yellow-600 border-yellow-500/30",
+
     "Three.js": "bg-sky-500/10 text-sky-400 border-sky-500/30",
-    WebGL: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
+
+    WebGL: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+
     Vercel: "bg-slate-500/10 text-slate-300 border-slate-500/30",
-    React: "bg-cyan-500/10 text-cyan-500 border-cyan-500/30",
+
+    React: "bg-sky-500/10 text-sky-500 border-sky-500/30",
+
     Vite: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+
     SEO: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
+
+    Remotion: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
+
+    Python: "bg-amber-500/10 text-amber-400 border-amber-500/30",
+
+    "Whisper AI": "bg-teal-500/10 text-teal-400 border-teal-500/30",
+
+    "Kokoro TTS": "bg-pink-500/10 text-pink-400 border-pink-500/30",
+
+    "AI Agents": "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
+
   };
 
+
+
   // Per-project carousel index state
+
   const [carouselIdx, setCarouselIdx] = useState<Record<string, number>>({});
+
   const getIdx = (title: string) => carouselIdx[title] ?? 0;
+
   const setIdx = (title: string, idx: number) =>
+
     setCarouselIdx((prev) => ({ ...prev, [title]: idx }));
 
+
+
   // Per-project demos dropdown state
+
   const [openDemos, setOpenDemos] = useState<Record<string, boolean>>({});
 
+
+
   // n8n Workflows modal state
+
   const [selectedWorkflowsModal, setSelectedWorkflowsModal] = useState<WorkflowItem[] | null>(null);
+  const [isReelsModalOpen, setIsReelsModalOpen] = useState(false);
+
+
 
   return (
+
     <SectionHeading id="projects" text="Projects">
+
       <div className="divide-y">
+
         {projects.map((project, index) => (
+
           <motion.div
+
             key={project.title}
+
             initial={{ opacity: 0, y: 30 }}
+
             whileInView={{ opacity: 1, y: 0 }}
+
             transition={{ duration: 0.6, delay: index * 0.1 }}
+
             viewport={{ once: true }}
+
             className="group relative overflow-hidden"
+
           >
+
             <div className="grid lg:grid-cols-2">
+
               {/* Image Side  */}
+
               <div className="bg-muted/20 relative overflow-hidden border-b lg:border-r lg:border-b-0">
+
                 {/* Cross pattern */}
+
                 <div className="absolute inset-0">
+
                   <div className="before:bg-border after:bg-border relative h-full w-full before:absolute before:top-1/2 before:left-0 before:h-0.5 before:w-full after:absolute after:top-0 after:left-1/2 after:h-full after:w-0.5" />
+
                 </div>
+
+
 
                 {/* Image / Carousel Container */}
+
                 <div className="relative inset-0 z-10 p-8 md:p-12 lg:p-16">
+
                   <div className="group/image relative">
+
                     {/* Frame corners */}
+
                     <div className="border-foreground/20 absolute -top-2 -left-2 h-8 w-8 border-t-2 border-l-2 transition-all group-hover:-top-3 group-hover:-left-3" />
+
                     <div className="border-foreground/20 absolute -top-2 -right-2 h-8 w-8 border-t-2 border-r-2 transition-all group-hover:-top-3 group-hover:-right-3" />
+
                     <div className="border-foreground/20 absolute -bottom-2 -left-2 h-8 w-8 border-b-2 border-l-2 transition-all group-hover:-bottom-3 group-hover:-left-3" />
+
                     <div className="border-foreground/20 absolute -right-2 -bottom-2 h-8 w-8 border-r-2 border-b-2 transition-all group-hover:-right-3 group-hover:-bottom-3" />
 
+
+
                     {/* Image with optional carousel */}
+
                     {(() => {
+
                       const imgs = (project as any).images ?? [project.image];
+
                       const idx = getIdx(project.title);
+
                       const isCarousel = imgs.length > 1;
+
                       return (
+
                         <div className={cn(
+
                           "bg-background relative overflow-hidden border-2 transition-shadow duration-500 group-hover:shadow-[0_0_32px_rgba(103,208,230,0.18)]",
+
                           (project as any).containImage && "bg-neutral-950"
+
                         )}>
+
                           <div className="relative aspect-video overflow-hidden">
+
                             <motion.img
+
                               key={imgs[idx]}
+
                               initial={{ opacity: 0 }}
+
                               animate={{ opacity: 1 }}
+
                               transition={{ duration: 0.35 }}
+
                               src={imgs[idx]}
+
                               alt={`${project.title} screenshot ${idx + 1}`}
+
                               loading="lazy"
+
                               decoding="async"
+
                               className={cn(
+
                                 "h-full w-full transition-transform duration-700 group-hover:scale-105",
+
                                 (project as any).containImage
+
                                   ? "object-contain p-3"
+
                                   : (project as any).verticalImages
+
                                     ? "object-contain bg-neutral-900"
+
                                     : "object-cover"
+
                               )}
+
                             />
+
                             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
                             <div className="noise-screen pointer-events-none absolute inset-0 opacity-[0.025] mix-blend-soft-light" />
 
+
+
                             {/* Carousel controls */}
+
                             {isCarousel && (
+
                               <>
+
                                 <button
+
                                   onClick={() => setIdx(project.title, (idx - 1 + imgs.length) % imgs.length)}
+
                                   className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:bg-black/70"
+
                                 >
+
                                   <ChevronLeft className="h-4 w-4" />
+
                                 </button>
+
                                 <button
+
                                   onClick={() => setIdx(project.title, (idx + 1) % imgs.length)}
+
                                   className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:bg-black/70"
+
                                 >
+
                                   <ChevronRight className="h-4 w-4" />
+
                                 </button>
+
                                 {/* Dot indicators */}
+
                                 <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5">
+
                                   {imgs.map((_: string, i: number) => (
+
                                     <button
+
                                       key={i}
+
                                       onClick={() => setIdx(project.title, i)}
+
                                       className={cn(
+
                                         "h-1.5 rounded-full transition-all",
+
                                         i === idx ? "w-4 bg-white" : "w-1.5 bg-white/50"
+
                                       )}
+
                                     />
+
                                   ))}
+
                                 </div>
+
                               </>
+
                             )}
+
                           </div>
+
                         </div>
+
                       );
+
                     })()}
+
                   </div>
+
                 </div>
+
               </div>
 
+
+
               {/* Content Side  */}
+
               <div className="relative flex flex-col justify-center overflow-hidden p-8 md:p-12 lg:p-16">
+
                 {/* Date & Status */}
+
                 <div className="mb-6 flex flex-wrap items-center gap-3">
+
                   <time className="text-muted-foreground font-mono text-xs">
+
                     {project.date}
+
                   </time>
+
                   <div className="bg-border h-4 w-px" />
+
                   <div className="inline-flex items-center gap-1.5">
+
                     <div
+
                       className={cn(
+
                         "h-2 w-2 rounded-full",
+
                         project.status === "completed"
+
                           ? "animate-pulse bg-green-500"
+
                           : "animate-pulse bg-yellow-500",
+
                       )}
+
                     />
+
                     <span className="text-muted-foreground font-mono text-xs uppercase">
+
                       {project.status}
+
                     </span>
+
                   </div>
+
                 </div>
+
+
 
                 {/* Title  */}
+
                 <div className="mb-6">
+
+                  {(project as any).tagline && (
+
+                    <span className="mb-2.5 inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-0.5 font-mono text-xs text-foreground/80">
+
+                      {(project as any).tagline}
+
+                    </span>
+
+                  )}
+
                   <h3 className="font-incognito text-3xl font-bold lg:text-4xl">
+
                     {project.title}
+
                   </h3>
+
                   <HeadingLine className="mt-3" />
+
                 </div>
+
+
 
                 {/* Description */}
-                <p className="text-muted-foreground mb-6 text-sm leading-relaxed md:text-base">
+
+                <p className="text-muted-foreground mb-4 text-sm leading-relaxed md:text-base">
+
                   {project.description}
+
                 </p>
 
+
+
+                {/* Bullets (Puntos clave) */}
+
+                {(project as any).bullets && (project as any).bullets.length > 0 && (
+
+                  <ul className="mb-6 space-y-2">
+
+                    {(project as any).bullets.map((bullet: string, bIdx: number) => (
+
+                      <li key={bIdx} className="flex items-start gap-2.5 text-xs md:text-sm text-foreground/85">
+
+                        <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-500 font-mono text-[10px]">
+
+                          ✓
+
+                        </span>
+
+                        <span>{bullet}</span>
+
+                      </li>
+
+                    ))}
+
+                  </ul>
+
+                )}
+
+
+
                 {/* Tags  */}
+
                 <div className="mb-8 flex flex-wrap gap-2">
+
                   {project.tags.map((tag) => (
+
                     <Badge
+
                       key={tag}
+
                       variant="outline"
+
                       className={cn(
+
                         "border font-mono text-xs",
+
                         tagColors[tag as keyof typeof tagColors],
+
                       )}
+
                     >
+
                       {tag}
+
                     </Badge>
+
                   ))}
+
                 </div>
 
+
+
                 {/*  Buttons */}
+
                 {!(project as any).hideButtons && (
+
                   <div className="flex flex-wrap gap-3">
+
                     {/* Store links — Play Store */}
+
                     {(project as any).storeLinks?.playStore && (
+
                       <a
+
                         href={(project as any).storeLinks.playStore}
+
                         target="_blank"
+
                         rel="noopener noreferrer"
+
                         className="group/btn inline-flex items-center gap-2 rounded-md border-2 border-[#01875F]/40 bg-[#01875F]/10 px-4 py-2 text-sm font-medium text-[#01875F] transition-colors hover:bg-[#01875F]/20 dark:text-[#34d399]"
+
                       >
+
                         {/* Play Store icon */}
+
                         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+
                           <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.847a1 1 0 010 1.715l-2.22 1.283L13.17 12l2.308-2.308 2.22 1.268zm-12.46-7.26L15.8 9.934l-2.302 2.302-8.36-8.636z" />
+
                         </svg>
+
                         Google Play
+
                         <ArrowUpRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
                       </a>
+
                     )}
+
+
 
                     {/* App Store */}
+
                     {(project as any).storeLinks?.appStore && (
+
                       <a
+
                         href={(project as any).storeLinks.appStore}
+
                         target="_blank"
+
                         rel="noopener noreferrer"
+
                         className="group/btn inline-flex items-center gap-2 rounded-md border-2 border-blue-500/40 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500 transition-colors hover:bg-blue-500/20 dark:text-blue-400"
+
                       >
+
                         {/* App Store icon */}
+
                         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+
                           <path d="M8.809 0h6.381L24 15h-4.045L12 2.912 4.045 15H0L8.809 0zM0 17h24l-4 7H4L0 17z" />
+
                         </svg>
+
                         App Store
+
                         <ArrowUpRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
                       </a>
+
                     )}
+
+
 
                     {/* Web Link */}
+
                     {(project as any).storeLinks?.web && (
+
                       <Button
+
                         asChild
+
                         variant="default"
+
                         size="lg"
+
                         className="group/btn relative border-2 font-medium"
+
                       >
+
                         <a
+
                           href={(project as any).storeLinks.web}
+
                           target="_blank"
+
                           rel="noopener noreferrer"
+
                         >
+
                           <ExternalLink className="mr-2 h-4 w-4" />
+
                           {(project as any).liveLabel || "Visit Site"}
+
                           <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
                         </a>
+
                       </Button>
+
                     )}
+
+
 
                     {/* GitHub Link */}
+
                     {(project as any).github && (
+
                       <Button
+
                         asChild
+
                         variant="outline"
+
                         size="lg"
+
                         className="group/btn border-2 font-medium"
+
                       >
+
                         <a
+
                           href={(project as any).github}
+
                           target="_blank"
+
                           rel="noopener noreferrer"
+
                         >
+
                           <Github className="mr-2 h-4 w-4" />
+
                           View Code
+
                           <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
                         </a>
+
                       </Button>
+
                     )}
+
+
 
                     {/* Demos Dropdown */}
+
                     {(project as any).demos && (project as any).demos.length > 0 && (
+
                       <div className="relative">
+
                         <Button
+
                           onClick={() => setOpenDemos((prev) => ({ ...prev, [project.title]: !prev[project.title] }))}
+
                           variant="outline"
+
                           size="lg"
+
                           className="group/btn border-2 font-medium"
+
                         >
+
                           <Globe className="mr-2 h-4 w-4" />
+
                           {(t as any).projectsSection?.viewDemos || "View Demos"}
+
                           <ChevronDown className={cn(
+
                             "ml-1 h-4 w-4 transition-transform duration-200",
+
                             openDemos[project.title] && "rotate-180"
+
                           )} />
+
                         </Button>
 
+
+
                         <AnimatePresence>
+
                           {openDemos[project.title] && (
+
                             <>
+
                               {/* Backdrop/Click-out overlay */}
+
                               <div
+
                                 className="fixed inset-0 z-40"
+
                                 onClick={() => setOpenDemos((prev) => ({ ...prev, [project.title]: false }))}
+
                               />
 
+
+
                               {/* Dropdown Menu */}
+
                               <motion.div
+
                                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
+
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
+
                                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
+
                                 transition={{ duration: 0.15 }}
+
                                 className="bg-background/95 border-foreground/10 absolute left-0 mt-2 min-w-[200px] rounded-md border p-1 shadow-xl backdrop-blur-md z-50 flex flex-col gap-0.5"
+
                               >
+
                                 {(project as any).demos.map((demo: any) => (
+
                                   <a
+
                                     key={demo.label}
+
                                     href={demo.url}
+
                                     target="_blank"
+
                                     rel="noopener noreferrer"
+
                                     className="hover:bg-muted/80 flex items-center justify-between rounded-sm px-3 py-2.5 text-sm transition-colors text-foreground font-mono"
+
                                     onClick={() => setOpenDemos((prev) => ({ ...prev, [project.title]: false }))}
+
                                   >
+
                                     <span>{demo.label}</span>
+
                                     <ArrowUpRight className="text-muted-foreground/60 h-3.5 w-3.5" />
+
                                   </a>
+
                                 ))}
+
                               </motion.div>
+
                             </>
+
                           )}
+
                         </AnimatePresence>
+
                       </div>
+
                     )}
 
-                    {/* Workflows Blueprints Button */}
-                    {(project as any).workflows && (project as any).workflows.length > 0 && (
+
+
+                    {/* Video Reels Demos Button */}
+                    {(project as any).videoDemos && (
                       <Button
-                        onClick={() => setSelectedWorkflowsModal((project as any).workflows)}
+                        onClick={() => setIsReelsModalOpen(true)}
                         variant="default"
                         size="lg"
-                        className="group/btn relative border-2 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
+                        className="group/btn relative border-2 font-medium bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 shadow-md"
                       >
-                        <Workflow className="mr-2 h-4 w-4" />
-                        Ver Plantillas n8n & JSON (.json)
+                        <Play className="mr-2 h-4 w-4 fill-current" />
+                        Ver Demos de Video (MP4)
                         <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                       </Button>
                     )}
 
+                    {/* Workflows Blueprints Button */}
+
+                    {(project as any).workflows && (project as any).workflows.length > 0 && (
+
+                      <Button
+
+                        onClick={() => setSelectedWorkflowsModal((project as any).workflows)}
+
+                        variant="default"
+
+                        size="lg"
+
+                        className="group/btn relative border-2 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
+
+                      >
+
+                        <Workflow className="mr-2 h-4 w-4" />
+
+                        Ver Plantillas n8n & JSON (.json)
+
+                        <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
+                      </Button>
+
+                    )}
+
+
+
                     {/* GitHub button — only when no storeLinks */}
+
                     {!(project as any).storeLinks && !(project as any).workflows && (
+
                       <>
-                        <Button
-                          asChild
-                          variant="default"
-                          size="lg"
-                          className="group/btn relative border-2 font-medium"
-                          disabled={!project.github}
-                        >
-                          <a
-                            href={project.github || undefined}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Github className="mr-2 h-4 w-4" />
-                            View Code
-                            <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                          </a>
-                        </Button>
 
                         <Button
+
                           asChild
-                          variant="outline"
+
+                          variant="default"
+
                           size="lg"
-                          className="group/btn border-2 font-medium"
-                          disabled={!project.live}
+
+                          className="group/btn relative border-2 font-medium"
+
+                          disabled={!project.github}
+
                         >
+
                           <a
-                            href={project.live || undefined}
+
+                            href={project.github || undefined}
+
                             target="_blank"
+
                             rel="noopener noreferrer"
+
                           >
-                            <ExternalLink className="mr-2 h-4 w-4" />
-                            Live Demo
+
+                            <Github className="mr-2 h-4 w-4" />
+
+                            View Code
+
                             <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
                           </a>
+
                         </Button>
+
+
+
+                        <Button
+
+                          asChild
+
+                          variant="outline"
+
+                          size="lg"
+
+                          className="group/btn border-2 font-medium"
+
+                          disabled={!project.live}
+
+                        >
+
+                          <a
+
+                            href={project.live || undefined}
+
+                            target="_blank"
+
+                            rel="noopener noreferrer"
+
+                          >
+
+                            <ExternalLink className="mr-2 h-4 w-4" />
+
+                            Live Demo
+
+                            <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
+                          </a>
+
+                        </Button>
+
                       </>
+
                     )}
+
                   </div>
+
                 )}
 
+
+
                 {/*  slanted lines */}
+
                 <div className="absolute -right-4 -bottom-32 w-full translate-x-1/4 translate-y-1/4 rotate-[-30deg]">
+
                   {/* 1st Line */}
+
                   <div className="to-background border-primary/80 from-primary via-primary/90 -ml-[4px] h-12 w-full border-t bg-linear-to-r via-30% transition-transform duration-300 group-hover:-translate-y-1" />
 
+
+
                   {/* 2nd Line */}
+
                   <div className="to-background border-primary/80 from-primary via-primary/90 -ml-[8px] h-12 w-full border-t bg-linear-to-r via-30% transition-transform duration-300 group-hover:-translate-y-3" />
 
+
+
                   {/* 3rd Line */}
+
                   <div className="to-background border-primary/80 from-primary via-primary/90 -ml-[12px] h-12 w-full border-t bg-linear-to-r via-30% transition-transform duration-300 group-hover:-translate-y-5" />
 
+
+
                   {/* 4th Line */}
+
                   <div className="to-background border-primary/80 from-primary via-primary/90 -ml-[16px] h-12 w-full border-t bg-linear-to-r via-30% transition-transform duration-300 group-hover:-translate-y-7" />
+
                 </div>
+
               </div>
+
             </div>
+
           </motion.div>
+
         ))}
+
       </div>
 
+
+
       {/* View All Projects */}
+
       {/* <div className="border-t">
+
         <motion.div
+
           initial={{ opacity: 0, y: 20 }}
+
           whileInView={{ opacity: 1, y: 0 }}
+
           transition={{ duration: 0.6 }}
+
           viewport={{ once: true }}
+
           className="py-12 text-center"
+
         >
+
           <Button asChild variant="ghost" size="lg" className="group font-mono">
+
             <a
+
               href={siteConfig.github}
+
               target="_blank"
+
               rel="noopener noreferrer"
+
             >
+
               <span className="bg-foreground/40 mr-2 inline-block h-px w-8 transition-all group-hover:w-12" />
+
               VIEW ALL PROJECTS ON GITHUB
+
               <span className="bg-foreground/40 ml-2 inline-block h-px w-8 transition-all group-hover:w-12" />
+
             </a>
+
           </Button>
+
         </motion.div>
+
       </div> */}
+
       <N8nWorkflowModal
+
         isOpen={!!selectedWorkflowsModal}
+
         onClose={() => setSelectedWorkflowsModal(null)}
+
         workflows={selectedWorkflowsModal || []}
+
       />
+
+      <ReelsVideoModal
+        isOpen={isReelsModalOpen}
+        onClose={() => setIsReelsModalOpen(false)}
+      />
+
     </SectionHeading>
+
   );
+
 };
 
+
+
 export default Projects;
+
